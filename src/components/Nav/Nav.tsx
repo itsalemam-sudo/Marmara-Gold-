@@ -1,8 +1,20 @@
 import { useState } from "react";
 import { nav } from "@/data/nav";
-import { IconMenu, IconClose, IconLogoMonogram } from "@/components/icons/Icons";
+import { IconMenu, IconClose, IconArrowRight } from "@/components/icons/Icons";
 import { useLockScroll } from "@/hooks/useLockScroll";
 import styles from "./Nav.module.css";
+
+function BrandMark() {
+  return (
+    <a href="#top" className={styles.brand} aria-label="Marmara Gold — home">
+      <span className={styles.brand__mark} aria-hidden>M</span>
+      <span className={styles.brand__word}>
+        <b>MARMARA</b>
+        <small>Gold Trading LLC</small>
+      </span>
+    </a>
+  );
+}
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -12,13 +24,7 @@ export function Nav() {
     <header className={styles.wrap}>
       <div className="container">
         <div className={styles.bar}>
-          <a href="#top" className={styles.brand} aria-label="Marmara Gold — home">
-            <IconLogoMonogram className={styles.brand__mark} />
-            <span className={styles.brand__word}>
-              Marmara Gold
-              <small>Trading LLC · Dubai</small>
-            </span>
-          </a>
+          <BrandMark />
 
           <nav className={styles.menu} aria-label="Primary">
             {nav.map((item) => (
@@ -37,8 +43,7 @@ export function Nav() {
           </nav>
 
           <div className={styles.actions}>
-            <a className="btn btn--ghost-light" href="#contact">Client Portal</a>
-            <a className="btn btn--gold" href="#contact">Open an Account</a>
+            <a className="btn btn--gold" href="#contact">Contact us <IconArrowRight /></a>
           </div>
 
           <button
@@ -64,8 +69,8 @@ export function Nav() {
       >
         <div className={styles.drawerTop}>
           <span className={styles.brand}>
-            <IconLogoMonogram className={styles.brand__mark} />
-            <span className={styles.brand__word}>Marmara Gold</span>
+            <span className={styles.brand__mark} aria-hidden>M</span>
+            <span className={styles.brand__word}><b>MARMARA</b></span>
           </span>
           <button
             type="button"

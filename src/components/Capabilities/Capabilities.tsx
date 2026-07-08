@@ -9,7 +9,7 @@ export function Capabilities() {
   const bannerRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className={`${styles.wrap} section`} id="capabilities" aria-label="Our physical trading capabilities">
+    <section className={`${styles.wrap} section`} id="services" aria-label="Our physical trading capabilities">
       <div className="container">
         <div className={styles.grid}>
           <div ref={leftRef} className="reveal">

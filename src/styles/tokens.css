@@ -13,12 +13,18 @@
   --slate: #5c6b82;
 
   /* Derivatives */
+  --ink-soft: #12213f;
   --paper-warm: #efebde;
+  --paper-2: #efebe2;
+  --gold-line: rgba(198, 161, 91, 0.35);
   --ink-line: rgba(255, 255, 255, 0.08);
-  --ink-hairline: rgba(198, 161, 91, 0.35); /* gold at low opacity */
+  --ink-hairline: rgba(198, 161, 91, 0.35);
   --paper-line: rgba(10, 24, 50, 0.1);
   --paper-hairline: rgba(198, 161, 91, 0.5);
   --slate-soft: #8a95a7;
+  --slate-dark: #3a4560;
+  --up: #4fb286;
+  --down: #d46a6a;
 
   /* Type */
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;

@@ -4,31 +4,41 @@ import { useReveal } from "@/hooks/useReveal";
 import styles from "./Careers.module.css";
 
 export function Careers() {
-  const headRef = useReveal<HTMLDivElement>();
-  const rolesRef = useReveal<HTMLUListElement>();
+  const leftRef  = useReveal<HTMLDivElement>();
+  const rightRef = useReveal<HTMLDivElement>();
 
   return (
     <section className={`${styles.wrap} section`} id="careers" aria-label="Careers at Marmara">
       <div className="container">
-        <div className={styles.grid}>
-          <header ref={headRef} className={`${styles.head} reveal`}>
+        <div className={styles.split}>
+          <div ref={leftRef} className="reveal">
             <span className="eyebrow">{careers.eyebrow}</span>
-            <h2><em>{careers.headline}</em></h2>
-            <p>{careers.body}</p>
-            <div className={styles.ctaWrap}>
-              <a href={careers.cta.href} className="btn btn--gold">
-                {careers.cta.label} <IconArrowRight />
-              </a>
+            <h2 className={styles.headline}>{careers.headline}</h2>
+            <div className={styles.roles}>
+              {careers.roles.map((r) => (
+                <a key={r} href="#contact" className={styles.role}>{r}</a>
+              ))}
             </div>
-          </header>
+          </div>
 
-          <ul ref={rolesRef} className={`${styles.roles} reveal`} aria-label="Open roles">
-            {careers.roles.map((r) => (
-              <li key={r}>
-                <a href="#contact" className={styles.chip}>{r}</a>
-              </li>
-            ))}
-          </ul>
+          <div ref={rightRef} className={`${styles.body} reveal`}>
+            <p>
+              At Marmara Gold Trading LLC, our success is built on the expertise
+              and ambition of our people. We're looking for driven individuals
+              who want to shape the future of the global precious metals industry
+              — from bullion trading and refinery partnerships to market
+              intelligence and client solutions.
+            </p>
+            <p>
+              Whether you're a financial analyst, compliance expert, logistics
+              coordinator, or sales professional — join us in delivering trust,
+              value, and innovation across the gold, silver, platinum, and
+              palladium markets.
+            </p>
+            <a href="#contact" className="btn btn--gold" style={{ marginTop: 14 }}>
+              View open roles <IconArrowRight />
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -22,7 +22,7 @@ export function Solutions() {
   }, [active]);
 
   return (
-    <section className={`${styles.wrap} section`} id="services" aria-label="Solutions by client segment">
+    <section className={`${styles.wrap} section`} id="solutions" aria-label="Solutions by client segment">
       <div className="container">
         <header ref={headRef} className={`${styles.head} reveal`}>
           <div>
