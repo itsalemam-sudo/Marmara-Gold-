@@ -51,6 +51,20 @@ p { color: var(--ink); }
   padding-block: clamp(var(--space-16), 9vw, var(--space-24));
 }
 
+/* Global mobile tightenings */
+@media (max-width: 640px) {
+  .container, .container-tight {
+    padding-inline: var(--space-4);
+  }
+  .section { padding-block: var(--space-12); }
+  .btn { padding: 0.85rem 1.4rem; font-size: 0.8rem; }
+}
+
+/* Prevent horizontal overflow anywhere on mobile */
+html, body {
+  overflow-x: hidden;
+}
+
 .section--ink {
   background: var(--ink);
   color: #ffffff;

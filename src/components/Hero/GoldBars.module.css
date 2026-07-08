@@ -1,0 +1,112 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  isolation: isolate;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 30px 40px rgba(6, 15, 36, 0.55));
+  overflow: visible;
+}
+
+/* Soft ambient glow behind the pile */
+.glow {
+  position: absolute;
+  inset: 12% 8% 18% 12%;
+  background: radial-gradient(closest-side, rgba(224, 192, 121, 0.35), transparent 70%);
+  filter: blur(24px);
+  z-index: -1;
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.75; }
+  50%      { opacity: 1;    }
+}
+
+/* Each bar has its own floating rhythm — creates lively parallax. */
+.bar {
+  transform-origin: 245px 340px;
+  will-change: transform;
+}
+.bar1 { animation: float-a 6.2s ease-in-out infinite; }
+.bar2 { animation: float-b 7.4s ease-in-out infinite; }
+.bar3 { animation: float-c 5.8s ease-in-out infinite; }
+
+@keyframes float-a {
+  0%, 100% { transform: translateY(0)     rotate(0deg); }
+  50%      { transform: translateY(-5px)  rotate(-0.35deg); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translateY(0)     rotate(0deg); }
+  50%      { transform: translateY(-8px)  rotate(0.4deg); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translateY(0)     rotate(0deg); }
+  50%      { transform: translateY(-11px) rotate(-0.5deg); }
+}
+
+/* Shimmer sweeps across the front faces every 5 seconds. */
+.shimmer {
+  animation: shine-sweep 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes shine-sweep {
+  0%,  15% { transform: translateX(0);     }
+  70%,100% { transform: translateX(720px); }
+}
+
+/* Tiny corner sparkles */
+.sparkle,
+.sparkleB {
+  transform-origin: center;
+  animation: sparkle 3.2s ease-in-out infinite;
+}
+.sparkleB { animation-delay: 1.4s; animation-duration: 4.2s; }
+@keyframes sparkle {
+  0%, 100% { transform: scale(0.6); opacity: 0.2; }
+  50%      { transform: scale(1.2); opacity: 1;   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow, .bar1, .bar2, .bar3, .shimmer, .sparkle, .sparkleB {
+    animation: none;
+  }
+}
+
+/* --- Data caption sits directly under the pile --- */
+.caption {
+  margin-top: -20px;
+  padding: 18px 24px;
+  border: 1px solid rgba(198, 161, 91, 0.35);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  max-width: 340px;
+  margin-inline: auto;
+  display: grid;
+  gap: 8px;
+  backdrop-filter: blur(6px);
+}
+.captionRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.captionK {
+  color: rgba(255, 255, 255, 0.55);
+}
+.captionV {
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}

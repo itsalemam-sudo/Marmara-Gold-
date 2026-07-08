@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { IconArrowRight } from "@/components/icons/Icons";
+import { GoldBars } from "./GoldBars";
 import styles from "./Hero.module.css";
 
 /**
@@ -76,6 +77,7 @@ export function Hero() {
         ))}
       </div>
       <div className="container">
+        <div className={styles.split}>
         <div className={styles.inner}>
           <div className={styles.fineness}>Au 999.9 · FINE GOLD</div>
           <h1 className={styles.headline}>
@@ -110,6 +112,11 @@ export function Hero() {
               Institutional &amp; professional clients only
             </span>
           </div>
+        </div>
+
+        <div className={styles.bars}>
+          <GoldBars />
+        </div>
         </div>
       </div>
     </section>

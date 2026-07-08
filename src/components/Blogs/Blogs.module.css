@@ -186,6 +186,9 @@
   gap: 8px;
   flex-wrap: wrap;
 }
+@media (max-width: 480px) {
+  .pageBtn { min-width: 34px; padding: 6px 8px; font-size: 11px; }
+}
 .pageBtn {
   min-width: 40px;
   padding: 8px 12px;
