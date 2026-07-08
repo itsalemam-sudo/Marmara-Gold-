@@ -9,6 +9,7 @@ import { WhyChoose } from "@/components/WhyChoose/WhyChoose";
 import { GlobalReach } from "@/components/GlobalReach/GlobalReach";
 import { Clients } from "@/components/Clients/Clients";
 import { Solutions } from "@/components/Solutions/Solutions";
+import { Blogs } from "@/components/Blogs/Blogs";
 import { Leadership } from "@/components/Leadership/Leadership";
 import { Careers } from "@/components/Careers/Careers";
 import { Contact } from "@/components/Contact/Contact";
@@ -30,6 +31,7 @@ export default function App() {
         <GlobalReach />
         <Clients />
         <Solutions />
+        <Blogs />
         <Leadership />
         <Careers />
         <Contact />
