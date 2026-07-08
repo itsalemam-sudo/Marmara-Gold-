@@ -57,6 +57,14 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
+  background: transparent;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+@media (max-width: 640px) {
+  .tab { padding: 16px 12px; font-size: 13px; }
+  .tab__idx { font-size: 10px; }
 }
 .tab__idx {
   font-family: var(--font-mono);

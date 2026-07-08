@@ -57,10 +57,39 @@
   .particle { animation: none; opacity: 0; }
 }
 
-.inner {
-  max-width: 760px;
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
   padding: 96px 0 120px;
+}
+@media (min-width: 960px) {
+  .split {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+  }
+}
+
+.inner {
+  max-width: 640px;
   position: relative;
+}
+
+.bars {
+  position: relative;
+  order: 2;
+}
+@media (max-width: 959px) {
+  /* On mobile, show the bars ABOVE the copy so the first thing users see
+     is the visual, not a wall of type. Shrink the size a bit. */
+  .bars {
+    order: -1;
+    max-width: 360px;
+    margin-inline: auto;
+    margin-bottom: -20px;
+  }
 }
 
 /* Fineness pill fades in from left. */
@@ -152,7 +181,10 @@
 }
 
 @media (max-width: 860px) {
-  .inner { padding: 70px 0 96px; }
+  .split { padding: 56px 0 80px; gap: 28px; }
+  .headline { font-size: clamp(30px, 8vw, 42px); }
+  .lead { font-size: 15px; }
+  .actions { gap: 12px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
