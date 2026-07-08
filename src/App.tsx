@@ -1,3 +1,4 @@
+import { ScrollProgress } from "@/components/ScrollProgress/ScrollProgress";
 import { Ticker } from "@/components/Ticker/Ticker";
 import { Nav } from "@/components/Nav/Nav";
 import { Hero } from "@/components/Hero/Hero";
@@ -17,6 +18,7 @@ export default function App() {
   return (
     <>
       <a href="#main" className="skip-link">Skip to content</a>
+      <ScrollProgress />
       <Ticker />
       <Nav />
       <main id="main">

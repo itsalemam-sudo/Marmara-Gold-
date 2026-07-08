@@ -36,14 +36,46 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   transition: transform var(--dur-fast) var(--ease),
               border-color var(--dur-fast) var(--ease),
               box-shadow var(--dur-fast) var(--ease);
+}
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(198, 161, 91, 0.16) 50%,
+    transparent 100%
+  );
+  transform: skewX(-16deg);
+  transition: left 0.9s var(--ease);
+  pointer-events: none;
+  z-index: -1;
 }
 .card:hover {
   transform: translateY(-3px);
   border-color: var(--gold-line, rgba(198, 161, 91, 0.35));
   box-shadow: 0 24px 44px -24px rgba(6, 15, 36, 0.28);
+}
+.card:hover::after { left: 130%; }
+.card:hover .portrait {
+  transform: rotate(-6deg) scale(1.05);
+  background: var(--ink-deep);
+}
+.portrait { transition: transform var(--dur-med) var(--ease), background var(--dur-med) var(--ease); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card::after { display: none; }
+  .card:hover .portrait { transform: none; }
 }
 
 .portrait {

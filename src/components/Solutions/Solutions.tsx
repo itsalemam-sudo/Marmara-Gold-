@@ -63,8 +63,9 @@ export function Solutions() {
           </div>
         </div>
 
-        {/* Active panel */}
+        {/* Active panel — keyed on active so the enter animation replays. */}
         <div
+          key={activeSegment.key}
           ref={panelRef}
           className={`${styles.panel} reveal`}
           id={`panel-${activeSegment.key}`}

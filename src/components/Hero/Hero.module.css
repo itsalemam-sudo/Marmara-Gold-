@@ -6,6 +6,7 @@
   isolation: isolate;
 }
 
+/* --- Layered background --- */
 .wrap::before {
   content: "";
   position: absolute;
@@ -13,9 +14,10 @@
   background:
     radial-gradient(1100px 500px at 78% -10%, rgba(198, 161, 91, 0.16), transparent 60%),
     radial-gradient(700px 500px at 0% 120%, rgba(198, 161, 91, 0.06), transparent 55%);
-  z-index: -1;
+  z-index: -2;
 }
 
+/* Grid lines drift subtly with scroll (transform inline-style). */
 .gridLines {
   position: absolute;
   inset: 0;
@@ -24,13 +26,44 @@
   background-size: 100% 64px;
   pointer-events: none;
   z-index: -1;
+  will-change: transform;
+}
+
+/* Floating gold particles (SVG dots drifting up). */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(224, 192, 121, 0.95) 0%, rgba(224, 192, 121, 0) 70%);
+  opacity: 0.6;
+  animation: drift-up 22s linear infinite;
+  will-change: transform, opacity;
+}
+@keyframes drift-up {
+  0%   { transform: translate3d(0, 40px, 0) scale(0.8); opacity: 0; }
+  15%  { opacity: 0.75; }
+  90%  { opacity: 0.5; }
+  100% { transform: translate3d(6px, -420px, 0) scale(1.15); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .particle { animation: none; opacity: 0; }
 }
 
 .inner {
   max-width: 760px;
   padding: 96px 0 120px;
+  position: relative;
 }
 
+/* Fineness pill fades in from left. */
 .fineness {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -41,6 +74,8 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  opacity: 0;
+  animation: fade-in 0.6s var(--ease) 0.15s forwards;
 }
 .fineness::before {
   content: "";
@@ -48,6 +83,12 @@
   height: 1px;
   background: var(--gold);
   opacity: 0.7;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: line-in 0.9s var(--ease) 0.35s forwards;
+}
+@keyframes line-in {
+  to { transform: scaleX(1); }
 }
 
 .headline {
@@ -58,10 +99,27 @@
   line-height: 1.08;
   letter-spacing: -0.01em;
 }
-.headline em {
+/* Split the headline into per-word spans that stagger in. */
+.headline .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: word-in 0.85s var(--ease) forwards;
+}
+.headline .em {
   font-style: italic;
   color: var(--gold-bright);
-  font-weight: 500;
+  background: linear-gradient(120deg, #e0c079 0%, #f4d495 40%, #c6a15b 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+@keyframes word-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  to { opacity: 0.85; }
 }
 
 .lead {
@@ -70,6 +128,9 @@
   max-width: 640px;
   margin-bottom: 38px;
   line-height: 1.7;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: word-in 0.9s var(--ease) 1.2s forwards;
 }
 
 .actions {
@@ -77,6 +138,9 @@
   gap: 16px;
   flex-wrap: wrap;
   align-items: center;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: word-in 0.7s var(--ease) 1.55s forwards;
 }
 
 .note {
@@ -89,4 +153,14 @@
 
 @media (max-width: 860px) {
   .inner { padding: 70px 0 96px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fineness, .lead, .actions {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .fineness::before { transform: scaleX(1); animation: none; }
+  .headline .w { opacity: 1; transform: none; animation: none; }
 }

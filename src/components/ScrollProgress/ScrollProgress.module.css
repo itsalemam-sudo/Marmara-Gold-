@@ -1,0 +1,22 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    var(--gold-bright) 40%,
+    var(--gold) 100%
+  );
+  box-shadow: 0 0 12px rgba(198, 161, 91, 0.55);
+  z-index: 100;
+  pointer-events: none;
+  transition: transform 90ms linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bar { display: none; }
+}

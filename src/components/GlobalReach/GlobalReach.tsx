@@ -1,12 +1,9 @@
 import { useReveal } from "@/hooks/useReveal";
+import { AnimatedGlobe } from "./AnimatedGlobe";
 import styles from "./GlobalReach.module.css";
 
 const chips = ["Gold · Au", "Silver · Ag", "Platinum · Pt", "Palladium · Pd"];
 
-/**
- * Global-reach data card values are hard-coded per the source HTML.
- * The tiny <em> spans mark the gold-highlighted portion of each figure.
- */
 const cardStats: { k: string; v: React.ReactNode }[] = [
   { k: "Financial centers & trade hubs",  v: <><em>6</em> continents</> },
   { k: "Institutional markets served",     v: <>60<em>+</em></> },
@@ -15,8 +12,8 @@ const cardStats: { k: string; v: React.ReactNode }[] = [
 ];
 
 export function GlobalReach() {
-  const copyRef = useReveal<HTMLDivElement>();
-  const dataRef = useReveal<HTMLDivElement>();
+  const copyRef  = useReveal<HTMLDivElement>();
+  const globeRef = useReveal<HTMLDivElement>();
 
   return (
     <section className={`${styles.wrap} section`} id="reach" aria-label="Global reach">
@@ -39,15 +36,19 @@ export function GlobalReach() {
                 <span key={c} className={styles.chip}>{c}</span>
               ))}
             </div>
+
+            <div className={styles.mini}>
+              {cardStats.map((s, i) => (
+                <div key={i} className={styles.stat}>
+                  <span className={styles.k}>{s.k}</span>
+                  <span className={styles.v}>{s.v}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div ref={dataRef} className={`${styles.card} reveal`}>
-            {cardStats.map((s, i) => (
-              <div key={i} className={styles.stat}>
-                <span className={styles.k}>{s.k}</span>
-                <span className={styles.v}>{s.v}</span>
-              </div>
-            ))}
+          <div ref={globeRef} className={`${styles.globeWrap} reveal`}>
+            <AnimatedGlobe />
           </div>
         </div>
       </div>
