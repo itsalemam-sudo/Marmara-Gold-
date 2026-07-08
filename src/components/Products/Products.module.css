@@ -88,6 +88,18 @@
 .tile--silver    { background: linear-gradient(135deg, #f5f6f8 0%, #d0d4db 45%, #a0a7b3 100%); }
 .tile--platinum  { background: linear-gradient(135deg, #eef2f7 0%, #cad3df 45%, #9fadc0 100%); }
 .tile--palladium { background: linear-gradient(135deg, #ecfaf6 0%, #b7dcd0 45%, #8fbdae 100%); }
+
+/* Real photo fills the whole tile — override the default gradient. */
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--dur-med) var(--ease);
+}
+.card:hover .photo { transform: scale(1.03); }
 .tileMark {
   position: absolute;
   top: 12px;

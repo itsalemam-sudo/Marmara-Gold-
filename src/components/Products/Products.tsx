@@ -9,6 +9,28 @@ import { useReveal } from "@/hooks/useReveal";
 import styles from "./Products.module.css";
 
 /**
+ * Product tile with graceful fallback:
+ * - Try to load /products/{slug}.jpg (or .png). Vite serves anything
+ *   dropped in public/products/ at that path.
+ * - If the image errors out, hide it and show the SVG glyph instead.
+ * Drop real photos in public/products/{slug}.jpg to swap the SVG.
+ */
+function ProductImage({ product }: { product: CatalogProduct }) {
+  const [errored, setErrored] = useState(false);
+  const src = `/products/${product.slug}.jpg`;
+  if (errored) return <ProductGlyph metal={product.metal} category={product.category} />;
+  return (
+    <img
+      src={src}
+      alt={product.name}
+      loading="lazy"
+      onError={() => setErrored(true)}
+      className={styles.photo}
+    />
+  );
+}
+
+/**
  * Products / bullion catalogue.
  *
  * Bullion sales are KYC-regulated, so we don't run a real cart /
@@ -74,7 +96,7 @@ export function Products() {
           {shown.map((p) => (
             <article key={p.slug} className={styles.card}>
               <div className={`${styles.tile} ${styles["tile--" + p.metal] ?? ""}`}>
-                <ProductGlyph metal={p.metal} category={p.category} />
+                <ProductImage product={p} />
                 <span className={styles.tileMark}>
                   {p.metal === "gold" ? "Au" : p.metal === "silver" ? "Ag"
                     : p.metal === "platinum" ? "Pt" : "Pd"} · {p.purity}
