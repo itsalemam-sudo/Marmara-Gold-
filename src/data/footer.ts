@@ -23,6 +23,16 @@ export const footerColumns: FooterColumn[] = [
     ],
   },
   {
+    title: "Compliance",
+    links: [
+      { label: "RJC Code of Practices",      href: "#compliance" },
+      { label: "Anti-Bribery & Corruption",  href: "#compliance" },
+      { label: "Responsible Supply Chain",   href: "#compliance" },
+      { label: "Targeted Financial Sanctions", href: "#compliance" },
+      { label: "All 21 signed policies",     href: "#compliance" },
+    ],
+  },
+  {
     title: "Who We Are",
     links: [
       { label: "About Marmara",      href: "#about" },

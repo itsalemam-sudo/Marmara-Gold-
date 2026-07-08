@@ -1,6 +1,8 @@
 import { ScrollProgress } from "@/components/ScrollProgress/ScrollProgress";
+import { TopBar } from "@/components/TopBar/TopBar";
 import { Ticker } from "@/components/Ticker/Ticker";
 import { Nav } from "@/components/Nav/Nav";
+import { Certifications } from "@/components/Certifications/Certifications";
 import { Hero } from "@/components/Hero/Hero";
 import { Stats } from "@/components/Stats/Stats";
 import { About } from "@/components/About/About";
@@ -11,6 +13,7 @@ import { WhyChoose } from "@/components/WhyChoose/WhyChoose";
 import { GlobalReach } from "@/components/GlobalReach/GlobalReach";
 import { Clients } from "@/components/Clients/Clients";
 import { Solutions } from "@/components/Solutions/Solutions";
+import { Policies } from "@/components/Policies/Policies";
 import { Blogs } from "@/components/Blogs/Blogs";
 import { Leadership } from "@/components/Leadership/Leadership";
 import { Careers } from "@/components/Careers/Careers";
@@ -22,8 +25,10 @@ export default function App() {
     <>
       <a href="#main" className="skip-link">Skip to content</a>
       <ScrollProgress />
+      <TopBar />
       <Ticker />
       <Nav />
+      <Certifications />
       <main id="main">
         <Hero />
         <Stats />
@@ -35,6 +40,7 @@ export default function App() {
         <GlobalReach />
         <Clients />
         <Solutions />
+        <Policies />
         <Blogs />
         <Leadership />
         <Careers />
