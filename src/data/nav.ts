@@ -23,8 +23,6 @@ export type NavLink = {
 };
 
 export const nav: NavLink[] = [
-  { label: "Home", href: "#top" },
-
   {
     label: "Corporate",
     href: "#about",

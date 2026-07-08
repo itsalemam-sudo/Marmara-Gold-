@@ -12,7 +12,7 @@ function BrandMark() {
   return (
     <a href="#top" className={styles.brand} aria-label="Marmara Gold Trading LLC — home">
       <span className={styles.brandSeal} aria-hidden>
-        <svg viewBox="0 0 56 56" width="56" height="56">
+        <svg viewBox="0 0 56 56" width="48" height="48">
           <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" strokeWidth="0.9" />
           <circle cx="28" cy="28" r="22" fill="none" stroke="currentColor" strokeWidth="0.55" />
           <path
