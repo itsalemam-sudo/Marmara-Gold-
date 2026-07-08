@@ -9,22 +9,33 @@ import { useReveal } from "@/hooks/useReveal";
 import styles from "./Products.module.css";
 
 /**
- * Product tile with graceful fallback:
- * - Try to load /products/{slug}.jpg (or .png). Vite serves anything
- *   dropped in public/products/ at that path.
- * - If the image errors out, hide it and show the SVG glyph instead.
- * Drop real photos in public/products/{slug}.jpg to swap the SVG.
+ * Product tile with three-tier fallback:
+ *   1. If catalog.image is set, load that URL (Unsplash CDN).
+ *   2. If that fails or no URL, try /products/{slug}.jpg from public/.
+ *   3. If that also fails, render the inline SVG glyph.
+ *
+ * Drop-in real photos in public/products/{slug}.jpg always beat Unsplash.
  */
 function ProductImage({ product }: { product: CatalogProduct }) {
-  const [errored, setErrored] = useState(false);
-  const src = `/products/${product.slug}.jpg`;
-  if (errored) return <ProductGlyph metal={product.metal} category={product.category} />;
+  const [attempt, setAttempt] = useState<0 | 1 | 2>(0);
+  const local = `/products/${product.slug}.jpg`;
+  const remote = product.image;
+
+  const src =
+    attempt === 0 && remote ? remote :
+    attempt === 1 || (attempt === 0 && !remote) ? local :
+    "";
+
+  if (attempt === 2 || !src) {
+    return <ProductGlyph metal={product.metal} category={product.category} />;
+  }
+
   return (
     <img
       src={src}
       alt={product.name}
       loading="lazy"
-      onError={() => setErrored(true)}
+      onError={() => setAttempt((prev) => (prev + 1) as 0 | 1 | 2)}
       className={styles.photo}
     />
   );
