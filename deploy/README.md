@@ -6,40 +6,64 @@ common paths.
 
 ---
 
-## 1. Static nginx (recommended)
+## 1. Build on the server (recommended for a single-VPS setup)
 
-**On your workstation:**
+Do this once, on the server:
 
 ```bash
-git clone git@github.com:itsalemam-sudo/Marmara-Gold-.git
-cd Marmara-Gold-
+# --- prerequisites ---
+apt update
+apt install -y git nginx
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt install -y nodejs
+
+# --- clone + build ---
+mkdir -p /opt/marmara-gold
+cd /opt/marmara-gold
+git clone https://github.com/itsalemam-sudo/Marmara-Gold-.git .
 git checkout claude/new-session-srajt4
 npm ci
 npm run build
-# The build produces ./dist — that's what you upload.
+
+# --- publish the built dist ---
+mkdir -p /var/www/marmara-gold
+rsync -a --delete dist/ /var/www/marmara-gold/
+chown -R www-data:www-data /var/www/marmara-gold
+
+# --- HTTP-only bootstrap (works BEFORE DNS + TLS) ---
+cp deploy/nginx-http.conf /etc/nginx/sites-available/marmaragold.conf
+ln -sf /etc/nginx/sites-available/marmaragold.conf /etc/nginx/sites-enabled/
+rm -f /etc/nginx/sites-enabled/default
+nginx -t && systemctl reload nginx
+
+# The site is now live over HTTP at the server's public IP.
+curl -sI http://localhost/     # should return HTTP/1.1 200
 ```
 
-**Upload the dist folder to the server** (change host + user + path to
-match yours):
+**Once DNS is pointed** at the server (A record for `marmaragold.ae`
+and `www.marmaragold.ae`), add HTTPS:
 
 ```bash
-rsync -avz --delete dist/ user@host:/var/www/marmara-gold/
+apt install -y certbot python3-certbot-nginx
+certbot --nginx -d marmaragold.ae -d www.marmaragold.ae \
+        --agree-tos --no-eff-email -m webmaster@marmaragold.ae \
+        --redirect
 ```
 
-**Nginx config** — an example server block is in `deploy/nginx.conf`.
-Copy it to `/etc/nginx/conf.d/marmaragold.conf`, edit the `root` path
-and TLS cert paths, then:
+`certbot` will rewrite the nginx config to include HTTPS + an
+auto-redirect from HTTP, and configure the systemd timer that
+auto-renews the certificate.
+
+**Re-deploying after a code change:**
 
 ```bash
-sudo nginx -t          # verify the config parses
-sudo systemctl reload nginx
-```
-
-Point DNS at the server (A record for `marmaragold.ae` and
-`www.marmaragold.ae`) and issue a Let's Encrypt certificate:
-
-```bash
-sudo certbot --nginx -d marmaragold.ae -d www.marmaragold.ae
+cd /opt/marmara-gold
+git pull
+npm ci        # only if package-lock.json changed
+npm run build
+rsync -a --delete dist/ /var/www/marmara-gold/
+chown -R www-data:www-data /var/www/marmara-gold
+# nginx picks up the new files immediately — no reload needed.
 ```
 
 ---
