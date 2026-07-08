@@ -1,0 +1,118 @@
+.wrap {
+  background: var(--ink);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+.wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(700px 400px at 90% 10%, rgba(198, 161, 91, 0.1), transparent 65%);
+  pointer-events: none;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-16);
+  align-items: start;
+  position: relative;
+}
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr 1.35fr;
+    gap: var(--space-24);
+  }
+}
+
+.heading {
+  color: #ffffff;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.heading em {
+  font-style: italic;
+  color: var(--gold-bright);
+}
+.lede {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.75;
+  max-width: 30rem;
+}
+
+.list { border-top: 1px solid var(--ink-line); }
+.item {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: var(--space-6);
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--ink-line);
+  align-items: baseline;
+}
+.item__idx {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding-top: 6px;
+}
+.item__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: var(--space-2);
+}
+.item__detail {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  max-width: 34rem;
+}
+
+/* margin banner */
+.banner {
+  margin-top: var(--space-16);
+  padding: var(--space-10);
+  border: 1px solid rgba(198, 161, 91, 0.35);
+  border-radius: var(--radius-md);
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+  grid-template-columns: 1fr;
+  background: linear-gradient(135deg, rgba(198, 161, 91, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+@media (min-width: 800px) {
+  .banner {
+    grid-template-columns: 1.4fr 1fr;
+    padding: var(--space-12);
+  }
+}
+.banner__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-3);
+}
+.banner__headline {
+  font-family: var(--font-display);
+  color: #ffffff;
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  line-height: 1.2;
+  margin-bottom: var(--space-3);
+  font-weight: 500;
+}
+.banner__body {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  max-width: 34rem;
+}
+.banner__cta {
+  display: flex;
+  justify-content: flex-end;
+}
+@media (max-width: 799px) {
+  .banner__cta { justify-content: flex-start; }
+}

@@ -1,0 +1,103 @@
+.wrap {
+  background: var(--ink-deep);
+  color: #ffffff;
+  border-bottom: 1px solid var(--ink-line);
+  overflow: hidden;
+  position: relative;
+}
+
+.wrap::before,
+.wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  pointer-events: none;
+  z-index: 2;
+}
+.wrap::before { left: 0;  background: linear-gradient(to right, var(--ink-deep) 0%, transparent 100%); }
+.wrap::after  { right: 0; background: linear-gradient(to left,  var(--ink-deep) 0%, transparent 100%); }
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 0 var(--space-6);
+  height: 44px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(198, 161, 91, 0.15);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot { animation: none; }
+}
+
+.track {
+  display: flex;
+  gap: var(--space-10);
+  white-space: nowrap;
+  animation: scroll 55s linear infinite;
+  will-change: transform;
+  min-width: 100%;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+}
+
+.item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}
+.item .name {
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+}
+.item .spot {
+  color: #ffffff;
+  font-weight: 500;
+}
+.item .change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.item .up   { color: #7bd6a4; }
+.item .down { color: #ef7373; }
+
+.item .fineness {
+  color: var(--gold);
+  opacity: 0.8;
+}
