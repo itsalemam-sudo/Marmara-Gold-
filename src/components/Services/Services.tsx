@@ -1,0 +1,97 @@
+import type { SVGProps } from "react";
+import { services, type ServiceIcon } from "@/data/services";
+import { IconArrowRight } from "@/components/icons/Icons";
+import { useReveal } from "@/hooks/useReveal";
+import styles from "./Services.module.css";
+
+/* --- Service tile icons (thin-stroke, gold via currentColor) --- */
+const iconProps = {
+  width: 22,
+  height: 22,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.5,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} satisfies SVGProps<SVGSVGElement>;
+
+const Icon: Record<ServiceIcon, () => React.JSX.Element> = {
+  cart: () => (
+    <svg {...iconProps} aria-hidden>
+      <path d="M3 4h2l2.5 11.5a2 2 0 002 1.5h8.5a2 2 0 002-1.5L21.5 8H6" />
+      <circle cx="9" cy="20" r="1.4" />
+      <circle cx="17" cy="20" r="1.4" />
+    </svg>
+  ),
+  dollar: () => (
+    <svg {...iconProps} aria-hidden>
+      <path d="M12 3v18" />
+      <path d="M17 7.5c-1.2-1.7-3-2.5-5-2.5-2.5 0-4.5 1.4-4.5 3.5S9 12 12 12s4.5 1 4.5 3.5S14.5 19 12 19c-2 0-3.8-.8-5-2.5" />
+    </svg>
+  ),
+  flame: () => (
+    <svg {...iconProps} aria-hidden>
+      <path d="M12 2c1 3 4 5 4 9a4 4 0 11-8 0c0-1 .5-2 1.2-3-.2 2 .8 3 1.8 3-.5-3 .8-6 1-9z" />
+    </svg>
+  ),
+  vault: () => (
+    <svg {...iconProps} aria-hidden>
+      <rect x="3" y="5" width="18" height="14" rx="1.5" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 8v-1M12 17v-1M8 12H7M17 12h-1" />
+    </svg>
+  ),
+  chart: () => (
+    <svg {...iconProps} aria-hidden>
+      <path d="M3 20V4M3 20h18" />
+      <path d="M6 16l4-5 4 4 6-8" />
+      <circle cx="20" cy="7" r="1.4" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  book: () => (
+    <svg {...iconProps} aria-hidden>
+      <path d="M4 4h9a3 3 0 013 3v14a2 2 0 00-2-2H4V4z" />
+      <path d="M20 4h-9a3 3 0 00-3 3v14a2 2 0 012-2h10V4z" />
+    </svg>
+  ),
+};
+
+export function Services() {
+  const headRef = useReveal<HTMLDivElement>();
+  const gridRef = useReveal<HTMLDivElement>();
+
+  return (
+    <section className={`${styles.wrap} section`} id="services-grid" aria-label="Precious metals services">
+      <div className="container">
+        <header ref={headRef} className={`${styles.head} reveal`}>
+          <span className="eyebrow">Services</span>
+          <h2>Explore our Precious Metals Services</h2>
+          <p>
+            End-to-end coverage for institutional buyers, sellers, refiners and
+            custodians — six service lines that make up the Marmara desk.
+          </p>
+        </header>
+
+        <div ref={gridRef} className={`${styles.grid} reveal`}>
+          {services.map((s) => {
+            const GlyphComponent = Icon[s.icon];
+            return (
+              <article key={s.title} className={styles.card}>
+                <span className={styles.ico}><GlyphComponent /></span>
+                <h3 className={styles.title}>{s.title}</h3>
+                <p className={styles.lede}>{s.lede}</p>
+                <ul className={styles.bullets}>
+                  {s.bullets.map((b) => <li key={b}>{b}</li>)}
+                </ul>
+                <a href={s.cta.href} className={styles.cta}>
+                  {s.cta.label} <IconArrowRight />
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

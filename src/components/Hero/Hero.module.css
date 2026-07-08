@@ -1,10 +1,9 @@
 .wrap {
-  position: relative;
   background: var(--ink);
-  color: #ffffff;
+  color: #e9edf5;
   overflow: hidden;
+  position: relative;
   isolation: isolate;
-  padding-block: clamp(var(--space-20), 12vw, 8rem);
 }
 
 .wrap::before {
@@ -12,47 +11,52 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(1000px 500px at 15% 10%, rgba(198, 161, 91, 0.14), transparent 65%),
-    radial-gradient(900px 500px at 100% 20%, rgba(198, 161, 91, 0.06), transparent 65%),
-    linear-gradient(135deg, #060f24 0%, #0a1832 60%, #101f42 100%);
-  z-index: -2;
+    radial-gradient(1100px 500px at 78% -10%, rgba(198, 161, 91, 0.16), transparent 60%),
+    radial-gradient(700px 500px at 0% 120%, rgba(198, 161, 91, 0.06), transparent 55%);
+  z-index: -1;
 }
 
-/* subtle gold hairlines behind the hero */
-.wrap::after {
-  content: "";
+.gridLines {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(198, 161, 91, 0.05) 1px, transparent 1px);
-  background-size: 100px 100%;
-  opacity: 0.6;
-  z-index: -1;
+  opacity: 0.5;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 64px;
   pointer-events: none;
+  z-index: -1;
 }
 
-.grid {
-  display: grid;
-  gap: var(--space-16);
-  grid-template-columns: 1fr;
-  align-items: end;
-}
-@media (min-width: 960px) {
-  .grid {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: var(--space-24);
-  }
+.inner {
+  max-width: 760px;
+  padding: 96px 0 120px;
 }
 
-.copy {
-  max-width: 40rem;
+.fineness {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  opacity: 0.85;
+  margin-bottom: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.fineness::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
 }
 
 .headline {
+  font-size: clamp(38px, 5.4vw, 68px);
   color: #ffffff;
-  font-weight: 400;
-  margin-top: var(--space-6);
-  margin-bottom: var(--space-6);
+  margin-bottom: 28px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
 }
 .headline em {
   font-style: italic;
@@ -60,107 +64,29 @@
   font-weight: 500;
 }
 
-.about {
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.75;
-  max-width: 34rem;
+.lead {
+  font-size: clamp(16px, 1.6vw, 18px);
+  color: #c3cddd;
+  max-width: 640px;
+  margin-bottom: 38px;
+  line-height: 1.7;
 }
 
-.ctas {
+.actions {
   display: flex;
+  gap: 16px;
   flex-wrap: wrap;
-  gap: var(--space-3);
-  margin-top: var(--space-10);
-}
-
-/* right-side data card */
-.card {
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  padding: var(--space-8);
-  border-radius: var(--radius-md);
-}
-.card__meta {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: var(--space-4);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-.card__meta::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: rgba(198, 161, 91, 0.35);
-}
-.card__row {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: var(--space-4);
-  padding-block: var(--space-4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  align-items: baseline;
-}
-.card__row:last-of-type { border-bottom: none; }
-.card__metal {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  color: #ffffff;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
-.card__metal small {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.24em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-top: 2px;
-}
-.card__price {
-  font-family: var(--font-mono);
-  font-size: 0.98rem;
-  color: #ffffff;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-.card__change {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.up   { color: #7bd6a4; }
-.down { color: #ef7373; }
-
-.card__footer {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  margin-top: var(--space-6);
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-/* watermark hairline top of hero */
-.watermark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-  opacity: 0.6;
+.note {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  color: #8697b1;
+  text-transform: uppercase;
+}
+
+@media (max-width: 860px) {
+  .inner { padding: 70px 0 96px; }
 }

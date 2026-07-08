@@ -3,11 +3,14 @@ import { Nav } from "@/components/Nav/Nav";
 import { Hero } from "@/components/Hero/Hero";
 import { Stats } from "@/components/Stats/Stats";
 import { Capabilities } from "@/components/Capabilities/Capabilities";
+import { Services } from "@/components/Services/Services";
 import { WhyChoose } from "@/components/WhyChoose/WhyChoose";
 import { GlobalReach } from "@/components/GlobalReach/GlobalReach";
 import { Clients } from "@/components/Clients/Clients";
 import { Solutions } from "@/components/Solutions/Solutions";
+import { Leadership } from "@/components/Leadership/Leadership";
 import { Careers } from "@/components/Careers/Careers";
+import { Contact } from "@/components/Contact/Contact";
 import { Footer } from "@/components/Footer/Footer";
 
 export default function App() {
@@ -20,11 +23,14 @@ export default function App() {
         <Hero />
         <Stats />
         <Capabilities />
+        <Services />
         <WhyChoose />
         <GlobalReach />
         <Clients />
         <Solutions />
+        <Leadership />
         <Careers />
+        <Contact />
       </main>
       <Footer />
     </>

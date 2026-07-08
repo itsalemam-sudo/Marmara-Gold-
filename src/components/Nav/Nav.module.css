@@ -1,11 +1,10 @@
 .wrap {
-  background: var(--ink);
-  color: #ffffff;
-  border-bottom: 1px solid var(--ink-line);
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 1px solid rgba(10, 24, 50, 0.08);
   position: sticky;
   top: 0;
   z-index: 60;
-  backdrop-filter: saturate(140%);
 }
 
 .bar {
@@ -19,20 +18,45 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
-  color: #ffffff;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  gap: 14px;
+  color: var(--ink);
 }
-.brand__mark { color: var(--gold); }
+.brand__mark {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--gold);
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  flex: none;
+}
+.brand__mark::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--ink-hairline);
+}
+.brand__word {
+  line-height: 1.05;
+}
+.brand__word b {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  display: block;
+}
 .brand__word small {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.28em;
-  color: rgba(255, 255, 255, 0.55);
+  font-size: 9.5px;
+  letter-spacing: 0.34em;
+  color: var(--slate);
   text-transform: uppercase;
   margin-top: 2px;
 }
@@ -48,14 +72,13 @@
 }
 .menuItem {
   position: relative;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.86rem;
+  color: var(--slate-dark, var(--slate));
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.06em;
   padding: 8px 4px;
   transition: color var(--dur-fast) var(--ease);
 }
-.menuItem:hover { color: #ffffff; }
+.menuItem:hover { color: var(--ink); }
 .menuItem::after {
   content: "";
   position: absolute;
@@ -75,21 +98,20 @@
 
 /* barX tab variant */
 .menuItem--tab {
-  padding: 6px 12px;
-  border: 1px solid var(--gold);
-  border-radius: 999px;
+  padding: 4px 10px;
+  border: 1px solid var(--paper-hairline);
+  border-radius: 2px;
   background: transparent;
   color: var(--gold);
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
+  font-size: 13px;
+  letter-spacing: 0.04em;
   text-transform: none;
-  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  transition: background var(--dur-fast) var(--ease);
 }
 .menuItem--tab::after { display: none; }
 .menuItem--tab:hover {
-  background: var(--gold);
-  color: var(--ink);
+  background: rgba(198, 161, 91, 0.08);
 }
 
 .actions {
@@ -108,14 +130,14 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  color: #ffffff;
+  color: var(--ink);
   border-radius: var(--radius-xs);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(10, 24, 50, 0.14);
 }
 @media (min-width: 1024px) {
   .hamburger { display: none; }
 }
-.hamburger:hover { background: rgba(255, 255, 255, 0.06); }
+.hamburger:hover { background: rgba(10, 24, 50, 0.04); }
 
 /* ---- mobile drawer ---- */
 .drawer {

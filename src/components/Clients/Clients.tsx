@@ -7,7 +7,7 @@ export function Clients() {
   const listRef = useReveal<HTMLUListElement>();
 
   return (
-    <section className={`${styles.wrap} section`} id="insights" aria-label="Who we serve">
+    <section className={`${styles.wrap} section`} id="clients" aria-label="Who we serve">
       <div className="container">
         <div className={styles.grid}>
           <header ref={headRef} className={`${styles.head} reveal`}>

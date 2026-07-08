@@ -6,11 +6,12 @@ export type NavLink = {
 };
 
 export const nav: NavLink[] = [
+  { label: "Home",       href: "#top" },
   { label: "Services",   href: "#services" },
-  { label: "Trading",    href: "#capabilities" },
-  { label: "About",      href: "#about" },
-  { label: "Offices",    href: "#reach" },
-  { label: "Careers",    href: "#careers" },
   { label: "barX",       href: "#barx",     variant: "tab" },
-  { label: "Contact",    href: "#contact" },
+  { label: "About Us",   href: "#about" },
+  { label: "Blogs",      href: "#blogs" },
+  { label: "Events",     href: "#events" },
+  { label: "Our Offices",href: "#reach" },
+  { label: "Leadership", href: "#leadership" },
 ];
