@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { IconArrowRight } from "@/components/icons/Icons";
-import { GoldBars } from "./GoldBars";
+import { HeroScene } from "./HeroScene";
 import styles from "./Hero.module.css";
 
 /**
@@ -115,7 +115,7 @@ export function Hero() {
         </div>
 
         <div className={styles.bars}>
-          <GoldBars />
+          <HeroScene />
         </div>
         </div>
       </div>
