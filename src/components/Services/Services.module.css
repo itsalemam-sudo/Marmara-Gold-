@@ -53,12 +53,43 @@
   transform-origin: left;
   transition: transform var(--dur-med) var(--ease);
 }
+/* Diagonal gold sheen sweeps across on hover. */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(198, 161, 91, 0.14) 45%,
+    rgba(224, 192, 121, 0.28) 50%,
+    rgba(198, 161, 91, 0.14) 55%,
+    transparent 100%
+  );
+  transform: skewX(-16deg);
+  transition: left 0.9s var(--ease);
+  pointer-events: none;
+}
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 30px 50px -28px rgba(6, 15, 36, 0.32);
   border-color: var(--gold-line, rgba(198, 161, 91, 0.35));
 }
 .card:hover::before { transform: scaleX(1); }
+.card:hover::after  { left: 130%; }
+.card:hover .ico {
+  transform: scale(1.08) rotate(-2deg);
+  color: var(--gold-bright);
+}
+.ico { transition: transform var(--dur-med) var(--ease), color var(--dur-med) var(--ease); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card::after { display: none; }
+  .card:hover .ico { transform: none; }
+}
 
 .ico {
   width: 44px;

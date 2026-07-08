@@ -46,14 +46,55 @@
   background: var(--paper);
   transition: background var(--dur-fast) var(--ease), transform var(--dur-med) var(--ease);
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(220px 140px at 50% -20px, rgba(198, 161, 91, 0.14), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease);
+  pointer-events: none;
+  z-index: -1;
+}
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(198, 161, 91, 0.12) 45%,
+    rgba(224, 192, 121, 0.25) 50%,
+    rgba(198, 161, 91, 0.12) 55%,
+    transparent 100%
+  );
+  transform: skewX(-16deg);
+  transition: left 0.9s var(--ease);
+  pointer-events: none;
+  z-index: -1;
 }
 .card:hover {
   background: var(--paper-warm);
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
+.card:hover::before { opacity: 1; }
+.card:hover::after  { left: 130%; }
 .card:hover .glyph {
   color: var(--gold-bright);
-  transform: translateY(-2px);
+  transform: translateY(-2px) rotate(-3deg) scale(1.08);
+}
+.glyph { transition: color var(--dur-fast) var(--ease), transform var(--dur-med) var(--ease); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card::after { display: none; }
+  .card:hover { transform: none; }
+  .card:hover .glyph { transform: none; }
 }
 
 .glyph {

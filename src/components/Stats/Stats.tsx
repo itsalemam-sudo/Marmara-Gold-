@@ -1,46 +1,38 @@
 import { stats } from "@/data/stats";
 import { useReveal } from "@/hooks/useReveal";
+import { useCountUp } from "@/hooks/useCountUp";
 import styles from "./Stats.module.css";
 
 /**
- * Render each stat's value.
- * The gold "+" or "$" in the HTML mockup is wrapped in <em>.
- * Values are strings like "300+", "$4T", "180+", "40+", "180+".
+ * Wrap the value in <em> where the source used a highlighted glyph:
+ * "300+" → 300 <em>+</em>, "$4T" → <em>$</em>4T.
  */
-function StatValue({ value }: { value: string }) {
-  if (value.endsWith("+")) {
-    return (
-      <>
-        {value.slice(0, -1)}
-        <em>+</em>
-      </>
-    );
-  }
-  if (value.startsWith("$")) {
-    return (
-      <>
-        <em>$</em>
-        {value.slice(1)}
-      </>
-    );
-  }
+function renderValue(value: string) {
+  if (value.endsWith("+")) return (<>{value.slice(0, -1)}<em>+</em></>);
+  if (value.startsWith("$")) return (<><em>$</em>{value.slice(1)}</>);
   return <>{value}</>;
 }
 
-export function Stats() {
-  const ref = useReveal<HTMLDivElement>();
+function StatBlock({ value, label }: { value: string; label: string }) {
+  const { ref, text } = useCountUp(value);
+  return (
+    <div className={styles.stat}>
+      <div className={styles.num} ref={ref as React.RefObject<HTMLDivElement>}>
+        {renderValue(text)}
+      </div>
+      <div className={styles.lbl}>{label}</div>
+    </div>
+  );
+}
 
+export function Stats() {
+  const bandRef = useReveal<HTMLDivElement>();
   return (
     <section className={styles.wrap} aria-label="Marmara Gold at a glance">
       <div className="container">
-        <div ref={ref} className={`${styles.band} reveal`}>
+        <div ref={bandRef} className={`${styles.band} reveal`}>
           {stats.map((s) => (
-            <div key={s.label} className={styles.stat}>
-              <div className={styles.num}>
-                <StatValue value={s.value} />
-              </div>
-              <div className={styles.lbl}>{s.label}</div>
-            </div>
+            <StatBlock key={s.label} value={s.value} label={s.label} />
           ))}
         </div>
         <div className={styles.pad} />
