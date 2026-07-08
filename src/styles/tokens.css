@@ -1,0 +1,58 @@
+/* ============================================================
+   Marmara Gold — Design tokens
+   Colors + type + spacing + motion. Do not change without a spec.
+   ============================================================ */
+
+:root {
+  /* Color */
+  --ink: #0a1832;
+  --ink-deep: #060f24;
+  --gold: #c6a15b;
+  --gold-bright: #e0c079;
+  --paper: #f6f4ef;
+  --slate: #5c6b82;
+
+  /* Derivatives */
+  --paper-warm: #efebde;
+  --ink-line: rgba(255, 255, 255, 0.08);
+  --ink-hairline: rgba(198, 161, 91, 0.35); /* gold at low opacity */
+  --paper-line: rgba(10, 24, 50, 0.1);
+  --paper-hairline: rgba(198, 161, 91, 0.5);
+  --slate-soft: #8a95a7;
+
+  /* Type */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Spacing scale (8pt) */
+  --space-1: 0.25rem;   /* 4  */
+  --space-2: 0.5rem;    /* 8  */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 */
+  --space-5: 1.25rem;   /* 20 */
+  --space-6: 1.5rem;    /* 24 */
+  --space-8: 2rem;      /* 32 */
+  --space-10: 2.5rem;   /* 40 */
+  --space-12: 3rem;     /* 48 */
+  --space-16: 4rem;     /* 64 */
+  --space-20: 5rem;     /* 80 */
+  --space-24: 6rem;     /* 96 */
+
+  /* Layout */
+  --container: 1240px;
+  --container-tight: 1080px;
+
+  /* Radius */
+  --radius-0: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 180ms;
+  --dur-med: 360ms;
+  --dur-slow: 700ms;
+}
