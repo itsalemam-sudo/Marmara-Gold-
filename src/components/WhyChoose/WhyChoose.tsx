@@ -8,7 +8,7 @@ export function WhyChoose() {
   const gridRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className={`${styles.wrap} section`} id="about" aria-label="Why choose Marmara">
+    <section className={`${styles.wrap} section`} id="why" aria-label="Why choose Marmara">
       <div className="container">
         <div ref={headRef} className={`${styles.head} reveal`}>
           <div>

@@ -220,6 +220,15 @@ html, body {
   background: rgba(255, 255, 255, 0.08);
   border-color: #ffffff;
 }
+.btn--secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn--secondary:hover {
+  background: var(--ink);
+  color: #ffffff;
+}
 .btn--ghost-dark {
   background: transparent;
   color: var(--ink);

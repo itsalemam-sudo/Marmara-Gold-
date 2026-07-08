@@ -172,12 +172,41 @@
   animation: word-in 0.7s var(--ease) 1.55s forwards;
 }
 
+.subActions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  opacity: 0;
+  animation: word-in 0.7s var(--ease) 1.7s forwards;
+}
+.appLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.appLink:hover {
+  color: var(--gold-bright);
+  border-bottom-color: var(--gold);
+}
 .note {
   font-family: var(--font-mono);
   font-size: 11.5px;
   letter-spacing: 0.14em;
   color: #8697b1;
   text-transform: uppercase;
+}
+@media (prefers-reduced-motion: reduce) {
+  .subActions { opacity: 1; animation: none; }
 }
 
 @media (max-width: 860px) {

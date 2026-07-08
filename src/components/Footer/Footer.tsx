@@ -30,9 +30,19 @@ export function Footer() {
           {footerColumns.map((col) => (
             <nav key={col.title} className={styles.col} aria-label={col.title}>
               <h5>{col.title}</h5>
-              {col.links.map((l) => (
-                <a key={l.label} href={l.href}>{l.label}</a>
-              ))}
+              {col.links.map((l) => {
+                const external = l.href.startsWith("http");
+                return (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                  >
+                    {l.label}
+                  </a>
+                );
+              })}
             </nav>
           ))}
         </div>

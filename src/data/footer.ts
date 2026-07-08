@@ -34,9 +34,10 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Account",
     links: [
-      { label: "Open an Account",   href: "#contact" },
-      { label: "Client Portal Login", href: "#contact" },
-      { label: "Support Center",    href: "#contact" },
+      { label: "Open an Account",     href: "#contact" },
+      { label: "barX Trading Platform", href: "https://marmara.ntptrader.com/" },
+      { label: "iOS App — Marmara Trader", href: "https://apps.apple.com/ae/app/marmara-trader/id6502641675" },
+      { label: "Support Center",      href: "#contact" },
     ],
   },
 ];
