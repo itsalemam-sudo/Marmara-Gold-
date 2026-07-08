@@ -40,8 +40,26 @@ nginx -t && systemctl reload nginx
 curl -sI http://localhost/     # should return HTTP/1.1 200
 ```
 
-**Once DNS is pointed** at the server (A record for `marmaragold.ae`
-and `www.marmaragold.ae`), add HTTPS:
+## Pointing marmaragold.ae at the server
+
+Log in to the tasjeel.ae DNS manager for the domain. Find the row with
+Host Name `marmaragold.ae.` and Type `A`. Change the Value to the
+server's public IP. Optionally drop the TTL to `300` before saving so
+propagation is faster while you're iterating.
+
+The `www`, `mail` and `ftp` CNAME records already point at
+`marmaragold.ae` — they inherit the A-record change automatically.
+Leave the MX record untouched (it routes email to your Tasjeel mail
+server, not to this webserver).
+
+Once DNS has propagated (usually 5–60 min after the change):
+
+```bash
+dig +short marmaragold.ae
+# should return your server's IP
+```
+
+**Then add HTTPS** on the server:
 
 ```bash
 apt install -y certbot python3-certbot-nginx
