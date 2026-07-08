@@ -1,11 +1,13 @@
 import { departments, hq } from "@/data/contact";
+import { links } from "@/lib/links";
 import { IconArrowRight } from "@/components/icons/Icons";
 import { useReveal } from "@/hooks/useReveal";
+import { InquiryForm } from "./InquiryForm";
 import styles from "./Contact.module.css";
 
 export function Contact() {
-  const headRef = useReveal<HTMLDivElement>();
-  const leftRef = useReveal<HTMLDivElement>();
+  const headRef  = useReveal<HTMLDivElement>();
+  const leftRef  = useReveal<HTMLDivElement>();
   const rightRef = useReveal<HTMLDivElement>();
 
   return (
@@ -15,13 +17,15 @@ export function Contact() {
           <span className="eyebrow">Contact</span>
           <h2>Reach the right desk</h2>
           <p>
-            Institutional coverage is routed to a named desk. Pick the one that
-            fits your enquiry, or reach us at the HQ line and we will hand off.
+            Institutional coverage is routed to a named desk. Use the B2B form
+            for a full brief, or pick the department that fits your enquiry.
           </p>
         </header>
 
         <div className={styles.grid}>
-          <div ref={leftRef} className={`reveal`}>
+          <div ref={leftRef} className="reveal">
+            <InquiryForm />
+
             <div className={styles.dept}>
               {departments.map((d) => (
                 <article key={d.email} className={styles.deptCard}>
@@ -59,12 +63,21 @@ export function Contact() {
               </span>
             </div>
 
+            <div className={styles.hqBlock}>
+              <span className={styles.hqLabel}>Trading platform</span>
+              <span className={styles.hqValue}>
+                <a href={links.tradingPlatform} target="_blank" rel="noopener noreferrer">
+                  marmara.ntptrader.com
+                </a>
+              </span>
+            </div>
+
             <div className={styles.hqActions}>
-              <a href={`mailto:${hq.general}`} className="btn btn--gold">
-                Email us <IconArrowRight />
+              <a href={links.tradingPlatform} target="_blank" rel="noopener noreferrer" className="btn btn--gold">
+                Open barX platform <IconArrowRight />
               </a>
-              <a href="#services-grid" className="btn btn--outline-light">
-                See services
+              <a href={links.iosApp} target="_blank" rel="noopener noreferrer" className="btn btn--outline-light">
+                Download for iOS
               </a>
             </div>
           </aside>

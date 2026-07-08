@@ -31,6 +31,8 @@ export function Nav() {
               <a
                 key={item.label}
                 href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
                 className={
                   item.variant === "tab"
                     ? `${styles.menuItem} ${styles["menuItem--tab"]}`
