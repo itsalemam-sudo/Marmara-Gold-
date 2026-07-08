@@ -9,33 +9,32 @@ import { useReveal } from "@/hooks/useReveal";
 import styles from "./Products.module.css";
 
 /**
- * Product tile with three-tier fallback:
- *   1. If catalog.image is set, load that URL (Unsplash CDN).
- *   2. If that fails or no URL, try /products/{slug}.jpg from public/.
- *   3. If that also fails, render the inline SVG glyph.
+ * Product tile with a graceful fallback chain:
+ *   1. If catalog.image is set, load that remote URL first.
+ *   2. Otherwise (or on failure), try /products/{slug}.jpg from public/.
+ *   3. If that also 404s, render the photorealistic SVG bullion glyph.
  *
- * Drop-in real photos in public/products/{slug}.jpg always beat Unsplash.
+ * We walk the chain via a stepped index instead of the previous nested
+ * ternary — earlier version could stick on the same URL twice and never
+ * trigger a second onError, leaving the tile blank forever.
  */
 function ProductImage({ product }: { product: CatalogProduct }) {
-  const [attempt, setAttempt] = useState<0 | 1 | 2>(0);
-  const local = `/products/${product.slug}.jpg`;
-  const remote = product.image;
+  const chain: string[] = [];
+  if (product.image) chain.push(product.image);
+  chain.push(`/products/${product.slug}.jpg`);
 
-  const src =
-    attempt === 0 && remote ? remote :
-    attempt === 1 || (attempt === 0 && !remote) ? local :
-    "";
+  const [step, setStep] = useState(0);
 
-  if (attempt === 2 || !src) {
+  if (step >= chain.length) {
     return <ProductGlyph metal={product.metal} category={product.category} />;
   }
 
   return (
     <img
-      src={src}
+      src={chain[step]}
       alt={product.name}
       loading="lazy"
-      onError={() => setAttempt((prev) => (prev + 1) as 0 | 1 | 2)}
+      onError={() => setStep((s) => s + 1)}
       className={styles.photo}
     />
   );
