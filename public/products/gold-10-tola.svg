@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f2e6"/>
+      <stop offset="100%" stop-color="#efe7d5"/>
+    </linearGradient>
+    <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#fff5c9"/>
+      <stop offset="30%" stop-color="#f0d67e"/>
+      <stop offset="70%" stop-color="#c69a34"/>
+      <stop offset="100%" stop-color="#8a6417"/>
+    </linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#f8e59a"/>
+      <stop offset="50%" stop-color="#d4a53a"/>
+      <stop offset="100%" stop-color="#8a6417"/>
+    </linearGradient>
+    <radialGradient id="shadow"><stop offset="0%" stop-color="#000" stop-opacity="0.35"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+
+  <rect width="480" height="360" fill="url(#bg)"/>
+  <ellipse cx="240" cy="326" rx="130" ry="14" fill="url(#shadow)"/>
+
+  <!-- gold foil wrap (crinkled outer) -->
+  <path d="M120 60 Q100 70 106 90 L104 260 Q98 288 128 296 L352 296 Q382 288 376 260 L378 90 Q382 62 358 60 Z"
+        fill="url(#foil)"/>
+  <!-- foil wrinkles / creases -->
+  <g stroke="#8a6417" stroke-width="0.8" opacity="0.55" fill="none">
+    <path d="M128 70 Q135 120 122 180 Q118 240 132 288"/>
+    <path d="M158 62 Q170 130 148 200 Q142 260 168 292"/>
+    <path d="M320 70 Q328 130 340 200 Q346 260 328 290"/>
+    <path d="M350 74 Q356 140 366 210 Q368 260 348 290"/>
+    <path d="M240 62 L242 88 L236 122 L244 176"/>
+  </g>
+  <g stroke="#fff8de" stroke-width="0.8" opacity="0.35" fill="none">
+    <path d="M138 78 Q160 140 138 220"/>
+    <path d="M330 82 Q346 150 330 224"/>
+  </g>
+
+  <!-- torn central window revealing biscuit -->
+  <path d="M170 96 L310 96 L318 132 L322 220 L316 262 L162 262 L160 218 L164 130 Z"
+        fill="url(#face)" stroke="#7a5a15" stroke-width="1.2"/>
+
+  <!-- engraved biscuit text -->
+  <g font-family="Georgia, serif" fill="#5a3f13" text-anchor="middle" opacity="0.9">
+    <text x="240" y="136" font-size="24" font-weight="700">10</text>
+    <text x="240" y="164" font-size="16" font-weight="700">TOLA</text>
+    <text x="240" y="188" font-size="12" font-weight="700">116.64 g</text>
+    <text x="240" y="207" font-size="12" font-weight="700">999.0</text>
+    <text x="240" y="228" font-size="10" font-weight="700" letter-spacing="1.5">FINE GOLD</text>
+    <text x="240" y="250" font-size="9" font-weight="700" letter-spacing="1.5">EMIRATES /</text>
+    <text x="240" y="260" font-size="9" font-weight="700" letter-spacing="1.5">MARMARA</text>
+  </g>
+</svg>
