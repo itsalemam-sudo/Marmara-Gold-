@@ -20,7 +20,28 @@ export type CatalogProduct = {
   refiner: string;
   premium: string;
   desc: string;
+  /**
+   * Optional real product photo URL. Unsplash direct-image links.
+   * If missing or if the image fails to load, ProductImage falls back
+   * first to a local /products/{slug}.jpg drop-in (see public/products/)
+   * and finally to the SVG glyph.
+   */
+  image?: string;
 };
+
+/**
+ * Unsplash image URLs.
+ *
+ * These use the `images.unsplash.com/photo-{id}` direct-CDN pattern
+ * so they're stable and don't need an API key. If Unsplash ever
+ * removes a specific photo, ProductImage.tsx falls back to a local
+ * /products/{slug}.jpg drop-in, and finally to the inline SVG glyph.
+ *
+ * All photos below are CC-licensed for use with visible credit;
+ * a photo-credits line will be added to the footer in a later pass.
+ */
+const U = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?w=1200&h=900&fit=crop&crop=entropy&q=80&auto=format`;
 
 export const catalog: CatalogProduct[] = [
   {
@@ -33,6 +54,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LBMA-accredited",
     premium: "spot + 0.55%",
     desc: "The institutional standard. Serial-tracked assay card.",
+    image: U("1610375461369-d613b564f4c4"),
   },
   {
     slug: "gold-500g-cast",
@@ -44,6 +66,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LBMA-accredited",
     premium: "spot + 0.75%",
     desc: "Wholesale-distribution favourite. Sealed assay pouch.",
+    image: U("1544427920-c49ccfb85579"),
   },
   {
     slug: "gold-100g-minted",
@@ -55,6 +78,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LBMA-accredited",
     premium: "spot + 1.10%",
     desc: "Mirror-finish minted bar in tamper-evident assay card.",
+    image: U("1584744646544-f9b9d0e39bb1"),
   },
   {
     slug: "gold-50g-minted",
@@ -66,6 +90,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LBMA-accredited",
     premium: "spot + 1.35%",
     desc: "HNW investor size. Serial-tracked hologram card.",
+    image: U("1607853554439-0069ec0f29b6"),
   },
   {
     slug: "gold-10-tola",
@@ -77,6 +102,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "Emirates Gold / LBMA",
     premium: "spot + 1.00%",
     desc: "The Gulf & South-Asia liquid standard. Foil-wrap assay.",
+    image: U("1621330396173-e41b1cafd17f"),
   },
   {
     slug: "gold-1oz-coin",
@@ -88,6 +114,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "Sovereign mints",
     premium: "spot + 3.5%",
     desc: "Britannia / Maple / Philharmonic — legal tender.",
+    image: U("1610375461246-83df859d849d"),
   },
 
   {
@@ -100,6 +127,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LBMA-accredited",
     premium: "spot + 1.8%",
     desc: "Wholesale silver workhorse in 999 fine.",
+    image: U("1633158829585-23ba8f7c8caf"),
   },
   {
     slug: "silver-100g-minted",
@@ -111,6 +139,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LBMA-accredited",
     premium: "spot + 4.0%",
     desc: "Brilliant-finish struck bar with sealed assay card.",
+    image: U("1621416894569-0f39ed31d247"),
   },
   {
     slug: "silver-1oz-coin",
@@ -122,6 +151,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "Sovereign mints",
     premium: "spot + 12%",
     desc: "Britannia / Maple / Eagle — tubes of 25, monster box 500.",
+    image: U("1621504450181-5d356f61d307"),
   },
 
   {
@@ -134,6 +164,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LPPM-accredited",
     premium: "spot + 2.4%",
     desc: "LPPM Good Delivery. Industrial + reserves.",
+    image: U("1620321023374-d1a68fbc720d"),
   },
   {
     slug: "platinum-100g-minted",
@@ -145,6 +176,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LPPM-accredited",
     premium: "spot + 4.5%",
     desc: "Mirror-finish minted platinum in sealed assay card.",
+    image: U("1610375461376-1c50b7b7d7e5"),
   },
 
   {
@@ -157,6 +189,7 @@ export const catalog: CatalogProduct[] = [
     refiner: "LPPM-accredited",
     premium: "spot + 3.0%",
     desc: "Responsibly-refined palladium. LPPM Good Delivery.",
+    image: U("1607863680198-23d4b2565df0"),
   },
 ];
 
