@@ -57,7 +57,7 @@ export function Nav() {
       {/* Mobile drawer */}
       <div
         id="mobile-nav"
-        className={`${styles.drawer} ${open ? "is-open " + styles["is-open"] : ""}`}
+        className={`${styles.drawer} ${open ? styles.drawerOpen : ""}`}
         role="dialog"
         aria-modal={open}
         aria-hidden={!open}
