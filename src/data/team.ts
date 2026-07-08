@@ -1,16 +1,22 @@
 /**
- * Leadership team — surfaced from the WhatsApp brief.
- * Founder name is a placeholder until confirmed.
+ * Leadership team.
  *
- * All portraits use monogram placeholders (initial in gold on ink).
- * When real hosted image URLs land, add an `image` field per entry
- * and update the Leadership component to prefer `image` when present.
+ * Vite resolves the `image` imports at build time so the URLs are
+ * content-hashed and long-cached. Members without a photo fall back
+ * to a gold monogram of their initials in the Leadership component.
  */
+
+import zaherJesry       from "@/assets/team/zaher-jesry.jpg";
+import morhafAlhabyan   from "@/assets/team/morhaf-alhabyan.jpg";
+import abdulazizBd      from "@/assets/team/abdulaziz-sultan-bd.jpg";
+import abdulazizOps     from "@/assets/team/abdulaziz-sultan-ops.jpg";
+import khalidDib        from "@/assets/team/khalid-dib.jpg";
 
 export type TeamMember = {
   name: string;
   title: string;
   email?: string;
+  image?: string;
 };
 
 export const team: TeamMember[] = [
@@ -23,16 +29,31 @@ export const team: TeamMember[] = [
     name: "Zaher Jesry",
     title: "Chief Financial Officer",
     email: "operations@marmaragold.ae",
+    image: zaherJesry,
+  },
+  {
+    name: "Morhaf Alhabyan",
+    title: "Head of Trading · Senior Trader",
+    email: "preciousmetals@marmaragold.ae",
+    image: morhafAlhabyan,
   },
   {
     name: "Abdulaziz Sultan",
     title: "Business Development Manager",
     email: "M.Sultan@marmaragold.ae",
+    image: abdulazizBd,
+  },
+  {
+    name: "Abdulaziz Sultan",
+    title: "Operations Manager",
+    email: "operations@marmaragold.ae",
+    image: abdulazizOps,
   },
   {
     name: "Khalid Dib",
     title: "Compliance & Risk Manager",
     email: "operations@marmaragold.ae",
+    image: khalidDib,
   },
   {
     name: "Muhammed Sultan",
