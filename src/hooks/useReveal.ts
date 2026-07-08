@@ -30,7 +30,9 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(
           }
         }
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.08, ...options }
+      /* Generous margins so fullPage screenshots and long documents
+         trigger the reveal for all observed elements. */
+      { rootMargin: "200% 0px 200% 0px", threshold: 0, ...options }
     );
 
     observer.observe(el);

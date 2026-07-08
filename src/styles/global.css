@@ -178,21 +178,24 @@ p { color: var(--ink); }
 }
 .btn--link:hover { color: var(--gold-bright); }
 
-/* Reveal on scroll (JS toggles .is-in) */
+/*
+ * Reveal on scroll.
+ * Content is ALWAYS visible — even without JS or if the observer
+ * never fires. The reveal is a cosmetic slide-up only.
+ */
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity var(--dur-slow) var(--ease),
-              transform var(--dur-slow) var(--ease);
-  will-change: opacity, transform;
+  transition: transform var(--dur-slow) var(--ease);
+  will-change: transform;
 }
-.reveal.is-in {
-  opacity: 1;
+.js .reveal:not(.is-in) {
+  transform: translateY(14px);
+}
+.js .reveal.is-in {
   transform: none;
 }
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
+  .js .reveal,
+  .js .reveal:not(.is-in) {
     transform: none;
     transition: none;
   }
