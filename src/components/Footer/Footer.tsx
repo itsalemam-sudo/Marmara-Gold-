@@ -65,8 +65,9 @@ export function Footer() {
         <div className={styles.copy}>
           <span>© 2025 Marmara Gold Trading LLC. All rights reserved.</span>
           <span>
-            <a href="#policy">Privacy</a> · <a href="#policy">Terms</a> ·{" "}
-            <a href="#policy">Compliance &amp; Legal</a>
+            <a href="#compliance">Privacy</a> ·{" "}
+            <a href="#compliance">Data & Records</a> ·{" "}
+            <a href="#compliance">Compliance &amp; Legal</a>
           </span>
         </div>
       </div>
