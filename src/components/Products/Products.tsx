@@ -11,17 +11,22 @@ import styles from "./Products.module.css";
 /**
  * Product tile with a graceful fallback chain:
  *   1. If catalog.image is set, load that remote URL first.
- *   2. Otherwise (or on failure), try /products/{slug}.jpg from public/.
- *   3. If that also 404s, render the photorealistic SVG bullion glyph.
+ *   2. Try the hand-crafted local SVG mockup at /products/{slug}.svg —
+ *      matches the reference composite (vertical cast bar with seal
+ *      indent, navy ornamental assay card for minted bars, gold-foil
+ *      biscuit for the tola, heraldic eagle coin).
+ *   3. Try a real photo at /products/{slug}.jpg — always wins when
+ *      you drop a JPG in place of the SVG.
+ *   4. If everything fails, render the inline React ProductGlyph.
  *
- * We walk the chain via a stepped index instead of the previous nested
- * ternary — earlier version could stick on the same URL twice and never
- * trigger a second onError, leaving the tile blank forever.
+ * Order matters: .jpg is checked BEFORE .svg so a real photograph
+ * always beats the SVG mockup once it lands.
  */
 function ProductImage({ product }: { product: CatalogProduct }) {
   const chain: string[] = [];
   if (product.image) chain.push(product.image);
   chain.push(`/products/${product.slug}.jpg`);
+  chain.push(`/products/${product.slug}.svg`);
 
   const [step, setStep] = useState(0);
 

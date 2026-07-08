@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f2e6"/>
+      <stop offset="100%" stop-color="#efe7d5"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#132244"/>
+      <stop offset="100%" stop-color="#0a1832"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#f8fbff"/>
+      <stop offset="30%" stop-color="#dee6f0"/>
+      <stop offset="70%" stop-color="#7a8598"/>
+      <stop offset="100%" stop-color="#3d4552"/>
+    </linearGradient>
+    <linearGradient id="glare" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="shadow"><stop offset="0%" stop-color="#000" stop-opacity="0.32"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+
+  <rect width="480" height="360" fill="url(#bg)"/>
+  <ellipse cx="240" cy="335" rx="130" ry="12" fill="url(#shadow)"/>
+
+  <rect x="130" y="24" width="220" height="312" rx="14" fill="#e8e4d8" opacity="0.6"/>
+  <rect x="138" y="32" width="204" height="296" rx="10" fill="url(#card)"/>
+  <rect x="152" y="46" width="176" height="268" rx="6" fill="none" stroke="#c6a15b" stroke-width="0.9" opacity="0.75"/>
+
+  <g fill="#c6a15b" transform="translate(240 82)">
+    <path d="M-16 12 L-16 -14 L-10 -14 L0 4 L10 -14 L16 -14 L16 12 L10 12 L10 -4 L2 12 L-2 12 L-10 -4 L-10 12 Z"/>
+    <rect x="-16" y="16" width="32" height="2" rx="1"/>
+  </g>
+
+  <rect x="184" y="108" width="112" height="164" rx="4" fill="url(#bar)"/>
+  <rect x="184" y="108" width="112" height="164" rx="4" fill="url(#glare)"/>
+
+  <g fill="#2b323d" opacity="0.85" transform="translate(240 168)">
+    <path d="M-18 14 L-18 -18 L-11 -18 L0 4 L11 -18 L18 -18 L18 14 L11 14 L11 -6 L2 14 L-2 14 L-11 -6 L-11 14 Z"/>
+    <rect x="-18" y="18" width="36" height="2.5" rx="1"/>
+  </g>
+  <text x="240" y="224" font-family="Georgia, serif" font-size="12" font-weight="700" fill="#2b323d" text-anchor="middle" opacity="0.8" letter-spacing="2">100 g</text>
+  <rect x="204" y="240" width="72" height="12" fill="#ffffff" opacity="0.5"/>
+
+  <text x="240" y="298" font-family="Georgia, serif" font-size="11" font-weight="600" fill="#e8e0c7" text-anchor="middle" letter-spacing="2">MARMARA PLATINUM</text>
+  <text x="240" y="313" font-family="Georgia, serif" font-size="10" font-weight="600" fill="#e8e0c7" text-anchor="middle" letter-spacing="2">100 g · 999.5 FINE</text>
+</svg>

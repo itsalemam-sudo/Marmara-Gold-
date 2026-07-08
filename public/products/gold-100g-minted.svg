@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f2e6"/>
+      <stop offset="100%" stop-color="#efe7d5"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#132244"/>
+      <stop offset="100%" stop-color="#0a1832"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#fff5c9"/>
+      <stop offset="30%" stop-color="#f0d67e"/>
+      <stop offset="70%" stop-color="#c69a34"/>
+      <stop offset="100%" stop-color="#8a6417"/>
+    </linearGradient>
+    <linearGradient id="glare" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.5"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="shadow"><stop offset="0%" stop-color="#000" stop-opacity="0.35"/><stop offset="100%" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+
+  <rect width="480" height="360" fill="url(#bg)"/>
+  <ellipse cx="240" cy="335" rx="130" ry="12" fill="url(#shadow)"/>
+
+  <!-- assay card outer (glossy edge) -->
+  <rect x="130" y="24" width="220" height="312" rx="14" fill="#e8e4d8" opacity="0.6"/>
+  <!-- navy body -->
+  <rect x="138" y="32" width="204" height="296" rx="10" fill="url(#card)"/>
+
+  <!-- ornamental frame lines -->
+  <rect x="152" y="46" width="176" height="268" rx="6" fill="none" stroke="#c6a15b" stroke-width="0.9" opacity="0.75"/>
+  <rect x="158" y="52" width="164" height="256" rx="4" fill="none" stroke="#c6a15b" stroke-width="0.4" opacity="0.55"/>
+
+  <!-- corner filigree flourishes -->
+  <g fill="none" stroke="#c6a15b" stroke-width="0.8" opacity="0.7">
+    <path d="M162 62 Q170 56 178 62 M162 62 Q160 70 168 74"/>
+    <path d="M318 62 Q310 56 302 62 M318 62 Q320 70 312 74"/>
+    <path d="M162 298 Q170 304 178 298 M162 298 Q160 290 168 286"/>
+    <path d="M318 298 Q310 304 302 298 M318 298 Q320 290 312 286"/>
+  </g>
+
+  <!-- top M crown -->
+  <g fill="#c6a15b" transform="translate(240 82)">
+    <path d="M-16 12 L-16 -14 L-10 -14 L0 4 L10 -14 L16 -14 L16 12 L10 12 L10 -4 L2 12 L-2 12 L-10 -4 L-10 12 Z"/>
+    <rect x="-16" y="16" width="32" height="2" rx="1"/>
+  </g>
+
+  <!-- bar body -->
+  <rect x="184" y="108" width="112" height="164" rx="4" fill="url(#bar)"/>
+  <rect x="184" y="108" width="112" height="164" rx="4" fill="url(#glare)"/>
+
+  <!-- struck M on bar -->
+  <g fill="#5a3f13" opacity="0.85" transform="translate(240 160)">
+    <path d="M-18 14 L-18 -18 L-11 -18 L0 4 L11 -18 L18 -18 L18 14 L11 14 L11 -6 L2 14 L-2 14 L-11 -6 L-11 14 Z"/>
+    <rect x="-18" y="18" width="36" height="2.5" rx="1"/>
+  </g>
+  <!-- MARMARA GOLD -->
+  <text x="240" y="212" font-family="Georgia, serif" font-size="12" font-weight="700" fill="#5a3f13" text-anchor="middle" opacity="0.85" letter-spacing="2">MARMARA</text>
+  <text x="240" y="228" font-family="Georgia, serif" font-size="11" font-weight="700" fill="#5a3f13" text-anchor="middle" opacity="0.85" letter-spacing="2">GOLD</text>
+  <!-- barcode strip -->
+  <rect x="204" y="250" width="72" height="14" fill="#ffffff" opacity="0.6"/>
+  <g stroke="#000" stroke-width="1" opacity="0.5">
+    <line x1="206" y1="252" x2="206" y2="262"/>
+    <line x1="210" y1="252" x2="210" y2="262"/>
+    <line x1="213" y1="252" x2="213" y2="262"/>
+    <line x1="218" y1="252" x2="218" y2="262"/>
+    <line x1="222" y1="252" x2="222" y2="262"/>
+    <line x1="226" y1="252" x2="226" y2="262"/>
+    <line x1="231" y1="252" x2="231" y2="262"/>
+    <line x1="236" y1="252" x2="236" y2="262"/>
+    <line x1="240" y1="252" x2="240" y2="262"/>
+    <line x1="245" y1="252" x2="245" y2="262"/>
+    <line x1="249" y1="252" x2="249" y2="262"/>
+    <line x1="254" y1="252" x2="254" y2="262"/>
+    <line x1="258" y1="252" x2="258" y2="262"/>
+    <line x1="263" y1="252" x2="263" y2="262"/>
+    <line x1="268" y1="252" x2="268" y2="262"/>
+    <line x1="272" y1="252" x2="272" y2="262"/>
+  </g>
+
+  <!-- footer text on card -->
+  <text x="240" y="298" font-family="Georgia, serif" font-size="12" font-weight="600" fill="#e8e0c7" text-anchor="middle" letter-spacing="2">100 g · 999.9 FINE GOLD</text>
+</svg>
