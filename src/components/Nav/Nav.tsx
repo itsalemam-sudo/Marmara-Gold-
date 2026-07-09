@@ -1,8 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { nav, type NavLink } from "@/data/nav";
 import { IconMenu, IconClose, IconArrowRight } from "@/components/icons/Icons";
 import { useLockScroll } from "@/hooks/useLockScroll";
 import styles from "./Nav.module.css";
+
+/** True for internal SPA routes (start with `/`), false for hash / external. */
+function isInternalRoute(href: string): boolean {
+  return href.startsWith("/") && !href.startsWith("//");
+}
 
 /**
  * Circular-seal brand mark. Two concentric hairlines + the M
@@ -10,7 +16,7 @@ import styles from "./Nav.module.css";
  */
 function BrandMark() {
   return (
-    <a href="#top" className={styles.brand} aria-label="Marmara Gold Trading LLC — home">
+    <Link to="/" className={styles.brand} aria-label="Marmara Precious Metals Group — home">
       <span className={styles.brandSeal} aria-hidden>
         <svg viewBox="0 0 56 56" width="48" height="48">
           <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" strokeWidth="0.9" />
@@ -30,7 +36,7 @@ function BrandMark() {
         <b>MARMARA</b>
         <small>Precious Metals Group</small>
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -60,7 +66,11 @@ function TopItem({ item, onNavigate }: { item: NavLink; onNavigate: () => void }
       : styles.menuItem;
 
   if (!hasChildren) {
-    return (
+    return isInternalRoute(item.href) && !item.external ? (
+      <Link to={item.href} className={linkClass} onClick={onNavigate}>
+        {item.label}
+      </Link>
+    ) : (
       <a
         href={item.href}
         target={item.external ? "_blank" : undefined}
@@ -73,6 +83,30 @@ function TopItem({ item, onNavigate }: { item: NavLink; onNavigate: () => void }
     );
   }
 
+  const TopLink = isInternalRoute(item.href) && !item.external
+    ? ({ children }: { children: React.ReactNode }) => (
+        <Link
+          to={item.href}
+          className={`${linkClass} ${styles.menuItemHasChildren}`}
+          aria-haspopup="true"
+          aria-expanded={hover}
+        >
+          {children}
+        </Link>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <a
+          href={item.href}
+          target={item.external ? "_blank" : undefined}
+          rel={item.external ? "noopener noreferrer" : undefined}
+          className={`${linkClass} ${styles.menuItemHasChildren}`}
+          aria-haspopup="true"
+          aria-expanded={hover}
+        >
+          {children}
+        </a>
+      );
+
   return (
     <div
       className={styles.menuGroup}
@@ -83,35 +117,44 @@ function TopItem({ item, onNavigate }: { item: NavLink; onNavigate: () => void }
         if (!e.currentTarget.contains(e.relatedTarget as Node)) close();
       }}
     >
-      <a
-        href={item.href}
-        className={`${linkClass} ${styles.menuItemHasChildren}`}
-        aria-haspopup="true"
-        aria-expanded={hover}
-      >
+      <TopLink>
         {item.label}
         <span className={styles.caret} aria-hidden>▾</span>
-      </a>
+      </TopLink>
 
       <div className={`${styles.dropdown} ${hover ? styles.dropdownOpen : ""}`} role="menu">
         <div className={styles.dropdownInner}>
-          {item.children!.map((c) => (
-            <a
-              key={c.label}
-              href={c.href}
-              target={c.external ? "_blank" : undefined}
-              rel={c.external ? "noopener noreferrer" : undefined}
-              className={styles.dropdownLink}
-              role="menuitem"
-              onClick={() => {
-                setHover(false);
-                onNavigate();
-              }}
-            >
-              <span className={styles.dropdownLabel}>{c.label}</span>
-              {c.desc && <span className={styles.dropdownDesc}>{c.desc}</span>}
-            </a>
-          ))}
+          {item.children!.map((c) => {
+            const inner = (
+              <>
+                <span className={styles.dropdownLabel}>{c.label}</span>
+                {c.desc && <span className={styles.dropdownDesc}>{c.desc}</span>}
+              </>
+            );
+            return isInternalRoute(c.href) && !c.external ? (
+              <Link
+                key={c.label}
+                to={c.href}
+                className={styles.dropdownLink}
+                role="menuitem"
+                onClick={() => { setHover(false); onNavigate(); }}
+              >
+                {inner}
+              </Link>
+            ) : (
+              <a
+                key={c.label}
+                href={c.href}
+                target={c.external ? "_blank" : undefined}
+                rel={c.external ? "noopener noreferrer" : undefined}
+                className={styles.dropdownLink}
+                role="menuitem"
+                onClick={() => { setHover(false); onNavigate(); }}
+              >
+                {inner}
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -206,6 +249,15 @@ export function Nav() {
                     <span>{item.label}</span>
                     <span className={`${styles.drawerCaret} ${isOpen ? styles.drawerCaretOpen : ""}`} aria-hidden>▾</span>
                   </button>
+                ) : isInternalRoute(item.href) && !item.external ? (
+                  <Link
+                    to={item.href}
+                    className={styles.drawerLink}
+                    onClick={() => setOpenMobile(false)}
+                    tabIndex={openMobile ? 0 : -1}
+                  >
+                    {item.label}
+                  </Link>
                 ) : (
                   <a
                     href={item.href}
@@ -221,20 +273,33 @@ export function Nav() {
 
                 {hasChildren && isOpen && (
                   <div className={styles.drawerSub}>
-                    {item.children!.map((c) => (
-                      <a
-                        key={c.label}
-                        href={c.href}
-                        target={c.external ? "_blank" : undefined}
-                        rel={c.external ? "noopener noreferrer" : undefined}
-                        className={styles.drawerSubLink}
-                        onClick={() => setOpenMobile(false)}
-                        tabIndex={openMobile ? 0 : -1}
-                      >
-                        {c.label}
-                        {c.desc && <small>{c.desc}</small>}
-                      </a>
-                    ))}
+                    {item.children!.map((c) =>
+                      isInternalRoute(c.href) && !c.external ? (
+                        <Link
+                          key={c.label}
+                          to={c.href}
+                          className={styles.drawerSubLink}
+                          onClick={() => setOpenMobile(false)}
+                          tabIndex={openMobile ? 0 : -1}
+                        >
+                          {c.label}
+                          {c.desc && <small>{c.desc}</small>}
+                        </Link>
+                      ) : (
+                        <a
+                          key={c.label}
+                          href={c.href}
+                          target={c.external ? "_blank" : undefined}
+                          rel={c.external ? "noopener noreferrer" : undefined}
+                          className={styles.drawerSubLink}
+                          onClick={() => setOpenMobile(false)}
+                          tabIndex={openMobile ? 0 : -1}
+                        >
+                          {c.label}
+                          {c.desc && <small>{c.desc}</small>}
+                        </a>
+                      )
+                    )}
                   </div>
                 )}
               </div>

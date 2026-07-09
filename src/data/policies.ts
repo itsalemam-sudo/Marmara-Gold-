@@ -38,6 +38,11 @@ export type Policy = {
   };
 };
 
+/** Slugify a policy doc-code for URL routing (MGT/POL/COM-01 → mgt-pol-com-01). */
+export function policyCodeToSlug(code: string): string {
+  return code.toLowerCase().replace(/\//g, "-");
+}
+
 export const policyCategories: { key: PolicyCategory | "all"; label: string }[] = [
   { key: "all",             label: "All Policies"     },
   { key: "governance",      label: "Governance & Ethics" },
