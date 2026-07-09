@@ -1,4 +1,5 @@
 import type { SVGProps } from "react";
+import { Link } from "react-router-dom";
 import { services, type ServiceIcon } from "@/data/services";
 import { IconArrowRight } from "@/components/icons/Icons";
 import { useReveal } from "@/hooks/useReveal";
@@ -57,6 +58,11 @@ const Icon: Record<ServiceIcon, () => React.JSX.Element> = {
   ),
 };
 
+/**
+ * Services grid — each card is a <Link> to /services/{slug}, the
+ * dedicated per-service detail page (Nadir-Metal-style pattern).
+ * Clicking anywhere on the card navigates to the full page.
+ */
 export function Services() {
   const headRef = useReveal<HTMLDivElement>();
   const gridRef = useReveal<HTMLDivElement>();
@@ -69,7 +75,8 @@ export function Services() {
           <h2>Explore our Precious Metals Services</h2>
           <p>
             End-to-end coverage for institutional buyers, sellers, refiners and
-            custodians — six service lines that make up the Marmara desk.
+            custodians — six service lines that make up the Marmara desk. Click
+            any service to open its dedicated page.
           </p>
         </header>
 
@@ -77,17 +84,22 @@ export function Services() {
           {services.map((s) => {
             const GlyphComponent = Icon[s.icon];
             return (
-              <article key={s.title} className={styles.card}>
+              <Link
+                key={s.slug}
+                to={`/services/${s.slug}`}
+                className={styles.card}
+                aria-label={`Read: ${s.title}`}
+              >
                 <span className={styles.ico}><GlyphComponent /></span>
                 <h3 className={styles.title}>{s.title}</h3>
                 <p className={styles.lede}>{s.lede}</p>
                 <ul className={styles.bullets}>
                   {s.bullets.map((b) => <li key={b}>{b}</li>)}
                 </ul>
-                <a href={s.cta.href} className={styles.cta}>
-                  {s.cta.label} <IconArrowRight />
-                </a>
-              </article>
+                <span className={styles.cta}>
+                  Read more <IconArrowRight />
+                </span>
+              </Link>
             );
           })}
         </div>
