@@ -28,7 +28,7 @@ function BrandMark() {
       </span>
       <span className={styles.brandWord}>
         <b>MARMARA</b>
-        <small>Gold Trading LLC</small>
+        <small>Precious Metals Group</small>
       </span>
     </a>
   );

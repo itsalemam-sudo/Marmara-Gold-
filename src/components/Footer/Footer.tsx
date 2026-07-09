@@ -18,12 +18,13 @@ export function Footer() {
               <span className={styles.brandMark} aria-hidden>M</span>
               <span className={styles.brandName}>
                 <b>MARMARA</b>
-                <small>Gold Trading LLC</small>
+                <small>Precious Metals Group</small>
               </span>
             </a>
             <p>
               Integrated trading, refining, and distribution of gold, silver,
               platinum, and palladium for institutional clients worldwide.
+              Operating through Marmara Gold Trading LLC (Dubai, UAE).
             </p>
           </div>
 
