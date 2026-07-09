@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   policies,
   policyCategories,
+  policyCodeToSlug,
   type Policy,
   type PolicyCategory,
 } from "@/data/policies";
@@ -92,14 +94,13 @@ export function Policies() {
           })}
         </div>
 
-        {/* Policy grid */}
+        {/* Policy grid — each card links to its dedicated /policies/{code} page. */}
         <div ref={gridRef} className={`${styles.grid} reveal`}>
           {filtered.map((p, i) => (
-            <button
+            <Link
               key={p.code}
-              type="button"
+              to={`/policies/${policyCodeToSlug(p.code)}`}
               className={styles.card}
-              onClick={() => setOpen(p)}
               aria-label={`Read: ${p.title}`}
             >
               <div className={styles.cardMeta}>
@@ -111,7 +112,7 @@ export function Policies() {
               <span className={styles.cardCta}>
                 Read the full policy <IconArrowRight />
               </span>
-            </button>
+            </Link>
           ))}
         </div>
 
