@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="refresh" content="60">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Marmara Precious Metals Group — Scheduled Maintenance</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root {
+      --ink:      #0a1832;
+      --ink-deep: #050e26;
+      --gold:     #c6a15b;
+      --gold-hi:  #f0d67e;
+      --gold-lo:  #8a6417;
+      --paper:    #f6f4ef;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(198,161,91,0.25), transparent 60%),
+        radial-gradient(900px 700px at 100% 100%, rgba(6,15,36,0.9), transparent 60%),
+        linear-gradient(180deg, #0a1832 0%, #050e26 100%);
+      color: #f4f0e6;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ---- ambient sparkles ---- */
+    .particles { position: fixed; inset: 0; pointer-events: none; }
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0;
+      box-shadow: 0 0 6px rgba(198,161,91,0.85), 0 0 12px rgba(198,161,91,0.5);
+      animation: sparkle-fall linear infinite;
+    }
+    @keyframes sparkle-fall {
+      0%   { transform: translateY(-10vh); opacity: 0; }
+      15%  { opacity: 1; }
+      85%  { opacity: 0.9; }
+      100% { transform: translateY(110vh); opacity: 0; }
+    }
+
+    /* subtle radial vignette */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ---- centre stage ---- */
+    .stage {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 40px 24px;
+      max-width: 620px;
+    }
+
+    /* seal — outer orbit + inner seal */
+    .seal-wrap {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 40px;
+    }
+    /* outer orbit ring — rotates slowly */
+    .orbit {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(198,161,91,0.35);
+      animation: orbit-rotate 22s linear infinite;
+    }
+    .orbit::before, .orbit::after {
+      content: "";
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold-hi);
+      box-shadow: 0 0 12px rgba(240,214,126,0.8), 0 0 24px rgba(198,161,91,0.6);
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .orbit::after {
+      top: auto;
+      bottom: -4px;
+    }
+    .orbit-2 {
+      inset: 12px;
+      border-color: rgba(198,161,91,0.2);
+      animation: orbit-rotate 34s linear infinite reverse;
+    }
+    .orbit-2::before, .orbit-2::after {
+      width: 4px; height: 4px;
+      box-shadow: 0 0 8px rgba(198,161,91,0.7);
+    }
+    @keyframes orbit-rotate { to { transform: rotate(360deg); } }
+
+    /* the seal SVG */
+    .seal {
+      position: absolute;
+      inset: 30px;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      filter: drop-shadow(0 0 24px rgba(198,161,91,0.5));
+      animation: seal-breathe 4s ease-in-out infinite;
+    }
+    @keyframes seal-breathe {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 24px rgba(198,161,91,0.5)); }
+      50%      { transform: scale(1.035); filter: drop-shadow(0 0 34px rgba(240,214,126,0.75)); }
+    }
+
+    /* soft gold sun behind the seal */
+    .halo {
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center,
+        rgba(198,161,91,0.35) 0%,
+        rgba(198,161,91,0.14) 30%,
+        transparent 65%);
+      pointer-events: none;
+      animation: halo-pulse 4s ease-in-out infinite;
+    }
+    @keyframes halo-pulse {
+      0%, 100% { opacity: 0.6; }
+      50%      { opacity: 1; }
+    }
+
+    /* ---- wordmark + copy ---- */
+    .brand {
+      font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .sub {
+      font-family: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 11.5px;
+      letter-spacing: 0.32em;
+      color: rgba(244,240,230,0.55);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border: 1px solid rgba(198,161,91,0.4);
+      border-radius: 999px;
+      background: rgba(198,161,91,0.08);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      color: var(--gold-hi);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold-hi);
+      box-shadow: 0 0 8px rgba(240,214,126,0.9);
+      animation: dot-pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes dot-pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50%      { opacity: 1; transform: scale(1.25); }
+    }
+
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(28px, 4.4vw, 44px);
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 1.18;
+      margin-bottom: 16px;
+      letter-spacing: -0.005em;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--gold-hi);
+    }
+    .lede {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(244,240,230,0.75);
+      max-width: 40rem;
+      margin: 0 auto 32px;
+    }
+
+    /* --- CTA / contact --- */
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--gold);
+      color: var(--ink-deep);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 12.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      border: 1px solid var(--gold);
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+    .btn:hover { background: var(--gold-hi); transform: translateY(-1px); }
+    .btn.ghost {
+      background: transparent;
+      color: var(--gold-hi);
+      border-color: rgba(198,161,91,0.55);
+    }
+    .btn.ghost:hover { background: rgba(198,161,91,0.1); }
+
+    /* --- foot line --- */
+    .foot {
+      margin-top: 44px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.28em;
+      color: rgba(244,240,230,0.35);
+      text-transform: uppercase;
+    }
+    .foot span { color: var(--gold); }
+    .refresh {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      color: rgba(244,240,230,0.5);
+    }
+    .refresh::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(198,161,91,0.5);
+      animation: dot-pulse 1.6s ease-in-out infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .particle, .seal, .halo, .orbit, .orbit-2, .status-dot, .refresh::before {
+        animation: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .seal-wrap { width: 168px; height: 168px; margin-bottom: 30px; }
+      .brand { font-size: 26px; }
+      .sub { margin-bottom: 30px; }
+      h1 { margin-bottom: 12px; }
+      .lede { font-size: 15px; margin-bottom: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient falling sparkles (JS-generated for random positions) -->
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <main class="stage">
+    <!-- Rotating gold seal -->
+    <div class="seal-wrap">
+      <div class="halo" aria-hidden="true"></div>
+      <div class="orbit" aria-hidden="true"></div>
+      <div class="orbit orbit-2" aria-hidden="true"></div>
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="140" height="140" fill="none">
+          <circle cx="50" cy="50" r="47" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="0.7" opacity="0.75"/>
+          <path d="M25 72V32l25 25L75 32v40" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M25 78h50" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Wordmark -->
+    <div class="brand">MARMARA</div>
+    <div class="sub">Precious Metals Group</div>
+
+    <!-- Status chip -->
+    <div class="status" role="status" aria-live="polite">
+      <span class="status-dot" aria-hidden="true"></span>
+      Scheduled Maintenance
+    </div>
+
+    <!-- Copy -->
+    <h1>The desk is <em>briefly offline</em> for a scheduled upgrade.</h1>
+    <p class="lede">
+      We're refining the trading platform and compliance library to give
+      our institutional counterparties an even sharper experience. The
+      site will be back within the hour. Live trades in flight are
+      unaffected — our vaults and settlement rails continue to operate
+      normally.
+    </p>
+
+    <!-- Actions -->
+    <div class="actions">
+      <a class="btn" href="mailto:compliance@marmaragold.co">
+        Contact compliance
+      </a>
+      <a class="btn ghost" href="https://marmara.ntptrader.com/" target="_blank" rel="noopener noreferrer">
+        Open barX platform
+      </a>
+    </div>
+
+    <!-- Foot line -->
+    <div class="foot">
+      <span>MARMARA GOLD TRADING LLC</span> · DUBAI · DMCC-LICENSED DPMS
+      <div class="refresh">This page refreshes every 60 seconds</div>
+    </div>
+  </main>
+
+  <script>
+    // Generate ambient falling sparkles
+    (function () {
+      var wrap = document.getElementById('particles');
+      if (!wrap) return;
+      var count = window.matchMedia('(max-width: 640px)').matches ? 18 : 34;
+      for (var i = 0; i < count; i++) {
+        var p = document.createElement('span');
+        p.className = 'particle';
+        var left = Math.random() * 100;
+        var delay = Math.random() * 20;
+        var dur = 10 + Math.random() * 14;
+        var size = 1 + Math.random() * 2.5;
+        p.style.left = left + '%';
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.animationDelay = delay + 's';
+        p.style.animationDuration = dur + 's';
+        wrap.appendChild(p);
+      }
+    })();
+  </script>
+
+</body>
+</html>

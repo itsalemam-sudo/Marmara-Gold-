@@ -123,6 +123,46 @@ the endpoint URL to `.env.example`, then read it via
 
 ---
 
+## Maintenance mode
+
+Nginx serves an animated maintenance page (`/maintenance.html`) with a
+`503 Service Unavailable` status whenever a flag file exists on disk.
+No rebuild, no `nginx -s reload` — the check happens per request.
+
+```bash
+# Turn maintenance ON
+sudo touch /var/www/marmara-gold/.maintenance
+
+# Turn it OFF
+sudo rm /var/www/marmara-gold/.maintenance
+```
+
+The maintenance page shows: a rotating gold Marmara seal with orbiting
+sparkles, a "Scheduled Maintenance" chip, the copy "The desk is
+briefly offline for a scheduled upgrade", a Contact-compliance
+mailto button and a barX external link. Auto-refreshes every 60 s.
+The 503 status is the right signal for uptime monitors and search
+crawlers — they retry rather than deindex.
+
+Only `/maintenance.html` and `/favicon.svg` are still served while
+the flag is on. Everything else — including deep links to
+`/services/refining`, `/policies/mgt-pol-com-01`, etc. — falls back
+to the maintenance page.
+
+To use it you need nginx to load the updated server block that has
+the flag-file check. If you deployed nginx-http.conf or nginx.conf
+from this repo, run once:
+
+```bash
+sudo cp deploy/nginx-http.conf /etc/nginx/sites-available/marmaragold.conf
+# (or deploy/nginx.conf if you're on the TLS version)
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+After that the `touch` / `rm` toggle works with no further reload.
+
+---
+
 ## Ongoing changes
 
 Edit content in `src/data/*.ts` (nav, ticker, stats, capabilities,
