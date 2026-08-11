@@ -1,0 +1,95 @@
+.wrap {
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 1px solid rgba(10, 24, 50, 0.06);
+}
+
+.head {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: 1fr;
+  margin-bottom: 44px;
+  align-items: end;
+}
+@media (min-width: 900px) {
+  .head { grid-template-columns: 1fr 1.2fr auto; gap: 40px; }
+}
+.head h2 { font-size: clamp(28px, 3.6vw, 44px); margin: 18px 0 0; }
+.head em { font-style: italic; color: var(--gold); }
+.head p  { color: var(--slate-dark, var(--slate)); line-height: 1.75; font-size: 16px; }
+
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(5, 1fr);
+}
+@media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(10, 24, 50, 0.08);
+  border-top: 3px solid var(--accent, var(--gold));
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  transition: transform var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 50px -28px rgba(6, 15, 36, 0.32);
+}
+
+.art {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(180deg, var(--paper) 0%, #f0eadb 100%);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(10, 24, 50, 0.06);
+}
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+  transition: transform 0.5s var(--ease);
+}
+.card:hover .art img { transform: scale(1.05); }
+
+.body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.detail {
+  color: var(--slate-dark, var(--slate));
+  font-size: 13px;
+  line-height: 1.6;
+  flex: 1;
+}
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 10px;
+  margin-top: 8px;
+  border-top: 1px dashed rgba(10, 24, 50, 0.1);
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}

@@ -4,22 +4,26 @@ import { Ticker } from "@/components/Ticker/Ticker";
 import { Nav } from "@/components/Nav/Nav";
 import { Certifications } from "@/components/Certifications/Certifications";
 import { Hero } from "@/components/Hero/Hero";
-import { Stats } from "@/components/Stats/Stats";
+import { Pillars } from "@/components/Pillars/Pillars";
 import { About } from "@/components/About/About";
-import { Capabilities } from "@/components/Capabilities/Capabilities";
+import { Stats } from "@/components/Stats/Stats";
+import { Timeline } from "@/components/Timeline/Timeline";
+import { ProductShowcase } from "@/components/ProductShowcase/ProductShowcase";
 import { Services } from "@/components/Services/Services";
-import { Products } from "@/components/Products/Products";
-import { WhyChoose } from "@/components/WhyChoose/WhyChoose";
+import { ResponsibleSourcing } from "@/components/ResponsibleSourcing/ResponsibleSourcing";
 import { GlobalReach } from "@/components/GlobalReach/GlobalReach";
-import { Clients } from "@/components/Clients/Clients";
-import { Solutions } from "@/components/Solutions/Solutions";
-import { Policies } from "@/components/Policies/Policies";
-import { Blogs } from "@/components/Blogs/Blogs";
 import { Leadership } from "@/components/Leadership/Leadership";
-import { Careers } from "@/components/Careers/Careers";
+import { NewsTeaser } from "@/components/NewsTeaser/NewsTeaser";
 import { Contact } from "@/components/Contact/Contact";
 import { Footer } from "@/components/Footer/Footer";
 
+/**
+ * Homepage composition — Nadir-Metal-style flow.
+ *
+ * Deep sections (full policy library, full blog paginator, careers,
+ * why-choose grid, solutions matrix) now live at their dedicated
+ * routes only (see main.tsx). The homepage teases into them.
+ */
 export default function App() {
   return (
     <>
@@ -31,19 +35,16 @@ export default function App() {
       <Certifications />
       <main id="main">
         <Hero />
-        <Stats />
+        <Pillars />
         <About />
-        <Capabilities />
+        <Stats />
+        <Timeline />
+        <ProductShowcase />
         <Services />
-        <Products />
-        <WhyChoose />
+        <ResponsibleSourcing />
         <GlobalReach />
-        <Clients />
-        <Solutions />
-        <Policies />
-        <Blogs />
         <Leadership />
-        <Careers />
+        <NewsTeaser />
         <Contact />
       </main>
       <Footer />
