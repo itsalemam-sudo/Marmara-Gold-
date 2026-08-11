@@ -53,14 +53,14 @@ export const nav: NavLink[] = [
 
   {
     label: "Services",
-    href: "/services/buy-precious-metals",
+    href: "/services/refining",
     children: [
-      { label: "Buy Precious Metals",  href: "/services/buy-precious-metals",  desc: "LBMA-accredited gold, silver, PGMs." },
-      { label: "Sell Precious Metals", href: "/services/sell-precious-metals", desc: "Assay-based settlement." },
-      { label: "Refining",             href: "/services/refining",             desc: "Certified refining partners." },
-      { label: "Secure Storage",       href: "/services/storage",              desc: "Insured global vaulting." },
-      { label: "Digital Trading — barX", href: "/services/digital-trading",    desc: "Institutional trading platform." },
-      { label: "Market Insights",      href: "/services/market-insights",      desc: "Weekly market briefs." },
+      { label: "Refining",              href: "/services/refining",             desc: "999.9 gold and 999 silver — LBMA / LPPM aligned." },
+      { label: "Recycling & Recovery",  href: "/services/recycling-recovery",   desc: "Jewellery scrap, dross, sweepings, e-waste." },
+      { label: "Small Bar Production",  href: "/services/small-bar-production", desc: "Marmara-branded 1 g – 100 g minted bars." },
+      { label: "Trading",               href: "/services/trading",              desc: "Au / Ag / Pt / Pd / Rh via barX." },
+      { label: "Laboratory & Analysis", href: "/services/laboratory-analysis",  desc: "XRF, fire assay, ICP-MS testing." },
+      { label: "Storage & Vaulting",    href: "/services/storage-vaulting",     desc: "Dubai · London · Zürich · Singapore." },
     ],
   },
 

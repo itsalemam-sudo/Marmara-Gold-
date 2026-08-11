@@ -31,7 +31,7 @@ const SustainabilityIcon = (props: SVGProps<SVGSVGElement>) => (
 
 const PILLARS = [
   { icon: RefiningIcon,       eyebrow: "01", title: "Refining",       body: "Client material routed to LBMA / LPPM Good-Delivery accredited refineries — 999.9 gold, 999 silver, 999.5 PGMs.", to: "/services/refining" },
-  { icon: TradingIcon,        eyebrow: "02", title: "Trading",        body: "Institutional streaming quotes on gold, silver, platinum and palladium via barX — 22×5 coverage, REST + WebSocket API.", to: "/services/digital-trading" },
+  { icon: TradingIcon,        eyebrow: "02", title: "Trading",        body: "Institutional streaming quotes on gold, silver, platinum and palladium via barX — 22×5 coverage, REST + WebSocket API.", to: "/services/trading" },
   { icon: ComplianceIcon,     eyebrow: "03", title: "Compliance",     body: "Twenty-one signed corporate policies — RJC Code of Practices, OECD Due Diligence, UAE Cabinet Resolution 74 TFS.", to: "/#compliance" },
   { icon: SustainabilityIcon, eyebrow: "04", title: "Sustainability", body: "ISO 14001-aligned environmental practices; responsibly-sourced material with full RJC Chain-of-Custody documentation.", to: "/policies/mgt-pol-com-06" },
 ];

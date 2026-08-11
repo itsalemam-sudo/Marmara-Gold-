@@ -1,19 +1,21 @@
 /**
- * 6-card Services roster — each with a full detail body that opens
- * in the modal read-more (mirrors Nadir Metal's /services/{slug}
- * dedicated info page pattern).
+ * 6-service roster — mirrors the institutional refiner service
+ * portfolio (as per Nadir Metal Rafineri): Refining · Recycling &
+ * Recovery · Small Bar Production · Trading · Laboratory & Analysis
+ * · Storage & Vaulting. Copy is Marmara Precious Metals Group.
  *
- * Add / edit here — the Services component renders both the card
- * summary and the modal read-more from the same object.
+ * Each service renders as a card on the homepage grid AND as a full
+ * detail page at /services/{slug}. Add / edit here — the Services
+ * component and the ServicePage read from this single object.
  */
 
 export type ServiceIcon =
-  | "cart"
-  | "dollar"
-  | "flame"
-  | "vault"
-  | "chart"
-  | "book";
+  | "flame"        // refining
+  | "recycle"      // recycling & recovery
+  | "cart"         // small-bar production
+  | "chart"        // trading
+  | "beaker"       // laboratory
+  | "vault";       // storage
 
 export type ServiceSection = {
   heading?: string;
@@ -26,11 +28,8 @@ export type ServiceCard = {
   icon: ServiceIcon;
   title: string;
   lede: string;
-  /** Short bullets shown on the card. */
   bullets: string[];
   cta: { label: string; href: string };
-
-  /** Modal read-more content — Nadir-Metal-style detail page. */
   hero: string;
   sections: ServiceSection[];
   standards: string[];
@@ -38,110 +37,23 @@ export type ServiceCard = {
 };
 
 export const services: ServiceCard[] = [
-  {
-    slug: "buy-precious-metals",
-    icon: "cart",
-    title: "Buy Precious Metals",
-    lede: "Purchase LBMA-accredited gold kilo bars, DGD bars, and more.",
-    bullets: [
-      "LBMA-accredited gold kilo bars",
-      "DGD bars and gold grains",
-      "22K Indian gold jewelry",
-    ],
-    cta: { label: "Read more", href: "#services-grid" },
-    hero:
-      "Institutional-scale acquisition of investment-grade bullion, sourced only through LBMA / LPPM Good-Delivery refiners and DMCC-licensed counterparts. Every purchase runs through our KYC-first onboarding, is quoted against live LBMA / LPPM benchmarks, and settled with a serial-tracked chain of custody from vault to vault.",
-    sections: [
-      {
-        heading: "What we source",
-        bullets: [
-          "1 kg, 500 g and 100 g cast bars — 999.9 fine gold, LBMA-accredited refiner.",
-          "50 g and 100 g minted bars in tamper-evident assay cards.",
-          "10 tola (116.64 g) foil-wrap biscuits — Gulf / South Asia liquid standard.",
-          "1 oz sovereign bullion coins — Britannia, Maple, Philharmonic, Krugerrand.",
-          "Silver, platinum and palladium bars (LPPM Good Delivery).",
-          "999.9 gold grains and 22K Indian gold jewellery on request.",
-        ],
-      },
-      {
-        heading: "Process",
-        bullets: [
-          "01 · Onboarding — KYC / AML file, ownership disclosure, source of funds.",
-          "02 · Quote — live LBMA / LPPM benchmark plus premium (see catalogue for spot + %).",
-          "03 · Contract — sealed term sheet, delivery terms and settlement rails.",
-          "04 · Delivery — insured logistics with serial verification at destination vault.",
-        ],
-      },
-      {
-        heading: "Why buy through Marmara",
-        bullets: [
-          "Direct refiner relationships — no marketplace intermediaries.",
-          "Same-day pricing against COMEX / LBMA / LPPM benchmarks.",
-          "AED, USD and EUR settlement rails; T+0 to T+2 depending on route.",
-          "Full RJC Chain of Custody documentation on every consignment.",
-        ],
-      },
-    ],
-    standards: ["LBMA Good Delivery", "LPPM Good Delivery", "RJC Chain of Custody", "DMCC Licensed", "AML/CFT Compliant"],
-    metals: ["Gold", "Silver", "Platinum", "Palladium"],
-  },
-
-  {
-    slug: "sell-precious-metals",
-    icon: "dollar",
-    title: "Sell Precious Metals",
-    lede: "Sell gold scrap, semi-refined metals and coin inventory responsibly.",
-    bullets: [
-      "Gold scrap and semi-refined metals",
-      "Ethical sourcing verification",
-      "Assay-based transparent settlement",
-    ],
-    cta: { label: "Read more", href: "#services-grid" },
-    hero:
-      "A regulated route to convert physical bullion, doré, jewellery scrap, plated stock or semi-refined metals into settled cash — assayed transparently, priced against live LBMA / LPPM benchmarks, and documented for RJC and OECD Due Diligence Guidance compliance.",
-    sections: [
-      {
-        heading: "What we buy",
-        bullets: [
-          "Bullion bars and coins (LBMA / LPPM Good Delivery, sovereign mints).",
-          "Doré gold from artisanal / small-scale mining (with due-diligence file).",
-          "Jewellery scrap — 18K to 24K, karat separation on-site.",
-          "Refinery grain, sponge, filings and sweepings.",
-          "Electronic scrap and industrial semi-refined material.",
-        ],
-      },
-      {
-        heading: "Process",
-        bullets: [
-          "01 · Intake — sealed receipt with dual-signature at counter, camera-recorded.",
-          "02 · Assay — XRF for indicative karat, fire assay for final settlement number.",
-          "03 · Price — locked at your election against live LBMA fix or spot benchmark.",
-          "04 · Settle — AED / USD / EUR wire on assay confirmation, typically T+0 to T+1.",
-        ],
-      },
-      {
-        heading: "Due diligence",
-        body:
-          "We apply the OECD Due Diligence Guidance for Responsible Supply Chains of Minerals from CAHRA to every seller onboarding. High-risk material triggers enhanced due diligence, chain-of-custody verification and, where required, refusal of business.",
-      },
-    ],
-    standards: ["OECD DDG Aligned", "RJC Chain of Custody", "LBMA Responsible Sourcing", "AML/CFT Compliant"],
-    metals: ["Gold", "Silver", "Platinum", "Palladium"],
-  },
-
+  /* ---------------------------------------------------------------- */
+  /*  01  Refining                                                    */
+  /* ---------------------------------------------------------------- */
   {
     slug: "refining",
     icon: "flame",
-    title: "Refining Services",
-    lede: "Refine gold and silver to LBMA / LPPM Good Delivery purity through certified partners.",
+    title: "Refining",
+    lede:
+      "Precious-metal refining to LBMA / LPPM Good Delivery — 999.9 gold, 999 silver, 999.5 PGMs.",
     bullets: [
       "999.9 gold and 999 silver output",
-      "Certified partner refineries",
+      "LBMA / LPPM Good Delivery-aligned",
       "Fire-assay settlement with COA",
     ],
     cta: { label: "Read more", href: "#services-grid" },
     hero:
-      "Marmara routes client material to LBMA and LPPM Good-Delivery accredited refineries for conversion into investment-grade bullion — 999.9 fine gold, 999 fine silver, and 999.5 fine platinum-group metals — with full chain-of-custody documentation from receipt through pour to certified output.",
+      "Marmara routes client material to LBMA and LPPM Good-Delivery accredited refineries for conversion into investment-grade bullion — 999.9 fine gold, 999 fine silver, and 999.5 fine platinum-group metals. Full chain-of-custody documentation from receipt through pour to certified output, with turnaround measured in days rather than weeks.",
     sections: [
       {
         heading: "Capabilities",
@@ -149,7 +61,7 @@ export const services: ServiceCard[] = [
           "Gold: 999.9 fine cast and minted bars, grains, coin blanks.",
           "Silver: 999 fine cast bars (1 kg, 5 kg, 15 kg / 500 oz Good Delivery).",
           "Platinum & Palladium: 999.5 fine cast, LPPM Good Delivery.",
-          "Doré, jewellery scrap, sweepings, electronic scrap.",
+          "Rhodium: sponge and salt on request.",
           "Turnaround: 3–7 days depending on lot size and metal type.",
         ],
       },
@@ -160,7 +72,7 @@ export const services: ServiceCard[] = [
           "XRF pre-check for indicative fineness on arrival.",
           "Certified fire assay (cupellation) for gold, gravimetric for silver.",
           "Certificate of Analysis (COA) issued with every lot.",
-          "Client elects to settle in refined metal or cash equivalent at LBMA fix.",
+          "Client elects to settle in refined metal or cash at LBMA fix.",
         ],
       },
       {
@@ -169,21 +81,209 @@ export const services: ServiceCard[] = [
           "Our partner refineries operate under LBMA Responsible Gold Guidance, RJC Chain of Custody certification, and ISO 14001 environmental management. All processes are audited annually; no cyanide-based recovery is used on artisanal material.",
       },
     ],
-    standards: [
-      "LBMA Good Delivery",
-      "LPPM Good Delivery",
-      "LBMA Responsible Gold Guidance",
-      "RJC Chain of Custody",
-      "ISO 14001",
-    ],
-    metals: ["Gold", "Silver", "Platinum", "Palladium"],
+    standards: ["LBMA Good Delivery", "LPPM Good Delivery", "LBMA Responsible Gold Guidance", "RJC Chain of Custody", "ISO 14001"],
+    metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
   },
 
+  /* ---------------------------------------------------------------- */
+  /*  02  Recycling & Recovery                                        */
+  /* ---------------------------------------------------------------- */
   {
-    slug: "storage",
+    slug: "recycling-recovery",
+    icon: "recycle",
+    title: "Recycling & Recovery",
+    lede:
+      "Recovery of gold, silver and PGMs from jewellery scrap, industrial dross, sweepings and electronic waste.",
+    bullets: [
+      "Jewellery scrap 18K–24K",
+      "Dross, sweepings, filings",
+      "Electronic scrap and catalyst material",
+    ],
+    cta: { label: "Read more", href: "#services-grid" },
+    hero:
+      "A regulated route to convert bench sweepings, doré, jewellery scrap, plated stock and electronic scrap into settled refined metal — assayed transparently, priced against live LBMA / LPPM benchmarks, and documented for RJC and OECD Due Diligence Guidance compliance.",
+    sections: [
+      {
+        heading: "What we recover",
+        bullets: [
+          "Jewellery scrap — 18K to 24K, karat separation on-site.",
+          "Refinery grain, sponge, filings and sweepings.",
+          "Industrial dross from casting and rolling floors.",
+          "Electronic scrap — PCBs, connectors, plated components.",
+          "Spent catalyst (PGM) material from industrial processes.",
+        ],
+      },
+      {
+        heading: "Process",
+        bullets: [
+          "01 · Intake — sealed receipt with dual-signature at counter, camera-recorded.",
+          "02 · Sampling & Assay — representative sample, XRF then fire assay for final number.",
+          "03 · Price — locked at your election against live LBMA fix or spot benchmark.",
+          "04 · Settle — AED / USD / EUR wire on assay confirmation, typically T+0 to T+1.",
+        ],
+      },
+      {
+        heading: "Due diligence",
+        body:
+          "OECD Due Diligence Guidance is applied to every seller onboarding. High-risk material triggers enhanced due diligence, chain-of-custody verification and, where required, refusal of business. All flows are logged for RJC audit.",
+      },
+    ],
+    standards: ["OECD DDG Aligned", "RJC Chain of Custody", "LBMA Responsible Sourcing", "AML/CFT Compliant"],
+    metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /*  03  Small Bar Production                                        */
+  /* ---------------------------------------------------------------- */
+  {
+    slug: "small-bar-production",
+    icon: "cart",
+    title: "Small Bar Production",
+    lede:
+      "Marmara-branded minted bars from 1 g to 100 g in tamper-evident assay cards.",
+    bullets: [
+      "1 g · 2.5 g · 5 g · 10 g · 20 g · 50 g · 100 g gold",
+      "Tamper-evident assay card with serial",
+      "999.9 fine · struck M monogram",
+    ],
+    cta: { label: "Read more", href: "#services-grid" },
+    hero:
+      "Marmara-branded minted bars for retail counterparties, private banks and gifting programmes. Every bar carries the Marmara M monogram, is sealed in a tamper-evident assay card with a matching numbered certificate, and is backed by the same LBMA-refiner chain of custody as our institutional lines.",
+    sections: [
+      {
+        heading: "Formats",
+        bullets: [
+          "Gold: 1 g, 2.5 g, 5 g, 10 g, 20 g, 50 g, 100 g minted bars.",
+          "Silver: 5 g, 10 g, 50 g, 100 g minted bars.",
+          "Custom formats available on request for bank distributors.",
+          "Bulk pricing for orders above 1 kg aggregate mass.",
+        ],
+      },
+      {
+        heading: "Security features",
+        bullets: [
+          "Sealed tamper-evident PVC assay card with visible break-strip.",
+          "Serial number laser-etched on the bar and printed on the card.",
+          "QR code on card links to the online provenance registry.",
+          "Certificate signed by the assay office of the source refinery.",
+        ],
+      },
+      {
+        heading: "Distribution",
+        body:
+          "Small bars are supplied under wholesale terms to KYC-verified counterparties — private banks, licensed retail dealers, jewellery groups and gifting programmes. Direct retail sales run through partners in the Deira Gold Souk.",
+      },
+    ],
+    standards: ["LBMA Refiner Chain of Custody", "RJC Code of Practices", "DMCC Licensed"],
+    metals: ["Gold", "Silver"],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /*  04  Trading                                                     */
+  /* ---------------------------------------------------------------- */
+  {
+    slug: "trading",
+    icon: "chart",
+    title: "Trading",
+    lede:
+      "Institutional spot and forward trading in gold, silver, platinum, palladium and rhodium — via barX.",
+    bullets: [
+      "Live LBMA / LPPM streaming quotes",
+      "Spot, forward and swap markets",
+      "iOS + web platform + REST/WS API",
+    ],
+    cta: { label: "Open barX", href: "https://marmara.ntptrader.com/" },
+    hero:
+      "barX is Marmara's institutional trading platform — real-time streaming quotes on gold, silver, platinum, palladium and rhodium against live LBMA and LPPM benchmarks, position keeping, pre-trade risk limits, and a REST + WebSocket API for treasury and OMS integration. Native iOS app (Marmara Trader) mirrors the web ticket.",
+    sections: [
+      {
+        heading: "Markets covered",
+        bullets: [
+          "Spot in Au, Ag, Pt, Pd, Rh vs USD / EUR / AED.",
+          "Forwards up to 12 months on Au and Ag.",
+          "Loco Dubai / London / Zürich physical delivery.",
+          "Unallocated pool metal for treasury balance sheets.",
+        ],
+      },
+      {
+        heading: "Platform capabilities",
+        bullets: [
+          "Streaming L1 quotes with 5 ms tick resolution.",
+          "RFQ ticket for large lots above the block threshold.",
+          "Pre-trade risk limits — notional, VaR, drawdown, per-metal exposure.",
+          "Post-trade blotter with T+0 settlement instructions.",
+        ],
+      },
+      {
+        heading: "Integration",
+        bullets: [
+          "REST API for quote pull, order entry, and reporting export.",
+          "WebSocket channels for streaming quotes and order-status updates.",
+          "FIX 4.4 gateway available on request for OMS bridge.",
+          "SSO via SAML 2.0 for enterprise treasury desks.",
+        ],
+      },
+    ],
+    standards: ["ISO 27001", "AML/CFT Compliant"],
+    metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /*  05  Laboratory & Analysis                                       */
+  /* ---------------------------------------------------------------- */
+  {
+    slug: "laboratory-analysis",
+    icon: "beaker",
+    title: "Laboratory & Analysis",
+    lede:
+      "Independent XRF, fire-assay and ICP-MS testing for precious-metal purity and impurity content.",
+    bullets: [
+      "XRF for rapid indicative assay",
+      "Fire assay for definitive Au / Ag",
+      "ICP-MS trace-element analysis",
+    ],
+    cta: { label: "Read more", href: "#services-grid" },
+    hero:
+      "The Marmara laboratory issues independent Certificates of Analysis for gold, silver and PGM lots — XRF for rapid indicative testing on arrival, fire assay (cupellation) for definitive gold and silver settlement, and ICP-MS for trace impurities and PGM speciation.",
+    sections: [
+      {
+        heading: "Methods",
+        bullets: [
+          "XRF (energy-dispersive) — 30-second surface assay for karat.",
+          "Fire assay (cupellation) — definitive gold to 0.01 % precision.",
+          "Gravimetric assay — silver via chloride precipitation.",
+          "ICP-MS — trace impurities down to 1 ppm; PGM speciation.",
+          "Density hydrostatic testing for bar authenticity.",
+        ],
+      },
+      {
+        heading: "Deliverables",
+        bullets: [
+          "Certificate of Analysis (COA) signed by the head assayer.",
+          "Photographic evidence of sampling and hallmark.",
+          "Retention samples held for 12 months post-settlement.",
+          "Digital COA export in signed PDF and JSON.",
+        ],
+      },
+      {
+        heading: "Turnaround",
+        body:
+          "XRF results within the same day. Fire assay: 24–48 hours from sampling. ICP-MS: 48–72 hours. Rush service available for time-critical settlements with prior arrangement.",
+      },
+    ],
+    standards: ["ISO/IEC 17025 (target)", "LBMA Referee Method Aligned", "RJC Chain of Custody"],
+    metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
+  },
+
+  /* ---------------------------------------------------------------- */
+  /*  06  Storage & Vaulting                                          */
+  /* ---------------------------------------------------------------- */
+  {
+    slug: "storage-vaulting",
     icon: "vault",
-    title: "Secure Storage Solutions",
-    lede: "Insured allocated and segregated vault storage across Dubai, London, Zürich and Singapore.",
+    title: "Storage & Vaulting",
+    lede:
+      "Insured allocated and segregated vault storage across Dubai, London, Zürich and Singapore.",
     bullets: [
       "Allocated & segregated options",
       "All-risks insurance from Lloyd's underwriters",
@@ -222,92 +322,6 @@ export const services: ServiceCard[] = [
       },
     ],
     standards: ["LBMA Vault", "LPPM Vault", "ISO 27001 Reporting", "Lloyd's All-Risks Insurance"],
-    metals: ["Gold", "Silver", "Platinum", "Palladium"],
-  },
-
-  {
-    slug: "digital-trading",
-    icon: "chart",
-    title: "Digital Trading — barX",
-    lede: "Real-time institutional trading with position keeping, risk limits, and API access.",
-    bullets: [
-      "Live LBMA / LPPM benchmarks",
-      "iOS + web platform (barX)",
-      "REST + WebSocket API for integration",
-    ],
-    cta: { label: "Open barX", href: "https://marmara.ntptrader.com/" },
-    hero:
-      "barX is Marmara's institutional trading platform — real-time streaming quotes on gold, silver, platinum and palladium against live LBMA and LPPM benchmarks, position keeping, pre-trade risk limits, and a REST + WebSocket API for treasury and OMS integration. Available on web and as a native iOS app (Marmara Trader).",
-    sections: [
-      {
-        heading: "Platform capabilities",
-        bullets: [
-          "Streaming L1 quotes across Au / Ag / Pt / Pd against LBMA fix and spot.",
-          "RFQ ticket for large lots; automated below the client's block threshold.",
-          "Pre-trade risk limits — notional, VaR, drawdown, per-metal exposure caps.",
-          "Post-trade blotter with T+0 settlement instructions.",
-          "Native iOS app (Marmara Trader) mirrors the web ticket + blotter.",
-        ],
-      },
-      {
-        heading: "Integration",
-        bullets: [
-          "REST API for quote pull, order entry, and reporting export.",
-          "WebSocket channels for streaming quotes and order-status updates.",
-          "FIX 4.4 gateway available on request for OMS bridge.",
-          "SSO via SAML 2.0 for enterprise treasury desks.",
-        ],
-      },
-      {
-        heading: "Access",
-        body:
-          "Access is limited to KYC-verified institutional counterparties. Trader onboarding takes 5–10 business days once documentation is complete. barX runs 22 × 5 (Sunday 22:00 UAE through Friday 22:00 UAE), tracking the LBMA session windows.",
-      },
-    ],
-    standards: ["ISO 27001", "SOC 2 Type II (in progress)", "AML/CFT Compliant"],
-    metals: ["Gold", "Silver", "Platinum", "Palladium"],
-  },
-
-  {
-    slug: "market-insights",
-    icon: "book",
-    title: "Market Insights & Reporting",
-    lede: "Weekly briefs, quarterly deep-dives, and price-driver dashboards for institutional readers.",
-    bullets: [
-      "Weekly precious-metals brief",
-      "Quarterly supply-demand deep-dive",
-      "Central-bank and ETF flow tracker",
-    ],
-    cta: { label: "Read more", href: "#services-grid" },
-    hero:
-      "The Marmara Research desk publishes weekly briefs, quarterly supply-demand deep-dives, and central-bank / ETF flow trackers for institutional readers — covering the price drivers that matter for treasuries, jewellery manufacturers, mints and asset managers exposed to precious metals.",
-    sections: [
-      {
-        heading: "Regular publications",
-        bullets: [
-          "Weekly brief — Monday morning, 4–6 pages, macro + physical flow.",
-          "Quarterly deep-dive — full supply / demand model per metal.",
-          "Central-bank tracker — WGC reserves data, monthly.",
-          "ETF flow tracker — SPDR / iShares / Xetra positions, weekly.",
-          "Ad-hoc notes on FX moves, geopolitical events and mint premium shifts.",
-        ],
-      },
-      {
-        heading: "Data & Dashboards",
-        bullets: [
-          "Live price dashboard with 30-day and 12-month lookbacks.",
-          "Physical premium dashboard — Dubai, Mumbai, Shanghai loco.",
-          "Options-implied vol and skew for gold and silver.",
-          "Cross-asset correlation matrix updated weekly.",
-        ],
-      },
-      {
-        heading: "Access",
-        body:
-          "Institutional clients receive research at no additional fee. Reports arrive by email under a per-recipient distribution list; the dashboard is behind SSO on the barX platform. All research is subject to the disclaimers on the Marmara research portal.",
-      },
-    ],
-    standards: ["RJC Member", "Editorial Independence Policy"],
     metals: ["Gold", "Silver", "Platinum", "Palladium"],
   },
 ];

@@ -25,10 +25,12 @@ const Icon: Record<ServiceIcon, () => React.JSX.Element> = {
       <circle cx="17" cy="20" r="1.4" />
     </svg>
   ),
-  dollar: () => (
+  recycle: () => (
     <svg {...iconProps} aria-hidden>
-      <path d="M12 3v18" />
-      <path d="M17 7.5c-1.2-1.7-3-2.5-5-2.5-2.5 0-4.5 1.4-4.5 3.5S9 12 12 12s4.5 1 4.5 3.5S14.5 19 12 19c-2 0-3.8-.8-5-2.5" />
+      <path d="M4 12a8 8 0 0114-5" />
+      <path d="M20 12a8 8 0 01-14 5" />
+      <path d="M4 4v4h4" />
+      <path d="M20 20v-4h-4" />
     </svg>
   ),
   flame: () => (
@@ -50,10 +52,10 @@ const Icon: Record<ServiceIcon, () => React.JSX.Element> = {
       <circle cx="20" cy="7" r="1.4" fill="currentColor" stroke="none" />
     </svg>
   ),
-  book: () => (
+  beaker: () => (
     <svg {...iconProps} aria-hidden>
-      <path d="M4 4h9a3 3 0 013 3v14a2 2 0 00-2-2H4V4z" />
-      <path d="M20 4h-9a3 3 0 00-3 3v14a2 2 0 012-2h10V4z" />
+      <path d="M9 3v6l-5 9a2 2 0 001.8 3h12.4A2 2 0 0020 18l-5-9V3" />
+      <path d="M9 3h6M7.5 14h9" />
     </svg>
   ),
 };
