@@ -1,0 +1,110 @@
+.wrap {
+  background:
+    radial-gradient(1400px 700px at 100% 0%, rgba(198,161,91,0.15), transparent 60%),
+    linear-gradient(180deg, #0a1832 0%, #050e26 100%);
+  color: #ffffff;
+  padding: 76px 0;
+  position: relative;
+  overflow: hidden;
+}
+.wrap::before, .wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(198,161,91,0.5), transparent);
+}
+.wrap::before { top: 0; }
+.wrap::after  { bottom: 0; }
+
+.grid {
+  display: grid;
+  gap: 44px;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; gap: 32px; } }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 18px;
+}
+.title em { font-style: italic; color: var(--gold); }
+
+.lede {
+  color: rgba(255,255,255,0.78);
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 40rem;
+  margin-bottom: 28px;
+}
+
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.credentials {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.credential {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 16px;
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(198,161,91,0.2);
+  border-left: 3px solid var(--gold);
+  border-radius: 3px;
+  align-items: start;
+}
+
+.credCode {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  align-self: center;
+}
+
+.credLabel {
+  grid-column: 2;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.credDetail {
+  grid-column: 2;
+  color: rgba(255,255,255,0.6);
+  font-size: 12px;
+  line-height: 1.55;
+}
