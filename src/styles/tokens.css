@@ -5,30 +5,30 @@
 
 :root {
   /* Color */
-  --ink: #0a1832;
-  --ink-deep: #060f24;
-  --gold: #c6a15b;
-  --gold-bright: #e0c079;
+  --ink: #09185d;
+  --ink-deep: #060e3e;
+  --gold: #8b734b;
+  --gold-bright: #b19464;
   --paper: #f6f4ef;
   --slate: #5c6b82;
 
   /* Derivatives */
-  --ink-soft: #12213f;
+  --ink-soft: #142169;
   --paper-warm: #efebde;
   --paper-2: #efebe2;
-  --gold-line: rgba(198, 161, 91, 0.35);
+  --gold-line: rgba(139, 115, 75, 0.35);
   --ink-line: rgba(255, 255, 255, 0.08);
-  --ink-hairline: rgba(198, 161, 91, 0.35);
-  --paper-line: rgba(10, 24, 50, 0.1);
-  --paper-hairline: rgba(198, 161, 91, 0.5);
+  --ink-hairline: rgba(139, 115, 75, 0.35);
+  --paper-line: rgba(9, 24, 93, 0.1);
+  --paper-hairline: rgba(139, 115, 75, 0.5);
   --slate-soft: #8a95a7;
   --slate-dark: #3a4560;
   --up: #4fb286;
   --down: #d46a6a;
 
   /* Type */
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Poppins", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* Spacing scale (8pt) */
