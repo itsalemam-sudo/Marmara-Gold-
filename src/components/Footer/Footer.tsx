@@ -1,75 +1,217 @@
-import { footerColumns, trustBadges } from "@/data/footer";
+import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
+import { nav } from "@/data/nav";
+import {
+  IconLinkedIn,
+  IconX,
+  IconYouTube,
+  IconArrowRight,
+} from "@/components/icons/Icons";
 import styles from "./Footer.module.css";
 
-const disclaimerParagraphs = [
-  "Marmara Gold Trading LLC services in the trading, refining, and distribution of precious metals including gold, silver, platinum, and palladium. All services are provided in accordance with applicable regulations in authorized jurisdictions and may not be available in all countries.",
-  "Information on this website is for institutional and professional use only. It does not constitute an offer, solicitation, or recommendation to trade or invest. All trading involves risk and may not be suitable for all investors. Marmara maintains strict compliance with AML/CFT policies and international standards.",
-  "No portion of this website may be reproduced or distributed without prior written consent. Content is provided “as is” without warranties of accuracy or completeness. Marmara disclaims all liability related to use or reliance on this material.",
-  "For detailed regulatory disclosures, please refer to our Compliance & Legal section.",
-];
+/**
+ * Footer — Nadir Metal 3-block structure.
+ *   Block 1 · Newsletter band (heading + inline email + submit)
+ *   Block 2 · 4-column nav grid (Brand | Corporate | Products | Services)
+ *   Block 3 · Legal bar (address / copyright / socials)
+ *
+ * The nav grid is derived from the shared /src/data/nav.ts so link labels
+ * match the header without a second source of truth to maintain.
+ */
+
+/** Small helper — locate a top-level nav entry so column data stays in sync. */
+function navSection(label: string) {
+  return nav.find((n) => n.label === label);
+}
+
+/** Newsletter form — posts nowhere yet, just validates and thanks. Wire to
+ *  Mailchimp/HubSpot once list ID exists. */
+function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
+
+  const submit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus("err");
+      return;
+    }
+    // TODO: POST to newsletter endpoint. For now, thank the user.
+    setStatus("ok");
+    setEmail("");
+  };
+
+  return (
+    <section className={styles.newsletter} aria-labelledby="footer-newsletter-title">
+      <div className="container">
+        <div className={styles.newsletterRow}>
+          <div className={styles.newsletterCopy}>
+            <span className={styles.eyebrow}>Marmara Newsletter</span>
+            <h2 id="footer-newsletter-title" className={styles.newsletterTitle}>
+              Subscribe for weekly market briefs &amp; policy updates.
+            </h2>
+          </div>
+          <form className={styles.newsletterForm} onSubmit={submit} noValidate>
+            <label htmlFor="footer-email" className={styles.srOnly}>
+              Email address
+            </label>
+            <input
+              id="footer-email"
+              type="email"
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); setStatus("idle"); }}
+              required
+            />
+            <button type="submit" aria-label="Subscribe">
+              Subscribe <IconArrowRight />
+            </button>
+            {status === "ok" && (
+              <p className={styles.msgOk} role="status">Thank you — you&rsquo;re on the list.</p>
+            )}
+            {status === "err" && (
+              <p className={styles.msgErr} role="alert">Please enter a valid email address.</p>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export function Footer() {
+  const corporate = navSection("Corporate");
+  const products = navSection("Product");
+  const services = navSection("Services");
+
   return (
     <footer className={styles.wrap}>
-      <div className="container">
-        <div className={styles.top}>
-          <div className={styles.brandCol}>
-            <a href="#top" className={styles.brand}>
-              <span className={styles.brandMark} aria-hidden>M</span>
-              <span className={styles.brandName}>
-                <b>MARMARA</b>
-                <small>Precious Metals Group</small>
-              </span>
-            </a>
-            <p>
-              Integrated trading, refining, and distribution of gold, silver,
-              platinum, and palladium for institutional clients worldwide.
-              Operating through Marmara Gold Trading LLC (Dubai, UAE).
-            </p>
+      <Newsletter />
+
+      {/* Block 2 — 4-column nav grid */}
+      <div className={styles.grid}>
+        <div className="container">
+          <div className={styles.gridRow}>
+            {/* Brand column */}
+            <div className={styles.brandCol}>
+              <Link to="/" className={styles.brand}>
+                <span className={styles.brandSeal} aria-hidden>
+                  <svg viewBox="0 0 56 56" width="46" height="46">
+                    <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" strokeWidth="0.9" />
+                    <circle cx="28" cy="28" r="22" fill="none" stroke="currentColor" strokeWidth="0.55" />
+                    <path
+                      d="M14 40V17l14 14L42 17v23"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path d="M14 43h28" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                  </svg>
+                </span>
+                <span className={styles.brandWord}>
+                  <b>MARMARA</b>
+                  <small>Precious Metals Group</small>
+                </span>
+              </Link>
+              <p className={styles.brandBlurb}>
+                Integrated trading, refining and distribution of gold, silver,
+                platinum and palladium for institutional clients across 180+
+                markets. Operating through Marmara Gold Trading LLC (Dubai, UAE).
+              </p>
+              <ul className={styles.contactList}>
+                <li>
+                  <span className={styles.contactLabel}>Address</span>
+                  <span>Almas Tower, JLT, PO Box 111000, Dubai, UAE</span>
+                </li>
+                <li>
+                  <span className={styles.contactLabel}>Telephone</span>
+                  <a href="tel:+97144000000">+971 4 400 0000</a>
+                </li>
+                <li>
+                  <span className={styles.contactLabel}>Email</span>
+                  <a href="mailto:info@marmaragold.ae">info@marmaragold.ae</a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Corporate column */}
+            {corporate && (
+              <nav className={styles.col} aria-label="Corporate">
+                <h5>{corporate.label}</h5>
+                <ul>
+                  {corporate.children?.map((c) => (
+                    <li key={c.label}>
+                      <Link to={c.href}>{c.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+
+            {/* Products column */}
+            {products && (
+              <nav className={styles.col} aria-label="Products">
+                <h5>{products.label}</h5>
+                <ul>
+                  {products.children?.map((c) => (
+                    <li key={c.label}>
+                      <Link to={c.href}>{c.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+
+            {/* Services column */}
+            {services && (
+              <nav className={styles.col} aria-label="Services">
+                <h5>{services.label}</h5>
+                <ul>
+                  {services.children?.map((c) => (
+                    <li key={c.label}>
+                      <Link to={c.href}>{c.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
           </div>
-
-          {footerColumns.map((col) => (
-            <nav key={col.title} className={styles.col} aria-label={col.title}>
-              <h5>{col.title}</h5>
-              {col.links.map((l) => {
-                const external = l.href.startsWith("http");
-                return (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                  >
-                    {l.label}
-                  </a>
-                );
-              })}
-            </nav>
-          ))}
         </div>
+      </div>
 
-        <div className={styles.badges} aria-label="Regulatory alignment">
-          {trustBadges.map((b) => (
-            <span key={b.short} className={styles.badge}>
-              <span className={styles.badge__dot} aria-hidden />
-              {b.name}
-            </span>
-          ))}
-        </div>
-
-        <div className={styles.disclaimer}>
-          {disclaimerParagraphs.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </div>
-
-        <div className={styles.copy}>
-          <span>© 2025 Marmara Gold Trading LLC. All rights reserved.</span>
-          <span>
-            <a href="#compliance">Privacy</a> ·{" "}
-            <a href="#compliance">Data & Records</a> ·{" "}
-            <a href="#compliance">Compliance &amp; Legal</a>
-          </span>
+      {/* Block 3 — legal bar */}
+      <div className={styles.legal}>
+        <div className="container">
+          <div className={styles.legalRow}>
+            <p className={styles.copy}>
+              © 2026 Marmara Gold Trading LLC. All rights reserved.
+            </p>
+            <ul className={styles.legalLinks}>
+              <li><Link to="/policies/mgt-pol-com-06">Compliance</Link></li>
+              <li><Link to="/policies/mgt-pol-com-01">Privacy</Link></li>
+              <li><Link to="/policies/mgt-pol-com-03">Terms of Use</Link></li>
+              <li><Link to="/policies">All Policies</Link></li>
+            </ul>
+            <ul className={styles.social} aria-label="Social media">
+              <li>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <IconLinkedIn />
+                </a>
+              </li>
+              <li>
+                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+                  <IconX />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                  <IconYouTube />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
