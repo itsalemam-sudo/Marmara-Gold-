@@ -18,11 +18,27 @@ import { Contact } from "@/components/Contact/Contact";
 import { Footer } from "@/components/Footer/Footer";
 
 /**
- * Homepage composition — Nadir-Metal-style flow.
+ * Homepage composition — Nadir-Metal exact cadence.
  *
- * Deep sections (full policy library, full blog paginator, careers,
- * why-choose grid, solutions matrix) now live at their dedicated
- * routes only (see main.tsx). The homepage teases into them.
+ *   Header block   · TopBar (centered tagline) → Nav (brand + menu)
+ *   Above the fold · Hero
+ *   Trust band     · Certifications (LBMA / DMCC / DGCX / SBMA / RJC)
+ *   Story          · About + Pillars (4 gold-square features) + Stats
+ *   Range          · ProductShowcase (brand-card teaser)
+ *   Values         · ResponsibleSourcing (green panel)
+ *   Scale          · GlobalReach (dark confidence panel)
+ *   Heritage       · Timeline (year rail, reads as marquee)
+ *   Services       · Services
+ *   Team           · Leadership
+ *   Editorial      · NewsTeaser
+ *   Data           · Ticker (spot band, below the fold)
+ *   Conversion     · Contact
+ *   Footer         · Footer
+ *
+ * The live-price ticker sits below the fold — Nadir Metal has no
+ * such strip in its header, and hiding it up top makes the hero
+ * read cleaner. The data stays available further down the page for
+ * the professional-audience use case.
  */
 export default function App() {
   return (
@@ -30,21 +46,21 @@ export default function App() {
       <a href="#main" className="skip-link">Skip to content</a>
       <ScrollProgress />
       <TopBar />
-      <Ticker />
       <Nav />
-      <Certifications />
       <main id="main">
         <Hero />
-        <Pillars />
+        <Certifications />
         <About />
+        <Pillars />
         <Stats />
-        <Timeline />
         <ProductShowcase />
-        <Services />
         <ResponsibleSourcing />
         <GlobalReach />
+        <Timeline />
+        <Services />
         <Leadership />
         <NewsTeaser />
+        <Ticker />
         <Contact />
       </main>
       <Footer />
