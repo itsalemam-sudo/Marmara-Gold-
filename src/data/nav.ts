@@ -110,5 +110,7 @@ export const nav: NavLink[] = [
     ],
   },
 
+  { label: "Contact", href: "/#contact" },
+
   { label: "barX", href: "https://marmara.ntptrader.com/", variant: "tab", external: true },
 ];
