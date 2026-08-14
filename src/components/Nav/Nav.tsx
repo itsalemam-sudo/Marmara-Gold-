@@ -1,24 +1,25 @@
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { nav, type NavLink } from "@/data/nav";
-import { IconMenu, IconClose, IconArrowRight } from "@/components/icons/Icons";
+import { IconMenu, IconClose } from "@/components/icons/Icons";
 import { useLockScroll } from "@/hooks/useLockScroll";
 import styles from "./Nav.module.css";
 
-/** True for internal SPA routes (start with `/`), false for hash / external. */
+/** True for internal SPA routes (start with `/`). */
 function isInternalRoute(href: string): boolean {
   return href.startsWith("/") && !href.startsWith("//");
 }
 
 /**
- * Circular-seal brand mark. Two concentric hairlines + the M
- * monogram — mirrors the Nadir Metal Rafineri wordmark logo.
+ * Circular seal + wordmark. Sits at the left of the middle row.
+ * Nadir Metal ships a raster PNG here; we ship a self-contained
+ * SVG so the mark scales cleanly on retina without a fetch.
  */
 function BrandMark() {
   return (
     <Link to="/" className={styles.brand} aria-label="Marmara Precious Metals Group — home">
       <span className={styles.brandSeal} aria-hidden>
-        <svg viewBox="0 0 56 56" width="48" height="48">
+        <svg viewBox="0 0 56 56" width="46" height="46">
           <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" strokeWidth="0.9" />
           <circle cx="28" cy="28" r="22" fill="none" stroke="currentColor" strokeWidth="0.55" />
           <path
@@ -40,19 +41,72 @@ function BrandMark() {
   );
 }
 
-/** One top-level desktop item — button, hover-line, optional dropdown. */
-function TopItem({ item, onNavigate }: { item: NavLink; onNavigate: () => void }) {
+/**
+ * Language selector — TR / EN switch. Placeholder that swaps a lang
+ * attribute on <html>; wire to i18n once the second locale ships.
+ */
+function LangSelector() {
+  const set = (l: "en" | "tr") => {
+    document.documentElement.lang = l;
+    try { localStorage.setItem("mg:lang", l); } catch { /* ignore */ }
+  };
+  return (
+    <div className={styles.lang} role="group" aria-label="Language">
+      <button type="button" className={styles.langBtn} aria-current="true" onClick={() => set("en")}>EN</button>
+      <span className={styles.langDivider} aria-hidden>·</span>
+      <button type="button" className={styles.langBtn} onClick={() => set("tr")}>TR</button>
+    </div>
+  );
+}
+
+/**
+ * Header search box — routes to /news?q= for now (until a proper
+ * search endpoint exists). Nadir Metal has the same visual pattern
+ * (input + magnifier icon inside a rounded pill).
+ */
+function SearchBox({ compact = false }: { compact?: boolean }) {
+  const navigate = useNavigate();
+  const [q, setQ] = useState("");
+
+  const submit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!q.trim()) return;
+    navigate(`/news?q=${encodeURIComponent(q.trim())}`);
+    setQ("");
+  };
+
+  return (
+    <form
+      className={`${styles.search} ${compact ? styles.searchCompact : ""}`}
+      onSubmit={submit}
+      role="search"
+    >
+      <input
+        type="search"
+        name="q"
+        aria-label="Search"
+        placeholder="Search…"
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+      />
+      <button type="submit" aria-label="Submit search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8"/>
+          <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        </svg>
+      </button>
+    </form>
+  );
+}
+
+/** One top-level desktop menu item (row 3). */
+function MenuItem({ item, onNavigate }: { item: NavLink; onNavigate: () => void }) {
   const [hover, setHover] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const hasChildren = !!item.children?.length;
 
-  /* Slight open / close hysteresis so nudging the cursor doesn't slam
-     the panel shut. */
   const open = () => {
-    if (closeTimer.current) {
-      window.clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
+    if (closeTimer.current) { window.clearTimeout(closeTimer.current); closeTimer.current = null; }
     setHover(true);
   };
   const close = () => {
@@ -62,97 +116,37 @@ function TopItem({ item, onNavigate }: { item: NavLink; onNavigate: () => void }
 
   const linkClass =
     item.variant === "tab"
-      ? `${styles.menuItem} ${styles.menuItemTab}`
-      : styles.menuItem;
+      ? `${styles.menuLink} ${styles.menuLinkTab}`
+      : styles.menuLink;
 
-  if (!hasChildren) {
-    return isInternalRoute(item.href) && !item.external ? (
-      <Link to={item.href} className={linkClass} onClick={onNavigate}>
-        {item.label}
-      </Link>
-    ) : (
-      <a
-        href={item.href}
-        target={item.external ? "_blank" : undefined}
-        rel={item.external ? "noopener noreferrer" : undefined}
-        className={linkClass}
-        onClick={onNavigate}
-      >
-        {item.label}
-      </a>
-    );
-  }
+  const inner = hasChildren ? (
+    <>{item.label}<span className={styles.caret} aria-hidden>▾</span></>
+  ) : (
+    item.label
+  );
 
-  const TopLink = isInternalRoute(item.href) && !item.external
-    ? ({ children }: { children: React.ReactNode }) => (
-        <Link
-          to={item.href}
-          className={`${linkClass} ${styles.menuItemHasChildren}`}
-          aria-haspopup="true"
-          aria-expanded={hover}
-        >
-          {children}
-        </Link>
-      )
-    : ({ children }: { children: React.ReactNode }) => (
-        <a
-          href={item.href}
-          target={item.external ? "_blank" : undefined}
-          rel={item.external ? "noopener noreferrer" : undefined}
-          className={`${linkClass} ${styles.menuItemHasChildren}`}
-          aria-haspopup="true"
-          aria-expanded={hover}
-        >
-          {children}
-        </a>
-      );
+  const topAnchor = isInternalRoute(item.href) && !item.external
+    ? <Link to={item.href} className={linkClass} onClick={onNavigate} aria-haspopup={hasChildren || undefined} aria-expanded={hasChildren ? hover : undefined}>{inner}</Link>
+    : <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} className={linkClass} onClick={onNavigate} aria-haspopup={hasChildren || undefined} aria-expanded={hasChildren ? hover : undefined}>{inner}</a>;
+
+  if (!hasChildren) return topAnchor;
 
   return (
-    <div
-      className={styles.menuGroup}
-      onMouseEnter={open}
-      onMouseLeave={close}
-      onFocus={open}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node)) close();
-      }}
-    >
-      <TopLink>
-        {item.label}
-        <span className={styles.caret} aria-hidden>▾</span>
-      </TopLink>
-
+    <div className={styles.menuItem} onMouseEnter={open} onMouseLeave={close} onFocus={open} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) close(); }}>
+      {topAnchor}
       <div className={`${styles.dropdown} ${hover ? styles.dropdownOpen : ""}`} role="menu">
         <div className={styles.dropdownInner}>
           {item.children!.map((c) => {
-            const inner = (
+            const childInner: ReactNode = (
               <>
                 <span className={styles.dropdownLabel}>{c.label}</span>
                 {c.desc && <span className={styles.dropdownDesc}>{c.desc}</span>}
               </>
             );
             return isInternalRoute(c.href) && !c.external ? (
-              <Link
-                key={c.label}
-                to={c.href}
-                className={styles.dropdownLink}
-                role="menuitem"
-                onClick={() => { setHover(false); onNavigate(); }}
-              >
-                {inner}
-              </Link>
+              <Link key={c.label} to={c.href} className={styles.dropdownLink} role="menuitem" onClick={() => { setHover(false); onNavigate(); }}>{childInner}</Link>
             ) : (
-              <a
-                key={c.label}
-                href={c.href}
-                target={c.external ? "_blank" : undefined}
-                rel={c.external ? "noopener noreferrer" : undefined}
-                className={styles.dropdownLink}
-                role="menuitem"
-                onClick={() => { setHover(false); onNavigate(); }}
-              >
-                {inner}
-              </a>
+              <a key={c.label} href={c.href} target={c.external ? "_blank" : undefined} rel={c.external ? "noopener noreferrer" : undefined} className={styles.dropdownLink} role="menuitem" onClick={() => { setHover(false); onNavigate(); }}>{childInner}</a>
             );
           })}
         </div>
@@ -161,48 +155,72 @@ function TopItem({ item, onNavigate }: { item: NavLink; onNavigate: () => void }
   );
 }
 
+/**
+ * 3-row header — Nadir Metal exact structure.
+ *   Row 1 · topbar (navy strip, tagline)
+ *   Row 2 · brand row (logo | search | language | hamburger)
+ *   Row 3 · menu row (flat nav links)
+ *
+ * Row 3 collapses below the mobile breakpoint; a full-height drawer
+ * takes over.
+ */
 export function Nav() {
   const [openMobile, setOpenMobile] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
   useLockScroll(openMobile);
 
-  /* Reset expanded groups when the drawer closes. */
   useEffect(() => {
     if (!openMobile) setOpenSection(null);
   }, [openMobile]);
 
   return (
     <header className={styles.wrap}>
-      <div className="container">
-        <div className={styles.bar}>
-          <BrandMark />
-
-          <nav className={styles.menu} aria-label="Primary">
-            {nav.map((item) => (
-              <TopItem key={item.label} item={item} onNavigate={() => setOpenMobile(false)} />
-            ))}
-          </nav>
-
-          <div className={styles.actions}>
-            <a className="btn btn--gold" href="#contact">
-              Contact us <IconArrowRight />
-            </a>
-          </div>
-
-          <button
-            type="button"
-            className={styles.hamburger}
-            aria-expanded={openMobile}
-            aria-controls="mobile-nav"
-            aria-label={openMobile ? "Close menu" : "Open menu"}
-            onClick={() => setOpenMobile((v) => !v)}
-          >
-            {openMobile ? <IconClose /> : <IconMenu />}
-          </button>
+      {/* Row 1 — topbar tagline */}
+      <div className={styles.topbar}>
+        <div className="container">
+          <p className={styles.topbarText}>
+            We add value to your investments by providing transparent, fast and
+            reliable solutions in gold, silver and precious metals.
+          </p>
         </div>
       </div>
 
-      {/* Mobile drawer — expandable groups replace the flat list. */}
+      {/* Row 2 — brand + actions */}
+      <div className={styles.middle}>
+        <div className="container">
+          <div className={styles.middleRow}>
+            <BrandMark />
+            <div className={styles.middleActions}>
+              <SearchBox />
+              <LangSelector />
+              <button
+                type="button"
+                className={styles.hamburger}
+                aria-expanded={openMobile}
+                aria-controls="mobile-nav"
+                aria-label={openMobile ? "Close menu" : "Open menu"}
+                onClick={() => setOpenMobile((v) => !v)}
+              >
+                {openMobile ? <IconClose /> : <IconMenu />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Row 3 — flat menu row */}
+      <nav className={styles.menu} aria-label="Primary">
+        <div className="container">
+          <div className={styles.menuRow}>
+            <Link to="/" className={styles.menuLink}>Home</Link>
+            {nav.map((item) => (
+              <MenuItem key={item.label} item={item} onNavigate={() => setOpenMobile(false)} />
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile drawer */}
       <div
         id="mobile-nav"
         className={`${styles.drawer} ${openMobile ? styles.drawerOpen : ""}`}
@@ -211,17 +229,7 @@ export function Nav() {
         aria-hidden={!openMobile}
       >
         <div className={styles.drawerTop}>
-          <span className={styles.brand}>
-            <span className={styles.brandSeal} aria-hidden>
-              <svg viewBox="0 0 56 56" width="42" height="42">
-                <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" strokeWidth="0.9" />
-                <path d="M14 40V17l14 14L42 17v23M14 43h28" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-            <span className={styles.brandWord}>
-              <b>MARMARA</b>
-            </span>
-          </span>
+          <BrandMark />
           <button
             type="button"
             className={styles.hamburger}
@@ -232,71 +240,45 @@ export function Nav() {
           </button>
         </div>
 
+        <div className={styles.drawerSearch}>
+          <SearchBox compact />
+        </div>
+
         <div className={styles.drawerList}>
+          <Link to="/" className={styles.drawerLink} onClick={() => setOpenMobile(false)}>Home</Link>
           {nav.map((item) => {
             const isOpen = openSection === item.label;
             const hasChildren = !!item.children?.length;
+
+            if (!hasChildren) {
+              return isInternalRoute(item.href) && !item.external ? (
+                <Link key={item.label} to={item.href} className={styles.drawerLink} onClick={() => setOpenMobile(false)}>{item.label}</Link>
+              ) : (
+                <a key={item.label} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} className={styles.drawerLink} onClick={() => setOpenMobile(false)}>{item.label}</a>
+              );
+            }
+
             return (
               <div key={item.label} className={styles.drawerItem}>
-                {hasChildren ? (
-                  <button
-                    type="button"
-                    className={`${styles.drawerLink} ${styles.drawerGroupButton}`}
-                    onClick={() => setOpenSection(isOpen ? null : item.label)}
-                    aria-expanded={isOpen}
-                    tabIndex={openMobile ? 0 : -1}
-                  >
-                    <span>{item.label}</span>
-                    <span className={`${styles.drawerCaret} ${isOpen ? styles.drawerCaretOpen : ""}`} aria-hidden>▾</span>
-                  </button>
-                ) : isInternalRoute(item.href) && !item.external ? (
-                  <Link
-                    to={item.href}
-                    className={styles.drawerLink}
-                    onClick={() => setOpenMobile(false)}
-                    tabIndex={openMobile ? 0 : -1}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <a
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                    className={styles.drawerLink}
-                    onClick={() => setOpenMobile(false)}
-                    tabIndex={openMobile ? 0 : -1}
-                  >
-                    {item.label}
-                  </a>
-                )}
-
-                {hasChildren && isOpen && (
+                <button
+                  type="button"
+                  className={styles.drawerLink}
+                  onClick={() => setOpenSection(isOpen ? null : item.label)}
+                  aria-expanded={isOpen}
+                >
+                  <span>{item.label}</span>
+                  <span className={`${styles.drawerCaret} ${isOpen ? styles.drawerCaretOpen : ""}`} aria-hidden>▾</span>
+                </button>
+                {isOpen && (
                   <div className={styles.drawerSub}>
                     {item.children!.map((c) =>
                       isInternalRoute(c.href) && !c.external ? (
-                        <Link
-                          key={c.label}
-                          to={c.href}
-                          className={styles.drawerSubLink}
-                          onClick={() => setOpenMobile(false)}
-                          tabIndex={openMobile ? 0 : -1}
-                        >
-                          {c.label}
-                          {c.desc && <small>{c.desc}</small>}
+                        <Link key={c.label} to={c.href} className={styles.drawerSubLink} onClick={() => setOpenMobile(false)}>
+                          {c.label}{c.desc && <small>{c.desc}</small>}
                         </Link>
                       ) : (
-                        <a
-                          key={c.label}
-                          href={c.href}
-                          target={c.external ? "_blank" : undefined}
-                          rel={c.external ? "noopener noreferrer" : undefined}
-                          className={styles.drawerSubLink}
-                          onClick={() => setOpenMobile(false)}
-                          tabIndex={openMobile ? 0 : -1}
-                        >
-                          {c.label}
-                          {c.desc && <small>{c.desc}</small>}
+                        <a key={c.label} href={c.href} target={c.external ? "_blank" : undefined} rel={c.external ? "noopener noreferrer" : undefined} className={styles.drawerSubLink} onClick={() => setOpenMobile(false)}>
+                          {c.label}{c.desc && <small>{c.desc}</small>}
                         </a>
                       )
                     )}
@@ -307,24 +289,7 @@ export function Nav() {
           })}
         </div>
 
-        <div className={styles.drawerActions}>
-          <a
-            className="btn btn--ghost-light"
-            href="#compliance"
-            onClick={() => setOpenMobile(false)}
-            tabIndex={openMobile ? 0 : -1}
-          >
-            Compliance library
-          </a>
-          <a
-            className="btn btn--gold"
-            href="#contact"
-            onClick={() => setOpenMobile(false)}
-            tabIndex={openMobile ? 0 : -1}
-          >
-            Contact the desk
-          </a>
-        </div>
+        <div className={styles.drawerLang}><LangSelector /></div>
       </div>
     </header>
   );
