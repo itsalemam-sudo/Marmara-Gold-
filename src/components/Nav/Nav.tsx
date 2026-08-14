@@ -175,15 +175,9 @@ export function Nav() {
 
   return (
     <header className={styles.wrap}>
-      {/* Row 1 — topbar tagline */}
-      <div className={styles.topbar}>
-        <div className="container">
-          <p className={styles.topbarText}>
-            We add value to your investments by providing transparent, fast and
-            reliable solutions in gold, silver and precious metals.
-          </p>
-        </div>
-      </div>
+      {/* Row 1 (tagline strip) lives in <TopBar>, mounted separately in
+          the page shell so the ticker can slot between it and the brand
+          row without a duplicate tagline. */}
 
       {/* Row 2 — brand + actions */}
       <div className={styles.middle}>
