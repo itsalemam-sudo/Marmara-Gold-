@@ -110,6 +110,40 @@ export const IconYouTube = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+/* National flag glyphs — used by the EN / TR language switch in Nav.
+   Simple, historically standard designs, drawn as inline SVG so they
+   ship without a network hit and inherit border-radius from the parent. */
+export const IconFlagGB = (props: SVGProps<SVGSVGElement>) => (
+  <svg width="22" height="16" viewBox="0 0 60 40" aria-hidden {...props}>
+    <clipPath id="mg-flag-gb-clip"><rect width="60" height="40" rx="2" /></clipPath>
+    <g clipPath="url(#mg-flag-gb-clip)">
+      <rect width="60" height="40" fill="#012169" />
+      {/* Diagonals — white then red */}
+      <path d="M0 0l60 40M60 0L0 40" stroke="#ffffff" strokeWidth="8" />
+      <path d="M0 0l60 40M60 0L0 40" stroke="#C8102E" strokeWidth="3" />
+      {/* Cross — white then red */}
+      <path d="M30 0v40M0 20h60" stroke="#ffffff" strokeWidth="12" />
+      <path d="M30 0v40M0 20h60" stroke="#C8102E" strokeWidth="6" />
+    </g>
+  </svg>
+);
+export const IconFlagTR = (props: SVGProps<SVGSVGElement>) => (
+  <svg width="22" height="16" viewBox="0 0 60 40" aria-hidden {...props}>
+    <clipPath id="mg-flag-tr-clip"><rect width="60" height="40" rx="2" /></clipPath>
+    <g clipPath="url(#mg-flag-tr-clip)">
+      <rect width="60" height="40" fill="#E30A17" />
+      {/* Crescent — two overlapping circles for the concave */}
+      <circle cx="23" cy="20" r="8" fill="#ffffff" />
+      <circle cx="25" cy="20" r="6.4" fill="#E30A17" />
+      {/* 5-point star */}
+      <polygon
+        points="34,20 39.3,18.3 36,22.8 36,17.2 39.3,21.7"
+        fill="#ffffff"
+      />
+    </g>
+  </svg>
+);
+
 /* Marmara wordmark (M monogram) */
 export const IconLogoMonogram = (props: SVGProps<SVGSVGElement>) => (
   <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden {...props}>

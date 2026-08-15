@@ -1,0 +1,60 @@
+/* Full-bleed navy → soft-blue gradient marquee. Sits between the
+   dark GlobalReach panel and the Timeline year rail — the visual
+   handoff from "confidence" to "heritage". */
+
+.wrap {
+  background: linear-gradient(90deg,
+    #09185d 0%,
+    #1a2f8a 50%,
+    #3a56cf 100%);
+  color: #ffffff;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 18px 0;
+}
+
+.marquee {
+  --exp-dur: 40s;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.track {
+  display: inline-flex;
+  gap: 0;
+  align-items: center;
+  min-width: 200%;
+  animation: marmara-exp-marquee var(--exp-dur) linear infinite;
+  will-change: transform;
+}
+@keyframes marmara-exp-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee:hover .track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; }
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  flex: none;
+  padding: 0 8px;
+}
+.dot {
+  color: rgba(255,255,255,0.55);
+  font-size: 22px;
+  line-height: 1;
+  padding-right: 24px;
+}
+.text {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.94);
+}
