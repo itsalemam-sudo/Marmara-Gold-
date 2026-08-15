@@ -12,6 +12,7 @@ import { ProductShowcase } from "@/components/ProductShowcase/ProductShowcase";
 import { Services } from "@/components/Services/Services";
 import { ResponsibleSourcing } from "@/components/ResponsibleSourcing/ResponsibleSourcing";
 import { GlobalReach } from "@/components/GlobalReach/GlobalReach";
+import { ExperienceBand } from "@/components/ExperienceBand/ExperienceBand";
 import { Leadership } from "@/components/Leadership/Leadership";
 import { NewsTeaser } from "@/components/NewsTeaser/NewsTeaser";
 import { Contact } from "@/components/Contact/Contact";
@@ -27,6 +28,7 @@ import { Footer } from "@/components/Footer/Footer";
  *   Range          · ProductShowcase (brand-card teaser)
  *   Values         · ResponsibleSourcing (green panel)
  *   Scale          · GlobalReach (dark confidence panel)
+ *   Credentials    · ExperienceBand (blue-gradient marquee, dot-separated)
  *   Heritage       · Timeline (year rail, reads as marquee)
  *   Services       · Services
  *   Team           · Leadership
@@ -56,6 +58,7 @@ export default function App() {
         <ProductShowcase />
         <ResponsibleSourcing />
         <GlobalReach />
+        <ExperienceBand />
         <Timeline />
         <Services />
         <Leadership />

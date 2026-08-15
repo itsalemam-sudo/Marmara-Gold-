@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { nav, type NavLink } from "@/data/nav";
-import { IconMenu, IconClose } from "@/components/icons/Icons";
+import { IconMenu, IconClose, IconFlagGB, IconFlagTR } from "@/components/icons/Icons";
 import { useLockScroll } from "@/hooks/useLockScroll";
 import styles from "./Nav.module.css";
 
@@ -42,8 +42,9 @@ function BrandMark() {
 }
 
 /**
- * Language selector — TR / EN switch. Placeholder that swaps a lang
- * attribute on <html>; wire to i18n once the second locale ships.
+ * Language selector — TR / EN flags exactly like Nadir Metal. The
+ * button toggles document.documentElement.lang and persists the
+ * choice in localStorage; wire to full i18n once TR strings ship.
  */
 function LangSelector() {
   const set = (l: "en" | "tr") => {
@@ -52,9 +53,23 @@ function LangSelector() {
   };
   return (
     <div className={styles.lang} role="group" aria-label="Language">
-      <button type="button" className={styles.langBtn} aria-current="true" onClick={() => set("en")}>EN</button>
-      <span className={styles.langDivider} aria-hidden>·</span>
-      <button type="button" className={styles.langBtn} onClick={() => set("tr")}>TR</button>
+      <button
+        type="button"
+        className={styles.flagBtn}
+        aria-label="Türkçe"
+        onClick={() => set("tr")}
+      >
+        <IconFlagTR />
+      </button>
+      <button
+        type="button"
+        className={styles.flagBtn}
+        aria-current="true"
+        aria-label="English"
+        onClick={() => set("en")}
+      >
+        <IconFlagGB />
+      </button>
     </div>
   );
 }
