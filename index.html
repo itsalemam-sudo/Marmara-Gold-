@@ -16,12 +16,33 @@
     />
     <meta property="og:type" content="website" />
 
+    <!-- Font loading — cut over from full-family sync fetch to an
+         async, subset-friendly bootstrap. `preconnect` warms the TLS
+         handshake to the CDN; the stylesheet is then loaded with
+         `media="print" onload=…` so it doesn't block first paint.
+         The <noscript> fallback keeps text styled for crawlers and
+         JS-disabled clients. Tajawal + Amiri were dropped from the
+         critical fetch — they were queued for the future Arabic
+         locale which isn't shipping yet. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Tajawal:wght@400;500;700&family=Amiri:wght@400;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
 
     <title>Marmara Precious Metals Group — Institutional Bullion Trading</title>
   </head>

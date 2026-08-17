@@ -119,6 +119,14 @@ html, body {
   .eyebrow { animation: none; }
 }
 
+/* Suspense fallback strip used by the route-level lazy loader in
+   src/main.tsx. Purely visual — no logic depends on it. */
+@keyframes mg-route-load {
+  0%   { transform: scaleX(0.05); opacity: 0.4; }
+  50%  { transform: scaleX(0.9);  opacity: 1;   }
+  100% { transform: scaleX(0.05); opacity: 0.4; }
+}
+
 .fineness {
   font-family: var(--font-mono);
   font-size: 0.72rem;
