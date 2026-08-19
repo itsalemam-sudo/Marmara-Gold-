@@ -117,7 +117,7 @@ export function Policies() {
         </div>
 
         <p className={styles.footNote}>
-          These policies apply to all Marmara Gold Trading LLC operations across
+          These policies apply to all Marmara Precious Metals Group operations across
           the UAE. Enquiries: <a href="mailto:compliance@marmaragold.co">compliance@marmaragold.co</a>.
         </p>
       </div>

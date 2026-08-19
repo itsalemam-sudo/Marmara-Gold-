@@ -40,15 +40,14 @@ export function NewsTeaser() {
         <header ref={headRef} className={`${styles.head} reveal`}>
           <div>
             <span className="eyebrow">News &amp; Insights</span>
-            <h2>Straight from the <em>Marmara research desk.</em></h2>
+            <h2>Market insights &amp; <em>company news.</em></h2>
           </div>
           <p>
-            Weekly market briefs, quarterly supply-demand deep-dives, and
-            central-bank / ETF flow trackers — covering the price drivers
-            that matter for treasuries, mints and asset managers.
+            Market commentary, precious metals insights, company developments
+            and responsible-sourcing updates from Marmara Precious Metals Group.
           </p>
           <Link to="/news" className="btn btn--ghost-dark">
-            All news &amp; insights <IconArrowRight />
+            View all insights <IconArrowRight />
           </Link>
         </header>
 

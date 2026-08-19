@@ -63,23 +63,35 @@ export function Contact() {
               </span>
             </div>
 
-            <div className={styles.hqBlock}>
-              <span className={styles.hqLabel}>Trading platform</span>
-              <span className={styles.hqValue}>
-                <a href={links.tradingPlatform} target="_blank" rel="noopener noreferrer">
-                  marmara.ntptrader.com
-                </a>
-              </span>
-            </div>
+            {/* Trading platform + iOS blocks are gated on real URLs
+                being configured in src/lib/links.ts. Until Marmara
+                Trader has a production URL and App Store listing,
+                nothing renders — no dead links, no "coming soon". */}
+            {links.tradingPlatform && (
+              <div className={styles.hqBlock}>
+                <span className={styles.hqLabel}>Marmara Trader</span>
+                <span className={styles.hqValue}>
+                  <a href={links.tradingPlatform} target="_blank" rel="noopener noreferrer">
+                    Open the platform
+                  </a>
+                </span>
+              </div>
+            )}
 
-            <div className={styles.hqActions}>
-              <a href={links.tradingPlatform} target="_blank" rel="noopener noreferrer" className="btn btn--gold">
-                Open barX platform <IconArrowRight />
-              </a>
-              <a href={links.iosApp} target="_blank" rel="noopener noreferrer" className="btn btn--outline-light">
-                Download for iOS
-              </a>
-            </div>
+            {(links.tradingPlatform || links.iosApp) && (
+              <div className={styles.hqActions}>
+                {links.tradingPlatform && (
+                  <a href={links.tradingPlatform} target="_blank" rel="noopener noreferrer" className="btn btn--gold">
+                    Open Marmara Trader <IconArrowRight />
+                  </a>
+                )}
+                {links.iosApp && (
+                  <a href={links.iosApp} target="_blank" rel="noopener noreferrer" className="btn btn--outline-light">
+                    Download for iOS
+                  </a>
+                )}
+              </div>
+            )}
           </aside>
         </div>
       </div>

@@ -46,9 +46,10 @@ function Newsletter() {
       <div className="container">
         <div className={styles.newsletterRow}>
           <div className={styles.newsletterCopy}>
-            <span className={styles.eyebrow}>Marmara Newsletter</span>
+            <span className={styles.eyebrow}>Marmara Insights</span>
             <h2 id="footer-newsletter-title" className={styles.newsletterTitle}>
-              Subscribe for weekly market briefs &amp; policy updates.
+              Subscribe for precious metals insights, company news and
+              responsible-sourcing updates.
             </h2>
           </div>
           <form className={styles.newsletterForm} onSubmit={submit} noValidate>
@@ -116,22 +117,26 @@ export function Footer() {
                 </span>
               </Link>
               <p className={styles.brandBlurb}>
-                Integrated trading, refining and distribution of gold, silver,
-                platinum and palladium for institutional clients across 180+
-                markets. Operating through Marmara Gold Trading LLC (Dubai, UAE).
+                Marmara Precious Metals Group provides institutional precious
+                metals trading, refining, physical settlement and logistics
+                solutions across key markets.
               </p>
               <ul className={styles.contactList}>
+                {/* Address / telephone are placeholders until the client
+                    confirms the group HQ record — do NOT publish
+                    speculative addresses; keep the labels but blank
+                    the values, or supply the confirmed strings. */}
                 <li>
                   <span className={styles.contactLabel}>Address</span>
-                  <span>Almas Tower, JLT, PO Box 111000, Dubai, UAE</span>
-                </li>
-                <li>
-                  <span className={styles.contactLabel}>Telephone</span>
-                  <a href="tel:+97144000000">+971 4 400 0000</a>
+                  <span>Al Khor Street, The Gold Center Building, Deira, Dubai, UAE</span>
                 </li>
                 <li>
                   <span className={styles.contactLabel}>Email</span>
                   <a href="mailto:info@marmaragold.ae">info@marmaragold.ae</a>
+                </li>
+                <li>
+                  <span className={styles.contactLabel}>Web</span>
+                  <a href="https://www.marmaragold.ae">www.marmaragold.ae</a>
                 </li>
               </ul>
             </div>
@@ -186,13 +191,13 @@ export function Footer() {
         <div className="container">
           <div className={styles.legalRow}>
             <p className={styles.copy}>
-              © 2026 Marmara Gold Trading LLC. All rights reserved.
+              © 2026 Marmara Precious Metals Group. All rights reserved.
             </p>
             <ul className={styles.legalLinks}>
               <li><Link to="/policies/mgt-pol-com-06">Compliance</Link></li>
               <li><Link to="/policies/mgt-pol-com-01">Privacy</Link></li>
               <li><Link to="/policies/mgt-pol-com-03">Terms of Use</Link></li>
-              <li><Link to="/policies">All Policies</Link></li>
+              <li><Link to="/policies">Compliance Library</Link></li>
             </ul>
             <ul className={styles.social} aria-label="Social media">
               <li>

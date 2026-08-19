@@ -150,7 +150,7 @@ export const catalog: CatalogProduct[] = [
     purity: "999.5",
     refiner: "LPPM-accredited",
     premium: "spot + 2.4%",
-    desc: "LPPM Good Delivery. Industrial + reserves.",
+    desc: "certified refining partners. Industrial + reserves.",
   },
   {
     slug: "platinum-100g-minted",
@@ -173,7 +173,7 @@ export const catalog: CatalogProduct[] = [
     purity: "999.5",
     refiner: "LPPM-accredited",
     premium: "spot + 3.0%",
-    desc: "Responsibly-refined palladium. LPPM Good Delivery.",
+    desc: "Responsibly-refined palladium. certified refining partners.",
   },
 ];
 

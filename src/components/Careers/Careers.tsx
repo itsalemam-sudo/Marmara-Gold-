@@ -23,7 +23,7 @@ export function Careers() {
 
           <div ref={rightRef} className={`${styles.body} reveal`}>
             <p>
-              At Marmara Gold Trading LLC, our success is built on the expertise
+              At Marmara Precious Metals Group, our success is built on the expertise
               and ambition of our people. We're looking for driven individuals
               who want to shape the future of the global precious metals industry
               — from bullion trading and refinery partnerships to market

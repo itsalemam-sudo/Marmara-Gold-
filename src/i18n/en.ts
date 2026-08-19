@@ -37,7 +37,7 @@ export const en = {
       after:    "trading",
     },
     lead:
-      "At Marmara Gold Trading LLC, we deliver integrated solutions across the precious metals value chain — from physical trading and refining partnerships to vaulting and settlement. Specializing in gold, silver, platinum, and palladium, we serve institutional clients in over 60 markets. Our commitment is built on transparency, compliance, and real-time execution you can trust.",
+      "At Marmara Precious Metals Group, we deliver integrated solutions across the precious metals value chain — from physical trading and refining partnerships to vaulting and settlement. Specializing in gold, silver, platinum, and palladium, we serve institutional clients in over 60 markets. Our commitment is built on transparency, compliance, and real-time execution you can trust.",
     ctas: {
       contact:      "Contact us",
       capabilities: "Our capabilities",
@@ -60,7 +60,7 @@ export const en = {
     eyebrow:    "About Marmara",
     heading:    "Dubai's gateway to the global bullion market",
     who: [
-      "Marmara Gold Trading LLC is a Dubai-based precious metals trading company, specializing in the sourcing, refining, and distribution of physical gold and bullion products. Strategically located in the UAE, we serve as a trusted partner to jewelers, refineries, financial institutions and high-net-worth clients across Asia, the Middle East, and Europe.",
+      "Marmara Precious Metals Group is a Dubai-based precious metals trading company, specializing in the sourcing, refining, and distribution of physical gold and bullion products. Strategically located in the UAE, we serve as a trusted partner to jewelers, refineries, financial institutions and high-net-worth clients across Asia, the Middle East, and Europe.",
       "With a strong reputation for integrity, reliability and compliance, we bridge international markets through seamless bullion trade, settlement, and logistics support.",
     ],
     mission: {

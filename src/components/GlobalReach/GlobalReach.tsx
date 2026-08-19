@@ -2,13 +2,25 @@ import { useReveal } from "@/hooks/useReveal";
 import { AnimatedGlobe } from "./AnimatedGlobe";
 import styles from "./GlobalReach.module.css";
 
+/**
+ * Global presence panel.
+ *
+ * Copy is deliberately quiet: no continent counts, no market counts,
+ * no "24/7 vaulting" claim — every one of those numbers on the
+ * previous version was unverified and legally risky for a firm this
+ * young. Instead the section names the metals coverage and the four
+ * confirmed geographies. Add hard figures only when Marmara publishes
+ * verified group data (Group Head of Ops sign-off).
+ */
+
 const chips = ["Gold · Au", "Silver · Ag", "Platinum · Pt", "Palladium · Pd"];
 
-const cardStats: { k: string; v: React.ReactNode }[] = [
-  { k: "Financial centers & trade hubs",  v: <><em>6</em> continents</> },
-  { k: "Institutional markets served",     v: <>60<em>+</em></> },
-  { k: "Settlement & vaulting network",    v: <><em>24</em>/7</> },
-  { k: "Regulatory alignment",             v: <><em>AML</em>/CFT</> },
+/** Confirmed offices / desks — do not add speculative locations. */
+const offices: { city: string; role: string }[] = [
+  { city: "Dubai",     role: "Group Headquarters" },
+  { city: "Hong Kong", role: "APAC Desk" },
+  { city: "Türkiye",   role: "Regional Presence" },
+  { city: "Singapore", role: "APAC Expansion" },
 ];
 
 export function GlobalReach() {
@@ -16,20 +28,20 @@ export function GlobalReach() {
   const globeRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className={`${styles.wrap} section`} id="reach" aria-label="Global reach">
+    <section className={`${styles.wrap} section`} id="reach" aria-label="Global presence">
       <div className="container">
         <div className={styles.split}>
           <div ref={copyRef} className="reveal">
-            <span className="eyebrow">Global Reach · Trusted Access</span>
+            <span className="eyebrow">Global Presence</span>
             <h2 className={styles.headline}>
-              Global reach.
+              Connecting key precious
               <br />
-              Trusted access.
+              metals markets.
             </h2>
             <p className={styles.body}>
-              Marmara's international footprint spans key financial centers and
-              strategic trade hubs across six continents — enabling us to support
-              clients almost anywhere in the world.
+              Marmara Precious Metals Group operates through a growing
+              international presence, connecting institutional and professional
+              counterparties across key precious metals markets.
             </p>
             <div className={styles.chips}>
               {chips.map((c) => (
@@ -38,10 +50,10 @@ export function GlobalReach() {
             </div>
 
             <div className={styles.mini}>
-              {cardStats.map((s, i) => (
-                <div key={i} className={styles.stat}>
-                  <span className={styles.k}>{s.k}</span>
-                  <span className={styles.v}>{s.v}</span>
+              {offices.map((o) => (
+                <div key={o.city} className={styles.stat}>
+                  <span className={styles.k}>{o.role}</span>
+                  <span className={styles.v}>{o.city}</span>
                 </div>
               ))}
             </div>

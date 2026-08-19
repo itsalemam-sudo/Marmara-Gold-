@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { nav, type NavLink } from "@/data/nav";
 import { IconMenu, IconClose, IconFlagGB, IconFlagTR } from "@/components/icons/Icons";
 import { useLockScroll } from "@/hooks/useLockScroll";
@@ -11,26 +11,51 @@ function isInternalRoute(href: string): boolean {
 }
 
 /**
- * Circular seal + wordmark. Sits at the left of the middle row.
- * Nadir Metal ships a raster PNG here; we ship a self-contained
- * SVG so the mark scales cleanly on retina without a fetch.
+ * Brand mark — sits at the left of the middle row.
+ *
+ * The mark is a crown-M motif (stylised M with a diamond finial),
+ * a code-only interpretation of the actual Marmara logo the client
+ * supplied. When the vectorised master file arrives it should be
+ * dropped in as `/public/logos/marmara-mark.svg` and the inline
+ * <svg> below swapped for `<img src="/logos/marmara-mark.svg" …>`
+ * — nothing else here needs to change.
  */
 function BrandMark() {
   return (
     <Link to="/" className={styles.brand} aria-label="Marmara Precious Metals Group — home">
       <span className={styles.brandSeal} aria-hidden>
-        <svg viewBox="0 0 56 56" width="46" height="46">
-          <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" strokeWidth="0.9" />
-          <circle cx="28" cy="28" r="22" fill="none" stroke="currentColor" strokeWidth="0.55" />
+        <svg viewBox="0 0 64 64" width="60" height="60">
+          <defs>
+            <linearGradient id="mg-mark-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"   stopColor="#b19464" />
+              <stop offset="55%"  stopColor="#8b734b" />
+              <stop offset="100%" stopColor="#6c5732" />
+            </linearGradient>
+          </defs>
+          {/* Diamond finial */}
+          <path d="M32 6l3.4 5-3.4 5-3.4-5z" fill="url(#mg-mark-grad)" />
+          {/* Curved wings sweeping out from the finial */}
           <path
-            d="M14 40V17l14 14L42 17v23"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            d="M32 16c-3 6-8 10-14 12 3-6 8-9 14-12z"
+            fill="url(#mg-mark-grad)"
           />
-          <path d="M14 43h28" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+          <path
+            d="M32 16c3 6 8 10 14 12-3-6-8-9-14-12z"
+            fill="url(#mg-mark-grad)"
+          />
+          {/* M — outer legs */}
+          <path d="M14 30h4v22h-4z" fill="url(#mg-mark-grad)" />
+          <path d="M46 30h4v22h-4z" fill="url(#mg-mark-grad)" />
+          {/* M — inner legs (short) */}
+          <path d="M22 30h3v18h-3z" fill="url(#mg-mark-grad)" />
+          <path d="M39 30h3v18h-3z" fill="url(#mg-mark-grad)" />
+          {/* M — center V */}
+          <path
+            d="M25 30l7 14 7-14h-3l-4 8-4-8z"
+            fill="url(#mg-mark-grad)"
+          />
+          {/* Base pedestal */}
+          <path d="M12 54h12v2H12zM40 54h12v2H40z" fill="url(#mg-mark-grad)" />
         </svg>
       </span>
       <span className={styles.brandWord}>
@@ -74,45 +99,9 @@ function LangSelector() {
   );
 }
 
-/**
- * Header search box — routes to /news?q= for now (until a proper
- * search endpoint exists). Nadir Metal has the same visual pattern
- * (input + magnifier icon inside a rounded pill).
- */
-function SearchBox({ compact = false }: { compact?: boolean }) {
-  const navigate = useNavigate();
-  const [q, setQ] = useState("");
-
-  const submit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!q.trim()) return;
-    navigate(`/news?q=${encodeURIComponent(q.trim())}`);
-    setQ("");
-  };
-
-  return (
-    <form
-      className={`${styles.search} ${compact ? styles.searchCompact : ""}`}
-      onSubmit={submit}
-      role="search"
-    >
-      <input
-        type="search"
-        name="q"
-        aria-label="Search"
-        placeholder="Search…"
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-      />
-      <button type="submit" aria-label="Submit search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8"/>
-          <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-        </svg>
-      </button>
-    </form>
-  );
-}
+/* SearchBox removed — no real search endpoint exists yet, and a
+   pill that only routes to `/news?q=` reads as a broken feature.
+   Re-introduce when a real content-search API is wired in. */
 
 /** One top-level desktop menu item (row 3). */
 function MenuItem({ item, onNavigate }: { item: NavLink; onNavigate: () => void }) {
@@ -194,13 +183,13 @@ export function Nav() {
           the page shell so the ticker can slot between it and the brand
           row without a duplicate tagline. */}
 
-      {/* Row 2 — brand + actions */}
+      {/* Row 2 — brand + actions. Search bar removed until a real
+          content-search API exists; language switch + hamburger stay. */}
       <div className={styles.middle}>
         <div className="container">
           <div className={styles.middleRow}>
             <BrandMark />
             <div className={styles.middleActions}>
-              <SearchBox />
               <LangSelector />
               <button
                 type="button"
@@ -249,9 +238,8 @@ export function Nav() {
           </button>
         </div>
 
-        <div className={styles.drawerSearch}>
-          <SearchBox compact />
-        </div>
+        {/* Search removed from the mobile drawer for the same reason as
+            the desktop bar — no real endpoint. */}
 
         <div className={styles.drawerList}>
           <Link to="/" className={styles.drawerLink} onClick={() => setOpenMobile(false)}>Home</Link>

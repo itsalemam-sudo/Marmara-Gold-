@@ -1,16 +1,18 @@
 import styles from "./Certifications.module.css";
 
 /**
- * Scrolling logo marquee — mirrors Nadir Metal's grayscale, endlessly
- * looping certification band below the hero. We render our seven most
- * relevant bodies as typeset "wordmarks" (SVG in a circular seal)
- * instead of raster logos so the section stays self-contained and
- * copyright-clean; swap in real PNG/SVG logos when the client hands
- * over usage rights.
+ * Accreditations & memberships band.
  *
- * The strip is duplicated inline and animated with a CSS transform;
- * `will-change: transform` and `translate3d` in the CSS keep it on the
- * compositor thread. `prefers-reduced-motion` pauses the animation.
+ * Only the six bodies the client has confirmed are shown here.
+ * We render each as a typeset seal in gold — a self-contained SVG
+ * so nothing depends on external logo files or usage-rights sign-off.
+ * When Marmara supplies the official raster logos for each body,
+ * swap `<Mark />` for `<img src="/logos/{slug}.svg" …>` inside the
+ * marquee track — nothing else needs to change.
+ *
+ * IMPORTANT: never re-add LBMA, LPPM, CME Group or Shanghai Gold
+ * Exchange to this list without written confirmation from Marmara
+ * that the relationship is active and publicly declarable.
  */
 
 type Cert = {
@@ -19,13 +21,12 @@ type Cert = {
 };
 
 const certs: Cert[] = [
-  { code: "LBMA", full: "London Bullion Market Association" },
-  { code: "DMCC", full: "Dubai Multi Commodities Centre" },
+  { code: "RJC",  full: "RJC — Code of Practices (CoC & CoP)" },
   { code: "DGCX", full: "Dubai Gold & Commodities Exchange" },
-  { code: "SBMA", full: "Singapore Bullion Market Association" },
-  { code: "RJC",  full: "Responsible Jewellery Council" },
-  { code: "CME",  full: "CME Group" },
-  { code: "SGE",  full: "Shanghai Gold Exchange" },
+  { code: "DBRG", full: "Dubai Bullion & Refinery Group" },
+  { code: "DJG",  full: "Dubai Jewellery Group" },
+  { code: "ISO",  full: "ISO 14001:2015 — Environmental Management" },
+  { code: "ISO",  full: "ISO 9001:2015 — Quality Management" },
 ];
 
 /** One marquee cell — circular seal + long-form name to its right. */
@@ -59,12 +60,12 @@ export function Certifications() {
   // Duplicate the sequence once so the scroll loops without a visible seam.
   const doubled = [...certs, ...certs];
   return (
-    <section className={styles.wrap} aria-label="Recognised market bodies">
+    <section className={styles.wrap} aria-label="Accreditations and memberships">
       <div className="container">
         <div className={styles.head}>
-          <span className={styles.eyebrow}>Aligned with</span>
+          <span className={styles.eyebrow}>Accreditations &amp; memberships</span>
           <span className={styles.headTitle}>
-            The bodies that certify institutional bullion.
+            Verified affiliations that govern how Marmara operates.
           </span>
         </div>
       </div>

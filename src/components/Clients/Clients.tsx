@@ -13,7 +13,7 @@ export function Clients() {
           <header ref={headRef} className={`${styles.head} reveal`}>
             <span className="eyebrow">Who we serve</span>
             <h2>
-              Institutional <em>counterparties</em> in 180+ markets.
+              Institutional <em>counterparties</em> in key markets.
             </h2>
             <p>
               Our client base spans the full precious-metals value chain — from
