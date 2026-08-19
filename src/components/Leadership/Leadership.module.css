@@ -165,3 +165,23 @@
   transition: color var(--dur-fast) var(--ease);
 }
 .email:hover { color: var(--gold-dark, var(--gold)); }
+
+/* Placeholder card shown while leadership data is unconfirmed. */
+.placeholder {
+  margin-top: 32px;
+  padding: 48px 32px;
+  background: #ffffff;
+  border: 1px dashed rgba(9, 24, 93, 0.18);
+  border-radius: 4px;
+  text-align: center;
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+}
+.placeholder p {
+  color: var(--slate-dark, var(--slate));
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 32rem;
+  margin: 0;
+}

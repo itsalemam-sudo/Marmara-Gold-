@@ -3,54 +3,16 @@ export type FooterColumn = {
   links: { label: string; href: string }[];
 };
 
-export const footerColumns: FooterColumn[] = [
-  {
-    title: "Shop",
-    links: [
-      { label: "Gold Bullion",       href: "#services" },
-      { label: "Silver Bullion",     href: "#services" },
-      { label: "Platinum Bars",      href: "#services" },
-      { label: "Palladium Products", href: "#services" },
-    ],
-  },
-  {
-    title: "Knowledge",
-    links: [
-      { label: "Market News",              href: "#blogs" },
-      { label: "Precious Metals Insights", href: "#blogs" },
-      { label: "How to Buy",               href: "#services" },
-      { label: "Vaulting & Storage",       href: "#services" },
-    ],
-  },
-  {
-    title: "Compliance",
-    links: [
-      { label: "RJC Code of Practices",      href: "#compliance" },
-      { label: "Anti-Bribery & Corruption",  href: "#compliance" },
-      { label: "Responsible Supply Chain",   href: "#compliance" },
-      { label: "Targeted Financial Sanctions", href: "#compliance" },
-      { label: "All 21 signed policies",     href: "#compliance" },
-    ],
-  },
-  {
-    title: "Who We Are",
-    links: [
-      { label: "About Marmara",      href: "#about" },
-      { label: "Careers",            href: "#careers" },
-      { label: "Our Global Offices", href: "#reach" },
-      { label: "Leadership Team",    href: "#leadership" },
-    ],
-  },
-  {
-    title: "Account",
-    links: [
-      { label: "Open an Account",     href: "#contact" },
-      { label: "barX Trading Platform", href: "https://marmara.ntptrader.com/" },
-      { label: "iOS App — Marmara Trader", href: "https://apps.apple.com/ae/app/marmara-trader/id6502641675" },
-      { label: "Support Center",      href: "#contact" },
-    ],
-  },
-];
+/**
+ * Legacy footer link columns.
+ *
+ * The rendered footer no longer reads from this file — it derives its
+ * nav columns directly from `src/data/nav.ts` so the header and footer
+ * stay in sync automatically. Kept here as an empty export in case a
+ * secondary surface still imports the symbol; delete once every caller
+ * is confirmed removed.
+ */
+export const footerColumns: FooterColumn[] = [];
 
 export type TrustBadge = {
   short: string;
@@ -58,12 +20,12 @@ export type TrustBadge = {
   detail: string;
 };
 
-/** 4 trust badges — copy per HTML mockup. Rendered as horizontal pills. */
-export const trustBadges: TrustBadge[] = [
-  { short: "LBMA",     name: "LBMA Recognized Partner",  detail: "" },
-  { short: "DMCC",     name: "DMCC Licensed",            detail: "" },
-  { short: "ISO",      name: "ISO Certified",            detail: "" },
-  { short: "AML/CFT",  name: "AML/CFT Compliant",        detail: "" },
-];
+/**
+ * Trust badges — deliberately empty until the client confirms which
+ * bodies Marmara can publicly claim. Do NOT re-add "LBMA" or "DMCC"
+ * without written sign-off; when the confirmed list is ready, add
+ * entries here and the compliance strip will pick them up.
+ */
+export const trustBadges: TrustBadge[] = [];
 
-export const disclaimer = `Marmara Gold Trading LLC services in the trading, refining and distribution of precious metals including gold, silver, platinum and palladium. All services are provided in accordance with applicable regulations in authorised jurisdictions and may not be available in all countries. Information on this website is for institutional and professional use only. It does not constitute an offer, solicitation, or recommendation to trade or invest. All trading involves risk. Marmara maintains strict compliance with AML/CFT policies and international standards.`;
+export const disclaimer = `Marmara Precious Metals Group provides institutional precious metals trading, refining, physical settlement and logistics solutions across key markets. Information on this website is for institutional and professional use only and does not constitute an offer, solicitation or recommendation to trade or invest. All precious metals activity carries risk. Marmara maintains AML/CFT and KYC controls aligned with UAE regulation and applicable international standards.`;

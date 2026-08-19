@@ -45,10 +45,10 @@ export const services: ServiceCard[] = [
     icon: "flame",
     title: "Refining",
     lede:
-      "Precious-metal refining to LBMA / LPPM Good Delivery — 999.9 gold, 999 silver, 999.5 PGMs.",
+      "Precious-metal refining to certified refining partners — 999.9 gold, 999 silver, 999.5 PGMs.",
     bullets: [
       "999.9 gold and 999 silver output",
-      "LBMA / LPPM Good Delivery-aligned",
+      "certified refinery partners",
       "Fire-assay settlement with COA",
     ],
     cta: { label: "Read more", href: "#services-grid" },
@@ -60,7 +60,7 @@ export const services: ServiceCard[] = [
         bullets: [
           "Gold: 999.9 fine cast and minted bars, grains, coin blanks.",
           "Silver: 999 fine cast bars (1 kg, 5 kg, 15 kg / 500 oz Good Delivery).",
-          "Platinum & Palladium: 999.5 fine cast, LPPM Good Delivery.",
+          "Platinum & Palladium: 999.5 fine cast, certified refining partners.",
           "Rhodium: sponge and salt on request.",
           "Turnaround: 3–7 days depending on lot size and metal type.",
         ],
@@ -78,10 +78,10 @@ export const services: ServiceCard[] = [
       {
         heading: "Environmental & Ethical Standards",
         body:
-          "Our partner refineries operate under LBMA Responsible Gold Guidance, RJC Chain of Custody certification, and ISO 14001 environmental management. All processes are audited annually; no cyanide-based recovery is used on artisanal material.",
+          "Our partner refineries operate under responsible-gold guidance, RJC Chain of Custody certification, and ISO 14001 environmental management. All processes are audited annually; no cyanide-based recovery is used on artisanal material.",
       },
     ],
-    standards: ["LBMA Good Delivery", "LPPM Good Delivery", "LBMA Responsible Gold Guidance", "RJC Chain of Custody", "ISO 14001"],
+    standards: ["certified refining", "certified refining partners", "responsible-gold guidance", "RJC Chain of Custody", "ISO 14001"],
     metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
   },
 
@@ -186,15 +186,15 @@ export const services: ServiceCard[] = [
     icon: "chart",
     title: "Trading",
     lede:
-      "Institutional spot and forward trading in gold, silver, platinum, palladium and rhodium — via barX.",
+      "Institutional spot and forward trading in gold, silver, platinum, palladium and rhodium ",
     bullets: [
       "Live LBMA / LPPM streaming quotes",
       "Spot, forward and swap markets",
       "iOS + web platform + REST/WS API",
     ],
-    cta: { label: "Open barX", href: "https://marmara.ntptrader.com/" },
+    cta: { label: "Contact desk", href: "/#contact" },
     hero:
-      "barX is Marmara's institutional trading platform — real-time streaming quotes on gold, silver, platinum, palladium and rhodium against live LBMA and LPPM benchmarks, position keeping, pre-trade risk limits, and a REST + WebSocket API for treasury and OMS integration. Native iOS app (Marmara Trader) mirrors the web ticket.",
+      " is Marmara's institutional trading platform — real-time streaming quotes on gold, silver, platinum, palladium and rhodium against live LBMA and LPPM benchmarks, position keeping, pre-trade risk limits, and a REST + WebSocket API for treasury and OMS integration. ",
     sections: [
       {
         heading: "Markets covered",
@@ -298,7 +298,7 @@ export const services: ServiceCard[] = [
         bullets: [
           "Allocated — specific bars by serial, held in client's name, no fungibility.",
           "Segregated — separate physical compartment inside the same vault.",
-          "Pool-account — same-metal, same-fineness, LBMA / LPPM Good Delivery.",
+          "Pool-account — same-metal, same-fineness, certified refining partners.",
           "Transit storage — short-hold during logistics, still insured.",
         ],
       },

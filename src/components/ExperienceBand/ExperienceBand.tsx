@@ -9,15 +9,19 @@ import styles from "./ExperienceBand.module.css";
  * band pauses on hover and respects `prefers-reduced-motion`.
  */
 
+/* Marquee copy — verifiable statements only. Anything referencing
+   an unconfirmed accreditation (LBMA / LPPM Good Delivery) or a
+   platform that isn't publicly live (barX / Marmara Trader) is
+   deliberately excluded. */
 const points: string[] = [
-  "LBMA Good-Delivery-aligned Refiner Sourcing",
-  "DMCC-licensed DPMS",
-  "OECD Due Diligence 5-step Framework",
-  "UAE Cabinet Resolution 74 (Targeted Sanctions)",
-  "RJC Code of Practices Commitment",
-  "ISO 14001 Environmental Management",
-  "999.9 Gold · 999 Silver · Assay-guaranteed",
-  "22 x 5 barX Real-time Coverage",
+  "RJC — Code of Practices (CoC & CoP)",
+  "DGCX Member",
+  "Dubai Bullion & Refinery Group",
+  "Dubai Jewellery Group",
+  "ISO 9001:2015 — Quality Management",
+  "ISO 14001:2015 — Environmental Management",
+  "OECD Due Diligence Guidance",
+  "UAE AML / CFT Regulatory Framework",
 ];
 
 export function ExperienceBand() {

@@ -9,12 +9,15 @@ import styles from "./ProductShowcase.module.css";
  * to the filtered /products/{filter} page.
  */
 
+/* Copy is spec-free: purity, weight and Good-Delivery claims removed
+   until the exact product specification is signed off by the client.
+   Rewrite each `detail` string with confirmed specs before launch. */
 const LINES = [
-  { key: "gold",      label: "Gold Bullion",   detail: "999.9 cast + minted bars, tola biscuits, sovereign coins.", art: "/products/gold-1kg-cast.svg",      to: "/products/gold",      accent: "#c6a15b" },
-  { key: "silver",    label: "Silver Bullion", detail: "1 kg cast, 100 g minted, 1 oz coins — 999 fine.",           art: "/products/silver-1kg-cast.svg",    to: "/products/silver",    accent: "#a8b0bb" },
-  { key: "platinum",  label: "Platinum",       detail: "1 kg cast + 100 g minted — LPPM Good Delivery.",            art: "/products/platinum-1kg-cast.svg",  to: "/products/platinum",  accent: "#8a99b0" },
-  { key: "palladium", label: "Palladium",      detail: "1 kg cast — 999.5 fine, LPPM aligned.",                     art: "/products/palladium-1kg-cast.svg", to: "/products/palladium", accent: "#7fa898" },
-  { key: "coins",     label: "Bullion Coins",  detail: "1 oz sovereign coins in gold and silver.",                  art: "/products/gold-1oz-coin.svg",      to: "/products/coins",     accent: "#c6a15b" },
+  { key: "gold",      label: "Gold Bullion",   detail: "Cast + minted bars, tola biscuits, sovereign coins.", art: "/products/gold-1kg-cast.svg",      to: "/products/gold",      accent: "#c6a15b" },
+  { key: "silver",    label: "Silver Bullion", detail: "Cast + minted bars, sovereign coins.",                 art: "/products/silver-1kg-cast.svg",    to: "/products/silver",    accent: "#a8b0bb" },
+  { key: "platinum",  label: "Platinum",       detail: "Cast + minted bars.",                                  art: "/products/platinum-1kg-cast.svg",  to: "/products/platinum",  accent: "#8a99b0" },
+  { key: "palladium", label: "Palladium",      detail: "Investment-grade cast bars.",                          art: "/products/palladium-1kg-cast.svg", to: "/products/palladium", accent: "#7fa898" },
+  { key: "coins",     label: "Bullion Coins",  detail: "Sovereign coins in gold and silver.",                  art: "/products/gold-1oz-coin.svg",      to: "/products/coins",     accent: "#c6a15b" },
 ];
 
 export function ProductShowcase() {
@@ -27,13 +30,12 @@ export function ProductShowcase() {
         <header ref={headRef} className={`${styles.head} reveal`}>
           <div>
             <span className="eyebrow">Product Lines</span>
-            <h2>Institutional bullion, <em>every metal.</em></h2>
+            <h2>Precious metals. <em>Refined for global markets.</em></h2>
           </div>
           <p>
-            Gold, silver, platinum and palladium — cast bars, minted bars,
-            tola biscuits and sovereign coins. Every line is KYC-only;
-            request a quote and a named desk officer will price against
-            live LBMA / LPPM benchmarks.
+            Explore Marmara&rsquo;s range of gold, silver, platinum and
+            palladium products, including cast bars, minted bars and
+            investment bullion.
           </p>
           <Link to="/products" className="btn btn--ghost-dark">
             See the full catalogue <IconArrowRight />

@@ -29,11 +29,15 @@ const SustainabilityIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg {...iconProps} {...props}><path d="M7 21c0-7 5-11 12-11-1 7-5 11-12 11z"/><path d="M7 21c0-4 2-7 5-9"/></svg>
 );
 
+/* Copy is deliberately claim-free: no specific accreditations
+   (LBMA / LPPM Good Delivery), no platform names not yet live
+   (barX / Marmara Trader), no invented counts ("Twenty-one signed
+   policies"). Each pillar reads as a capability, not a certification. */
 const PILLARS = [
-  { icon: RefiningIcon,       eyebrow: "01", title: "Refining",       body: "Client material routed to LBMA / LPPM Good-Delivery accredited refineries — 999.9 gold, 999 silver, 999.5 PGMs.", to: "/services/refining" },
-  { icon: TradingIcon,        eyebrow: "02", title: "Trading",        body: "Institutional streaming quotes on gold, silver, platinum and palladium via barX — 22×5 coverage, REST + WebSocket API.", to: "/services/trading" },
-  { icon: ComplianceIcon,     eyebrow: "03", title: "Compliance",     body: "Twenty-one signed corporate policies — RJC Code of Practices, OECD Due Diligence, UAE Cabinet Resolution 74 TFS.", to: "/#compliance" },
-  { icon: SustainabilityIcon, eyebrow: "04", title: "Sustainability", body: "ISO 14001-aligned environmental practices; responsibly-sourced material with full RJC Chain-of-Custody documentation.", to: "/policies/mgt-pol-com-06" },
+  { icon: RefiningIcon,       eyebrow: "01", title: "Refining & Production", body: "Refining partnerships, melting, casting and investment bullion products under the Marmara brand.", to: "/services/refining" },
+  { icon: TradingIcon,        eyebrow: "02", title: "Precious Metals Trading", body: "Institutional trading across gold, silver, platinum and palladium.", to: "/services/trading" },
+  { icon: ComplianceIcon,     eyebrow: "03", title: "Compliance & Responsible Sourcing", body: "Robust AML/CFT and KYC controls supporting transparent, compliant precious metals transactions.", to: "/#compliance" },
+  { icon: SustainabilityIcon, eyebrow: "04", title: "Physical Settlement & Logistics", body: "Secure cross-border settlement, vaulting and international precious metals logistics.", to: "/services/storage-vaulting" },
 ];
 
 export function Pillars() {

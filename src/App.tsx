@@ -1,60 +1,74 @@
 import { ScrollProgress } from "@/components/ScrollProgress/ScrollProgress";
-import { TopBar } from "@/components/TopBar/TopBar";
-import { Ticker } from "@/components/Ticker/Ticker";
 import { Nav } from "@/components/Nav/Nav";
 import { Certifications } from "@/components/Certifications/Certifications";
 import { Hero } from "@/components/Hero/Hero";
-import { Pillars } from "@/components/Pillars/Pillars";
 import { About } from "@/components/About/About";
-import { Stats } from "@/components/Stats/Stats";
-import { Timeline } from "@/components/Timeline/Timeline";
+import { Pillars } from "@/components/Pillars/Pillars";
 import { ProductShowcase } from "@/components/ProductShowcase/ProductShowcase";
 import { Services } from "@/components/Services/Services";
 import { ResponsibleSourcing } from "@/components/ResponsibleSourcing/ResponsibleSourcing";
 import { GlobalReach } from "@/components/GlobalReach/GlobalReach";
 import { ExperienceBand } from "@/components/ExperienceBand/ExperienceBand";
+import { Timeline } from "@/components/Timeline/Timeline";
 import { Leadership } from "@/components/Leadership/Leadership";
 import { NewsTeaser } from "@/components/NewsTeaser/NewsTeaser";
 import { Contact } from "@/components/Contact/Contact";
 import { Footer } from "@/components/Footer/Footer";
 
 /**
- * Homepage composition — Nadir-Metal exact cadence.
+ * Homepage composition — Marmara Precious Metals Group.
  *
- *   Header block   · TopBar (centered tagline) → Nav (brand + menu)
- *   Above the fold · Hero
- *   Trust band     · Certifications (LBMA / DMCC / DGCX / SBMA / RJC)
- *   Story          · About + Pillars (4 gold-square features) + Stats
+ *   Header block   · Nav (brand + menu)                — TopBar removed:
+ *                                                        the tagline
+ *                                                        strip added no
+ *                                                        signal and
+ *                                                        pushed the
+ *                                                        brand row down.
+ *   Above the fold · Hero                              — new headline
+ *                                                        "Precious metals.
+ *                                                        Global expertise."
+ *   Trust band     · Certifications (real accreditations only)
+ *   Story          · About + Pillars                   — Stats deleted:
+ *                                                        every value was
+ *                                                        unverified.
  *   Range          · ProductShowcase (brand-card teaser)
- *   Values         · ResponsibleSourcing (green panel)
- *   Scale          · GlobalReach (dark confidence panel)
- *   Credentials    · ExperienceBand (blue-gradient marquee, dot-separated)
- *   Heritage       · Timeline (year rail, reads as marquee)
+ *   Values         · ResponsibleSourcing               — placeholder
+ *                                                        specifics
+ *                                                        stripped.
+ *   Scale          · GlobalReach                       — no fabricated
+ *                                                        continent / market
+ *                                                        counts; real
+ *                                                        offices only.
+ *   Credentials    · ExperienceBand (dot-separated marquee)
+ *   Heritage       · Timeline (verifiable milestones)
  *   Services       · Services
- *   Team           · Leadership
+ *   Team           · Leadership (placeholder until confirmed)
  *   Editorial      · NewsTeaser
- *   Data           · Ticker (spot band, below the fold)
  *   Conversion     · Contact
  *   Footer         · Footer
  *
- * The live-price ticker sits below the fold — Nadir Metal has no
- * such strip in its header, and hiding it up top makes the hero
- * read cleaner. The data stays available further down the page for
- * the professional-audience use case.
+ * Removed for cause:
+ *   · <TopBar>    — Nadir keeps a single tagline strip; ours was
+ *                   duplicating content and cluttering the header.
+ *   · <Ticker>    — showed indicative "LIVE" spot prices that were
+ *                   not from a real market-data feed. Never re-enable
+ *                   until a live source is wired in.
+ *   · <Stats>     — every value ($4T volume, 300+ OTC, 180+ countries,
+ *                   40+ derivatives exchanges, 180+ FX markets) was
+ *                   unverified. Replace only when Marmara publishes
+ *                   verified group figures.
  */
 export default function App() {
   return (
     <>
       <a href="#main" className="skip-link">Skip to content</a>
       <ScrollProgress />
-      <TopBar />
       <Nav />
       <main id="main">
         <Hero />
         <Certifications />
         <About />
         <Pillars />
-        <Stats />
         <ProductShowcase />
         <ResponsibleSourcing />
         <GlobalReach />
@@ -63,7 +77,6 @@ export default function App() {
         <Services />
         <Leadership />
         <NewsTeaser />
-        <Ticker />
         <Contact />
       </main>
       <Footer />

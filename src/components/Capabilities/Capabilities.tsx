@@ -19,7 +19,7 @@ export function Capabilities() {
             </h2>
             <p className={styles.lede}>
               Our physical trading desk operates across the LBMA and non-LBMA
-              value chain — from LBMA Good Delivery bars to regional formats
+              value chain — from certified refining bars to regional formats
               serving jewellery, industrial and investment demand.
             </p>
           </div>
