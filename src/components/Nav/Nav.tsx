@@ -13,22 +13,23 @@ function isInternalRoute(href: string): boolean {
 /**
  * Brand mark — sits at the left of the middle row.
  *
- * The crown-M mark ships as a static SVG at /logos/marmara-mark.svg
- * (see /public/logos/) so it's fetched once per session and cached
- * indefinitely, and can be swapped for a client-supplied file at any
- * time without touching this component. The wordmark stays as HTML
- * text so it inherits the site font stack and stays selectable.
+ * The crown-M mark is the client-supplied PNG (400 × 242, ~40 KB),
+ * fetched once per session and cached indefinitely. The wordmark
+ * stays as HTML text so it inherits the site font stack and stays
+ * selectable. `fetchpriority="high"` tells the browser to pull the
+ * mark ahead of below-the-fold imagery.
  */
 function BrandMark() {
   return (
     <Link to="/" className={styles.brand} aria-label="Marmara Precious Metals Group — home">
       <span className={styles.brandSeal} aria-hidden>
         <img
-          src="/logos/marmara-mark.svg"
+          src="/logos/marmara-mark.png"
           alt=""
-          width="58"
+          width="88"
           height="53"
           decoding="async"
+          fetchPriority="high"
         />
       </span>
       <span className={styles.brandWord}>
