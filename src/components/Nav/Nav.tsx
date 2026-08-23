@@ -26,8 +26,8 @@ function BrandMark() {
         <img
           src="/logos/marmara-mark.png"
           alt=""
-          width="88"
-          height="53"
+          width="66"
+          height="52"
           decoding="async"
           fetchPriority="high"
         />
