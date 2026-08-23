@@ -98,11 +98,12 @@ export function Footer() {
               <Link to="/" className={styles.brand}>
                 <span className={styles.brandSeal} aria-hidden>
                   <img
-                    src="/logos/marmara-mark.svg"
+                    src="/logos/marmara-mark.png"
                     alt=""
-                    width="52"
+                    width="80"
                     height="48"
                     decoding="async"
+                    loading="lazy"
                   />
                 </span>
                 <span className={styles.brandWord}>
