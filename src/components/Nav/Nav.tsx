@@ -13,50 +13,23 @@ function isInternalRoute(href: string): boolean {
 /**
  * Brand mark — sits at the left of the middle row.
  *
- * The mark is a crown-M motif (stylised M with a diamond finial),
- * a code-only interpretation of the actual Marmara logo the client
- * supplied. When the vectorised master file arrives it should be
- * dropped in as `/public/logos/marmara-mark.svg` and the inline
- * <svg> below swapped for `<img src="/logos/marmara-mark.svg" …>`
- * — nothing else here needs to change.
+ * The crown-M mark ships as a static SVG at /logos/marmara-mark.svg
+ * (see /public/logos/) so it's fetched once per session and cached
+ * indefinitely, and can be swapped for a client-supplied file at any
+ * time without touching this component. The wordmark stays as HTML
+ * text so it inherits the site font stack and stays selectable.
  */
 function BrandMark() {
   return (
     <Link to="/" className={styles.brand} aria-label="Marmara Precious Metals Group — home">
       <span className={styles.brandSeal} aria-hidden>
-        <svg viewBox="0 0 64 64" width="60" height="60">
-          <defs>
-            <linearGradient id="mg-mark-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%"   stopColor="#b19464" />
-              <stop offset="55%"  stopColor="#8b734b" />
-              <stop offset="100%" stopColor="#6c5732" />
-            </linearGradient>
-          </defs>
-          {/* Diamond finial */}
-          <path d="M32 6l3.4 5-3.4 5-3.4-5z" fill="url(#mg-mark-grad)" />
-          {/* Curved wings sweeping out from the finial */}
-          <path
-            d="M32 16c-3 6-8 10-14 12 3-6 8-9 14-12z"
-            fill="url(#mg-mark-grad)"
-          />
-          <path
-            d="M32 16c3 6 8 10 14 12-3-6-8-9-14-12z"
-            fill="url(#mg-mark-grad)"
-          />
-          {/* M — outer legs */}
-          <path d="M14 30h4v22h-4z" fill="url(#mg-mark-grad)" />
-          <path d="M46 30h4v22h-4z" fill="url(#mg-mark-grad)" />
-          {/* M — inner legs (short) */}
-          <path d="M22 30h3v18h-3z" fill="url(#mg-mark-grad)" />
-          <path d="M39 30h3v18h-3z" fill="url(#mg-mark-grad)" />
-          {/* M — center V */}
-          <path
-            d="M25 30l7 14 7-14h-3l-4 8-4-8z"
-            fill="url(#mg-mark-grad)"
-          />
-          {/* Base pedestal */}
-          <path d="M12 54h12v2H12zM40 54h12v2H40z" fill="url(#mg-mark-grad)" />
-        </svg>
+        <img
+          src="/logos/marmara-mark.svg"
+          alt=""
+          width="58"
+          height="53"
+          decoding="async"
+        />
       </span>
       <span className={styles.brandWord}>
         <b>MARMARA</b>
