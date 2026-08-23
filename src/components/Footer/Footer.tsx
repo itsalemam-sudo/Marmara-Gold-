@@ -96,20 +96,15 @@ export function Footer() {
             {/* Brand column */}
             <div className={styles.brandCol}>
               <Link to="/" className={styles.brand}>
-                <span className={styles.brandSeal} aria-hidden>
-                  <img
-                    src="/logos/marmara-mark.png"
-                    alt=""
-                    width="61"
-                    height="48"
-                    decoding="async"
-                    loading="lazy"
-                  />
-                </span>
-                <span className={styles.brandWord}>
-                  <b>MARMARA</b>
-                  <small>Precious Metals Group</small>
-                </span>
+                <img
+                  className={styles.brandLockup}
+                  src="/logos/marmara-logo.png"
+                  alt="Marmara Precious Metals Group"
+                  width="98"
+                  height="80"
+                  decoding="async"
+                  loading="lazy"
+                />
               </Link>
               <p className={styles.brandBlurb}>
                 Marmara Precious Metals Group provides institutional precious

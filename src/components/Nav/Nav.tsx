@@ -11,31 +11,28 @@ function isInternalRoute(href: string): boolean {
 }
 
 /**
- * Brand mark — sits at the left of the middle row.
+ * Brand mark — the full Marmara lockup (crown-M + wordmark + rules)
+ * in a single client-supplied PNG. Rendered as one image so the
+ * proportions of the master file are preserved exactly — no HTML
+ * wordmark next to it to compete for space or drift out of sync
+ * with the print asset.
  *
- * The crown-M mark is the client-supplied PNG (400 × 242, ~40 KB),
- * fetched once per session and cached indefinitely. The wordmark
- * stays as HTML text so it inherits the site font stack and stays
- * selectable. `fetchpriority="high"` tells the browser to pull the
- * mark ahead of below-the-fold imagery.
+ * `fetchpriority="high"` pulls the header brand ahead of below-fold
+ * imagery. The container width/height in the CSS clamps the render
+ * so a future logo swap can never blow the header out.
  */
 function BrandMark() {
   return (
     <Link to="/" className={styles.brand} aria-label="Marmara Precious Metals Group — home">
-      <span className={styles.brandSeal} aria-hidden>
-        <img
-          src="/logos/marmara-mark.png"
-          alt=""
-          width="66"
-          height="52"
-          decoding="async"
-          fetchPriority="high"
-        />
-      </span>
-      <span className={styles.brandWord}>
-        <b>MARMARA</b>
-        <small>Precious Metals Group</small>
-      </span>
+      <img
+        className={styles.brandLockup}
+        src="/logos/marmara-logo.png"
+        alt="Marmara Precious Metals Group"
+        width="79"
+        height="64"
+        decoding="async"
+        fetchPriority="high"
+      />
     </Link>
   );
 }
