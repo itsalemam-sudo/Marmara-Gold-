@@ -97,19 +97,13 @@ export function Footer() {
             <div className={styles.brandCol}>
               <Link to="/" className={styles.brand}>
                 <span className={styles.brandSeal} aria-hidden>
-                  <svg viewBox="0 0 56 56" width="46" height="46">
-                    <circle cx="28" cy="28" r="26" fill="none" stroke="currentColor" strokeWidth="0.9" />
-                    <circle cx="28" cy="28" r="22" fill="none" stroke="currentColor" strokeWidth="0.55" />
-                    <path
-                      d="M14 40V17l14 14L42 17v23"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path d="M14 43h28" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-                  </svg>
+                  <img
+                    src="/logos/marmara-mark.svg"
+                    alt=""
+                    width="52"
+                    height="48"
+                    decoding="async"
+                  />
                 </span>
                 <span className={styles.brandWord}>
                   <b>MARMARA</b>

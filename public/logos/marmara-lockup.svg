@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-label="Marmara Precious Metals Group">
+  <title>Marmara Precious Metals Group</title>
+  <defs>
+    <linearGradient id="mm-lockup-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#c8a76a"/>
+      <stop offset="45%"  stop-color="#a5854f"/>
+      <stop offset="100%" stop-color="#8b6f3d"/>
+    </linearGradient>
+  </defs>
+
+  <g fill="url(#mm-lockup-gold)">
+
+    <!-- === Crown-M mark, centered top === -->
+    <g transform="translate(140 8)">
+      <!-- Diamond finial -->
+      <path d="M120 12 L128 26 L120 42 L112 26 Z"/>
+      <!-- Left wing -->
+      <path d="M118 42 C 104 52, 90 68, 78 96 L 78 210 L 90 210 L 90 106 C 100 82, 110 66, 118 56 Z"/>
+      <!-- Right wing -->
+      <path d="M122 42 C 136 52, 150 68, 162 96 L 162 210 L 150 210 L 150 106 C 140 82, 130 66, 122 56 Z"/>
+      <!-- Inner pillars -->
+      <path d="M100 96 L108 96 L108 200 L100 200 Z"/>
+      <path d="M132 96 L140 96 L140 200 L132 200 Z"/>
+      <!-- Central V -->
+      <path d="M108 96 L 120 148 L 132 96 L 126 96 L 120 128 L 114 96 Z"/>
+      <!-- Pedestal feet -->
+      <path d="M70 208 L98 208 L98 214 L70 214 Z"/>
+      <path d="M142 208 L170 208 L170 214 L142 214 Z"/>
+    </g>
+
+    <!-- === MARMARA wordmark === -->
+    <text
+      x="260"
+      y="290"
+      text-anchor="middle"
+      font-family="'Cormorant Garamond', 'Trajan Pro', Georgia, serif"
+      font-size="60"
+      font-weight="600"
+      letter-spacing="4"
+    >MARMARA</text>
+
+    <!-- === PRECIOUS METALS GROUP === -->
+    <text
+      x="260"
+      y="322"
+      text-anchor="middle"
+      font-family="'Cormorant Garamond', 'Trajan Pro', Georgia, serif"
+      font-size="22"
+      font-weight="500"
+      letter-spacing="6"
+    >PRECIOUS METALS GROUP</text>
+
+    <!-- Twin rules with tiny centered diamond -->
+    <rect x="120" y="345" width="115" height="1.2"/>
+    <rect x="285" y="345" width="115" height="1.2"/>
+    <path d="M260 342 L266 345.5 L260 349 L254 345.5 Z"/>
+
+  </g>
+</svg>
