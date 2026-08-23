@@ -100,7 +100,7 @@ export function Footer() {
                   <img
                     src="/logos/marmara-mark.png"
                     alt=""
-                    width="80"
+                    width="61"
                     height="48"
                     decoding="async"
                     loading="lazy"
