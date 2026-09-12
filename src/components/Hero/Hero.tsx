@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { IconArrowRight } from "@/components/icons/Icons";
+import { HeroScene } from "./HeroScene";
 import { links } from "@/lib/links";
 import styles from "./Hero.module.css";
 
@@ -33,20 +34,6 @@ const headlineParts: { text: string; em?: boolean }[] = [
  * bar, tola biscuit, additional coins) they land in /public/products/
  * and this component can be extended to cycle between them.
  */
-
-/** Assets Marmara has confirmed can be displayed on the public site.
- *  Each entry needs a matching file in `public/products/`. The first
- *  entry is what the Hero renders today. */
-const HERO_PRODUCT = {
-  // Client-supplied product photograph, background-stripped so the
-  // coin floats freely against the navy hero (no square white matte),
-  // then re-encoded as WebP with alpha at ~270 KB. Aspect ratio
-  // matches the trimmed source (900×883, ratio ≈ 1.02).
-  src:    "/products/marmara-silver-1oz.webp",
-  alt:    "Marmara Precious Metals — Fine Silver 1 oz coin, 999.9 purity",
-  width:  900,
-  height: 883,
-};
 
 export function Hero() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -162,20 +149,12 @@ export function Hero() {
             )}
           </div>
 
-          {/* Right column — real product photograph. Framed in a soft
-              radial glow so the object reads clearly against the navy
-              hero, plus a subtle levitation animation for depth. */}
-          <div className={styles.product}>
-            <div className={styles.productGlow} aria-hidden />
-            <img
-              className={styles.productImg}
-              src={HERO_PRODUCT.src}
-              alt={HERO_PRODUCT.alt}
-              width={HERO_PRODUCT.width}
-              height={HERO_PRODUCT.height}
-              decoding="async"
-              fetchPriority="high"
-            />
+          {/* Right column — animated silver-coin scene (rotating 3D
+              coin + constellation backdrop + halo + rays). See
+              HeroScene.tsx for the composition and HeroScene.module.css
+              for the timing. */}
+          <div className={styles.bars}>
+            <HeroScene />
           </div>
         </div>
       </div>
