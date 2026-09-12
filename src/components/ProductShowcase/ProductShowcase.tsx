@@ -17,11 +17,11 @@ import styles from "./ProductShowcase.module.css";
    Platinum + Palladium remain on stock SVG mockups until Marmara
    supplies real product shots. */
 const LINES = [
-  { key: "gold",      label: "Gold Bullion",   detail: "Cast + minted bars, tola biscuits, sovereign coins.", art: "/products/marmara-gold-1kg.webp",      to: "/products/gold",      accent: "#c6a15b", photo: true  },
-  { key: "silver",    label: "Silver Bullion", detail: "Cast + minted bars, sovereign coins.",                 art: "/products/marmara-silver-1kg.webp",    to: "/products/silver",    accent: "#a8b0bb", photo: true  },
-  { key: "platinum",  label: "Platinum",       detail: "Cast + minted bars.",                                  art: "/products/platinum-1kg-cast.svg",      to: "/products/platinum",  accent: "#8a99b0", photo: false },
-  { key: "palladium", label: "Palladium",      detail: "Investment-grade cast bars.",                          art: "/products/palladium-1kg-cast.svg",     to: "/products/palladium", accent: "#7fa898", photo: false },
-  { key: "coins",     label: "Bullion Coins",  detail: "Sovereign coins in gold and silver.",                  art: "/products/marmara-silver-1oz.webp",    to: "/products/coins",     accent: "#c6a15b", photo: true  },
+  { key: "gold",      label: "Gold Bullion",   detail: "Cast + minted bars, tola biscuits, sovereign coins.", art: "/products/marmara-gold-1kg.webp",    to: "/products/gold",      accent: "#c6a15b", photo: true  },
+  { key: "silver",    label: "Silver Bullion", detail: "Cast + minted bars, sovereign coins.",                 art: "/products/marmara-silver-1kg.webp",  to: "/products/silver",    accent: "#a8b0bb", photo: true  },
+  { key: "platinum",  label: "Platinum",       detail: "Investment-grade cast bars (Swiss refined).",          art: "/products/marmara-platinum.webp",    to: "/products/platinum",  accent: "#8a99b0", photo: true  },
+  { key: "palladium", label: "Palladium",      detail: "Investment-grade cast bars (Swiss refined).",          art: "/products/marmara-palladium.webp",   to: "/products/palladium", accent: "#7fa898", photo: true  },
+  { key: "coins",     label: "Bullion Coins",  detail: "Sovereign coins in gold and silver.",                  art: "/products/marmara-silver-1oz.webp",  to: "/products/coins",     accent: "#c6a15b", photo: true  },
 ];
 
 export function ProductShowcase() {
