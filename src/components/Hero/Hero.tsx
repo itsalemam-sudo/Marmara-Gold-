@@ -38,12 +38,14 @@ const headlineParts: { text: string; em?: boolean }[] = [
  *  Each entry needs a matching file in `public/products/`. The first
  *  entry is what the Hero renders today. */
 const HERO_PRODUCT = {
-  // The real client-supplied product photograph — 1200×1200 JPEG,
-  //        optimised down from the 1.2 MB WhatsApp upload to ~260 KB.
-  src:    "/products/marmara-silver-1oz.jpg",
+  // Client-supplied product photograph, background-stripped so the
+  // coin floats freely against the navy hero (no square white matte),
+  // then re-encoded as WebP with alpha at ~270 KB. Aspect ratio
+  // matches the trimmed source (900×883, ratio ≈ 1.02).
+  src:    "/products/marmara-silver-1oz.webp",
   alt:    "Marmara Precious Metals — Fine Silver 1 oz coin, 999.9 purity",
-  width:  620,
-  height: 620,
+  width:  900,
+  height: 883,
 };
 
 export function Hero() {
