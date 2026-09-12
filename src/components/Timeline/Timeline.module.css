@@ -23,7 +23,8 @@
 }
 @media (min-width: 900px) {
   .rail {
-    grid-template-columns: repeat(7, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     gap: 0;
     padding-top: 40px;
   }
@@ -63,10 +64,11 @@
 
 .year {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.24em;
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   color: var(--gold-dark, var(--gold));
-  text-transform: uppercase;
 }
 
 .title {
@@ -74,7 +76,13 @@
   font-size: 16px;
   font-weight: 500;
   color: var(--ink);
-  line-height: 1.25;
+  line-height: 1.3;
+  min-height: 2.6em;   /* Reserves room for a 2-line title so bodies
+                          across all columns start on the same y. */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
 }
 
 .body {
