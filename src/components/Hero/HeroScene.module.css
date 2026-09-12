@@ -1,0 +1,141 @@
+/* ================================================================
+   Hero — silver-coin scene
+   Layers (front-to-back z):
+     1. Constellation dots (twinkling)
+     2. Radiating light rays (slowly spinning)
+     3. Gold halo ring (breathing pulse)
+     4. Central 3D coin — Y-axis flip + gentle levitation
+   ================================================================ */
+
+.wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  perspective: 1200px;
+}
+
+/* --- Layer 1: constellation ---------------------------------- */
+.constellation {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  animation: slow-spin 200s linear infinite;
+}
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 245, 208, 0.75);
+  box-shadow: 0 0 6px rgba(255, 245, 208, 0.55);
+  animation: star-twinkle 3s ease-in-out infinite;
+  opacity: 0.7;
+}
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50%      { opacity: 1;    transform: scale(1.1);  }
+}
+@keyframes slow-spin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* --- Layer 2: radial light rays ------------------------------ */
+.rays {
+  position: absolute;
+  inset: -6%;
+  z-index: 2;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(198, 161, 91, 0.14) 0deg,
+    rgba(198, 161, 91, 0.14) 4deg,
+    transparent 4deg,
+    transparent 30deg
+  );
+  -webkit-mask-image: radial-gradient(closest-side, #000 30%, transparent 72%);
+          mask-image: radial-gradient(closest-side, #000 30%, transparent 72%);
+  animation: rays-spin 22s linear infinite;
+}
+@keyframes rays-spin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(-360deg); }
+}
+
+/* --- Layer 3: gold halo ring --------------------------------- */
+.halo {
+  position: absolute;
+  inset: 16%;
+  z-index: 3;
+  border-radius: 50%;
+  animation: halo-pulse 4s ease-in-out infinite;
+}
+.halo::before,
+.halo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(198, 161, 91, 0.35);
+  opacity: 0.85;
+}
+.halo::after { inset: -8%; opacity: 0.55; }
+@keyframes halo-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.7; }
+  50%      { transform: scale(1.05); opacity: 1;   }
+}
+
+/* --- Layer 4: 3D coin ---------------------------------------- */
+.coinFrame {
+  position: absolute;
+  inset: 15%;
+  transform-style: preserve-3d;
+  z-index: 4;
+  animation: coin-spin 14s linear infinite,
+             coin-breathe 6s ease-in-out infinite;
+  filter: drop-shadow(0 30px 40px rgba(6, 15, 36, 0.55));
+  will-change: transform;
+}
+@keyframes coin-spin {
+  from { transform: rotateY(0deg);   }
+  to   { transform: rotateY(360deg); }
+}
+@keyframes coin-breathe {
+  0%, 100% { translate: 0 0;    }
+  50%      { translate: 0 -6px; }
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.faceBack {
+  /* Same photograph on the back, flipped 180° round the Y-axis so
+     it sits behind the front face, plus mirrored so the coin still
+     reads as a coin during the flip. */
+  transform: rotateY(180deg);
+}
+.faceBack .faceImg {
+  transform: scaleX(-1);
+}
+.faceImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* --- Reduced motion: quiet everything down ------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .constellation,
+  .rays,
+  .halo,
+  .coinFrame,
+  .star {
+    animation: none;
+  }
+}
