@@ -26,12 +26,12 @@
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     gap: 0;
-    padding-top: 40px;
+    padding-top: 24px;
   }
   .rail::before {
     content: "";
     position: absolute;
-    top: 52px;
+    top: 30px;
     left: 3%;
     right: 3%;
     height: 1px;
@@ -47,7 +47,7 @@
   gap: 6px;
 }
 @media (min-width: 900px) {
-  .item { text-align: center; align-items: center; padding-top: 36px; }
+  .item { text-align: center; align-items: center; padding-top: 52px; gap: 8px; }
 }
 
 .dot {
@@ -59,7 +59,7 @@
   margin-bottom: 6px;
 }
 @media (min-width: 900px) {
-  .dot { position: absolute; top: 46px; left: 50%; transform: translateX(-50%); }
+  .dot { position: absolute; top: 24px; left: 50%; transform: translateX(-50%); margin: 0; }
 }
 
 .year {
