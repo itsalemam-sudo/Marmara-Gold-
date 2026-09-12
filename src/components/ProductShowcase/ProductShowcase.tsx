@@ -11,13 +11,17 @@ import styles from "./ProductShowcase.module.css";
 
 /* Copy is spec-free: purity, weight and Good-Delivery claims removed
    until the exact product specification is signed off by the client.
-   Rewrite each `detail` string with confirmed specs before launch. */
+   Rewrite each `detail` string with confirmed specs before launch.
+   `photo: true` swaps the tile art to a real client-supplied photo
+   at natural aspect ratio (bars are portrait, the coin is square).
+   Platinum + Palladium remain on stock SVG mockups until Marmara
+   supplies real product shots. */
 const LINES = [
-  { key: "gold",      label: "Gold Bullion",   detail: "Cast + minted bars, tola biscuits, sovereign coins.", art: "/products/gold-1kg-cast.svg",      to: "/products/gold",      accent: "#c6a15b" },
-  { key: "silver",    label: "Silver Bullion", detail: "Cast + minted bars, sovereign coins.",                 art: "/products/silver-1kg-cast.svg",    to: "/products/silver",    accent: "#a8b0bb" },
-  { key: "platinum",  label: "Platinum",       detail: "Cast + minted bars.",                                  art: "/products/platinum-1kg-cast.svg",  to: "/products/platinum",  accent: "#8a99b0" },
-  { key: "palladium", label: "Palladium",      detail: "Investment-grade cast bars.",                          art: "/products/palladium-1kg-cast.svg", to: "/products/palladium", accent: "#7fa898" },
-  { key: "coins",     label: "Bullion Coins",  detail: "Sovereign coins in gold and silver.",                  art: "/products/gold-1oz-coin.svg",      to: "/products/coins",     accent: "#c6a15b" },
+  { key: "gold",      label: "Gold Bullion",   detail: "Cast + minted bars, tola biscuits, sovereign coins.", art: "/products/marmara-gold-1kg.webp",      to: "/products/gold",      accent: "#c6a15b", photo: true  },
+  { key: "silver",    label: "Silver Bullion", detail: "Cast + minted bars, sovereign coins.",                 art: "/products/marmara-silver-1kg.webp",    to: "/products/silver",    accent: "#a8b0bb", photo: true  },
+  { key: "platinum",  label: "Platinum",       detail: "Cast + minted bars.",                                  art: "/products/platinum-1kg-cast.svg",      to: "/products/platinum",  accent: "#8a99b0", photo: false },
+  { key: "palladium", label: "Palladium",      detail: "Investment-grade cast bars.",                          art: "/products/palladium-1kg-cast.svg",     to: "/products/palladium", accent: "#7fa898", photo: false },
+  { key: "coins",     label: "Bullion Coins",  detail: "Sovereign coins in gold and silver.",                  art: "/products/marmara-silver-1oz.webp",    to: "/products/coins",     accent: "#c6a15b", photo: true  },
 ];
 
 export function ProductShowcase() {
@@ -50,7 +54,7 @@ export function ProductShowcase() {
               className={styles.card}
               style={{ ["--accent" as string]: l.accent }}
             >
-              <div className={styles.art}>
+              <div className={`${styles.art} ${l.photo ? styles.artPhoto : ""}`}>
                 <img src={l.art} alt="" loading="lazy" />
               </div>
               <div className={styles.body}>
