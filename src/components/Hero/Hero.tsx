@@ -38,11 +38,9 @@ const headlineParts: { text: string; em?: boolean }[] = [
  *  Each entry needs a matching file in `public/products/`. The first
  *  entry is what the Hero renders today. */
 const HERO_PRODUCT = {
-  // TODO — flip `.svg` → `.png` the moment the client uploads the real
-  //        product photograph at `public/products/marmara-silver-1oz.png`.
-  //        Both placeholder and photo share the same base name so the
-  //        commit that swaps them is a one-character change here.
-  src:    "/products/marmara-silver-1oz.svg",
+  // The real client-supplied product photograph — 1200×1200 JPEG,
+  //        optimised down from the 1.2 MB WhatsApp upload to ~260 KB.
+  src:    "/products/marmara-silver-1oz.jpg",
   alt:    "Marmara Precious Metals — Fine Silver 1 oz coin, 999.9 purity",
   width:  620,
   height: 620,
