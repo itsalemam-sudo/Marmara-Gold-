@@ -87,21 +87,30 @@
 /* --- Layer 4: 3D coin ---------------------------------------- */
 .coinFrame {
   position: absolute;
-  inset: 15%;
+  inset: 14%;
   transform-style: preserve-3d;
   z-index: 4;
-  animation: coin-spin 14s linear infinite,
+  /* Composed animation:
+     - coin-hover:   ±20° Y + ±5° X sway, 9 s cycle. Never edge-on,
+                     so the coin always reads as a coin — depth comes
+                     from the swing, not a full flip.
+     - coin-breathe: 6 s up-and-down levitation for weightlessness. */
+  animation: coin-hover 9s ease-in-out infinite,
              coin-breathe 6s ease-in-out infinite;
-  filter: drop-shadow(0 30px 40px rgba(6, 15, 36, 0.55));
+  filter: drop-shadow(0 40px 60px rgba(6, 15, 36, 0.55))
+          drop-shadow(0 12px 20px rgba(6, 15, 36, 0.35));
   will-change: transform;
 }
-@keyframes coin-spin {
-  from { transform: rotateY(0deg);   }
-  to   { transform: rotateY(360deg); }
+@keyframes coin-hover {
+  0%   { transform: rotateY(-20deg) rotateX(4deg);  }
+  25%  { transform: rotateY(  0deg) rotateX(0deg);  }
+  50%  { transform: rotateY( 20deg) rotateX(-4deg); }
+  75%  { transform: rotateY(  0deg) rotateX(0deg);  }
+  100% { transform: rotateY(-20deg) rotateX(4deg);  }
 }
 @keyframes coin-breathe {
   0%, 100% { translate: 0 0;    }
-  50%      { translate: 0 -6px; }
+  50%      { translate: 0 -8px; }
 }
 
 .face {
@@ -112,15 +121,6 @@
   overflow: hidden;
   display: grid;
   place-items: center;
-}
-.faceBack {
-  /* Same photograph on the back, flipped 180° round the Y-axis so
-     it sits behind the front face, plus mirrored so the coin still
-     reads as a coin during the flip. */
-  transform: rotateY(180deg);
-}
-.faceBack .faceImg {
-  transform: scaleX(-1);
 }
 .faceImg {
   width: 100%;

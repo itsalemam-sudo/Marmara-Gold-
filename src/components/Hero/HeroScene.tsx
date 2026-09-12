@@ -29,10 +29,10 @@ export function HeroScene() {
       {/* Layer 3 — pulsing gold halo ring */}
       <div className={styles.halo} />
 
-      {/* Layer 4 — 3D coin (rotates on Y-axis, breathes up/down).
-          Front and back both render the same silver photograph; the
-          back face is mirrored so the coin still reads coin-shaped
-          during the flip. */}
+      {/* Layer 4 — 3D coin. Rocks gently on Y and X axes so it
+          always reads as a coin (never fully edge-on). A single face
+          is enough — the sway never rotates past ±20°, so the back
+          would never be seen anyway. */}
       <div className={styles.coinFrame}>
         <div className={styles.face}>
           <img
@@ -42,16 +42,6 @@ export function HeroScene() {
             height="883"
             decoding="async"
             fetchPriority="high"
-            className={styles.faceImg}
-          />
-        </div>
-        <div className={`${styles.face} ${styles.faceBack}`}>
-          <img
-            src="/products/marmara-silver-1oz.webp"
-            alt=""
-            width="900"
-            height="883"
-            decoding="async"
             className={styles.faceImg}
           />
         </div>
