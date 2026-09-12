@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 620" role="img" aria-label="Fine silver 1 oz coin — awaiting real product photograph">
+  <defs>
+    <radialGradient id="silver-body" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0%"  stop-color="#e9edf2"/>
+      <stop offset="55%" stop-color="#b7bec9"/>
+      <stop offset="100%" stop-color="#5f6772"/>
+    </radialGradient>
+    <linearGradient id="silver-rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2f5f8"/>
+      <stop offset="100%" stop-color="#6b7580"/>
+    </linearGradient>
+  </defs>
+  <circle cx="310" cy="310" r="298" fill="url(#silver-rim)" opacity="0.5"/>
+  <circle cx="310" cy="310" r="270" fill="url(#silver-body)"/>
+  <circle cx="310" cy="310" r="200" fill="none" stroke="#8a929c" stroke-width="1.6"/>
+  <circle cx="310" cy="310" r="150" fill="#2c3138"/>
+  <g fill="#e9edf2" transform="translate(310 310)">
+    <!-- Simple lotus silhouette -->
+    <path d="M0 40 c-38 -6 -60 -30 -60 -60 c22 -4 42 4 60 20 c18 -16 38 -24 60 -20 c0 30 -22 54 -60 60z"/>
+    <path d="M0 20 c-24 -20 -50 -22 -74 -10 c-6 -30 12 -60 40 -60 c14 0 26 8 34 18 c8 -10 20 -18 34 -18 c28 0 46 30 40 60 c-24 -12 -50 -10 -74 10z" opacity="0.85"/>
+  </g>
+  <text x="310" y="120" text-anchor="middle" fill="#e9edf2" font-family="Poppins, sans-serif" font-size="26" letter-spacing="6">FINE SILVER</text>
+  <text x="310" y="510" text-anchor="middle" fill="#e9edf2" font-family="Poppins, sans-serif" font-size="20" letter-spacing="4">999.9 · 1 OZ</text>
+  <text x="310" y="546" text-anchor="middle" fill="#a5adb7" font-family="Poppins, sans-serif" font-size="11" letter-spacing="4">MARMARA PRECIOUS METALS · ISTANBUL · TURKEY</text>
+  <text x="310" y="600" text-anchor="middle" fill="#c34a4a" font-family="Poppins, sans-serif" font-size="12">placeholder — replace with client product photo</text>
+</svg>
