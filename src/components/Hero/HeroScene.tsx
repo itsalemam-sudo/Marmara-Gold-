@@ -1,50 +1,38 @@
 import styles from "./HeroScene.module.css";
 
 /**
- * Hero visual — the same cinematic backdrop we've always shipped
- * (constellation dots, radiating light rays, pulsing halo ring,
- * central 3-D coin flipping on its Y-axis, gentle up-and-down
- * levitation), but with the client's real Fine Silver 1 oz coin
- * photograph as the coin face instead of the previous CSS-drawn
- * gold token.
+ * Hero visual — the client-supplied Fine Silver 1 oz coin
+ * photograph presented AS SHOT: original studio backdrop
+ * preserved, framed in a soft-edged product card so it reads
+ * as a museum display piece rather than a poorly cut-out sticker.
  *
- * Deliberately NOT restored from the original HeroScene:
- *   · The four orbiting metal-price satellites (Au / Ag / Pt / Pd)
- *     — those were sourced from usePrices(), which is not wired
- *     to a licensed live market-data feed, so presenting them
- *     under a "LIVE" badge was misleading.
- *   · The "LIVE · AU 999.9 · MENA DESK" pill — same reason.
+ * Two earlier attempts (full 3-D flip + background-stripped
+ * transparent WebP) both introduced artifacts around the coin's
+ * plastic capsule edge — the capsule reflects light in ways that
+ * defeat threshold-based alpha compositing. The right answer for
+ * a product photograph like this one is: don't fight the source,
+ * frame it.
  *
- * Every animation gates on prefers-reduced-motion (see CSS).
+ * The card floats gently up-and-down (7 s), constellation dots
+ * twinkle behind. No fake price bubbles, no LIVE badge.
  */
 export function HeroScene() {
   return (
     <div className={styles.wrap} aria-hidden>
-      {/* Layer 1 — constellation backdrop */}
+      {/* Constellation backdrop */}
       <ConstellationBackdrop />
 
-      {/* Layer 2 — slowly rotating light rays behind the coin */}
-      <div className={styles.rays} />
-
-      {/* Layer 3 — pulsing gold halo ring */}
-      <div className={styles.halo} />
-
-      {/* Layer 4 — 3D coin. Rocks gently on Y and X axes so it
-          always reads as a coin (never fully edge-on). A single face
-          is enough — the sway never rotates past ±20°, so the back
-          would never be seen anyway. */}
-      <div className={styles.coinFrame}>
-        <div className={styles.face}>
-          <img
-            src="/products/marmara-silver-1oz.webp"
-            alt=""
-            width="900"
-            height="883"
-            decoding="async"
-            fetchPriority="high"
-            className={styles.faceImg}
-          />
-        </div>
+      {/* Product card — the coin photograph in an ivory frame */}
+      <div className={styles.card}>
+        <img
+          src="/products/marmara-silver-1oz.jpg"
+          alt=""
+          width="1000"
+          height="1000"
+          decoding="async"
+          fetchPriority="high"
+          className={styles.cardImg}
+        />
       </div>
     </div>
   );
