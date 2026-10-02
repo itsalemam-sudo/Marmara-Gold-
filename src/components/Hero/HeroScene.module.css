@@ -14,6 +14,9 @@
   inset: 0;
   z-index: 1;
   animation: slow-spin 200s linear infinite;
+  display: none;    /* Hidden on the paper hero — the stars read as
+                       dust specks against cream. Restore if the
+                       background returns to navy. */
 }
 .star {
   position: absolute;
@@ -42,9 +45,9 @@
   border-radius: 50%;
   background:
     radial-gradient(closest-side,
-      rgba(198, 161, 91, 0.42) 0%,
-      rgba(198, 161, 91, 0.18) 35%,
-      rgba(198, 161, 91, 0.05) 60%,
+      rgba(198, 161, 91, 0.30) 0%,
+      rgba(198, 161, 91, 0.14) 35%,
+      rgba(198, 161, 91, 0.04) 60%,
       transparent 80%);
   filter: blur(14px);
   animation: glow-pulse 6s ease-in-out infinite;
@@ -61,8 +64,8 @@
   max-height: 86%;
   margin: auto;
   object-fit: contain;
-  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5))
-          drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+  filter: drop-shadow(0 24px 36px rgba(9, 24, 93, 0.22))
+          drop-shadow(0 8px 14px rgba(9, 24, 93, 0.15));
   animation: coin-float 7s ease-in-out infinite;
   will-change: transform;
 }
