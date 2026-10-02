@@ -41,9 +41,6 @@ export function ProductShowcase() {
             palladium products, including cast bars, minted bars and
             investment bullion.
           </p>
-          <Link to="/products" className="btn btn--ghost-dark">
-            See the full catalogue <IconArrowRight />
-          </Link>
         </header>
 
         <div ref={gridRef} className={`${styles.grid} reveal`}>
