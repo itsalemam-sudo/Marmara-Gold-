@@ -6,7 +6,7 @@
  * accreditations (LBMA/LPPM Good Delivery), and platform names that
  * are not yet live in production (barX / Marmara Trader).
  *
- *   /corporate/{section}    /products{|/filter}
+ *   /corporate/{section}
  *   /services/{slug}        /policies/{code-slug}
  *   /news                   /#contact
  */
@@ -35,20 +35,6 @@ export const nav: NavLink[] = [
       { label: "Leadership",     href: "/corporate/leadership", desc: "Senior team steering the desk." },
       { label: "Global Presence", href: "/corporate/offices",   desc: "Dubai HQ and international footprint." },
       { label: "Careers",        href: "/corporate/careers",    desc: "Join a compliance-first bullion group." },
-    ],
-  },
-
-  {
-    label: "Product",
-    href: "/products",
-    children: [
-      { label: "All Products",   href: "/products",           desc: "The full precious metals range." },
-      { label: "Gold Bullion",   href: "/products/gold",      desc: "Cast + minted bars, coins, tola biscuits." },
-      { label: "Silver Bullion", href: "/products/silver",    desc: "Cast + minted bars and coins." },
-      { label: "Platinum",       href: "/products/platinum",  desc: "Cast + minted bars." },
-      { label: "Palladium",      href: "/products/palladium", desc: "Investment-grade cast bars." },
-      { label: "Coins",          href: "/products/coins",     desc: "Sovereign coins in gold and silver." },
-      { label: "Bars",           href: "/products/bars",      desc: "Cast and minted bars." },
     ],
   },
 

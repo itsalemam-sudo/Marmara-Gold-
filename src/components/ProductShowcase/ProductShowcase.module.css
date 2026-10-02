@@ -80,20 +80,6 @@
   line-height: 1.6;
   flex: 1;
 }
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding-top: 10px;
-  margin-top: 8px;
-  border-top: 1px dashed rgba(10, 24, 50, 0.1);
-  color: var(--gold);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
 /* Photo tiles — real client-supplied WebP with alpha. Give them a
    taller aspect ratio (portrait bars) plus a proper drop shadow so
    the metal reads as a physical object on the cream ground. */
