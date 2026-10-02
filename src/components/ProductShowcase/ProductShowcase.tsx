@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
-import { IconArrowRight } from "@/components/icons/Icons";
 import { useReveal } from "@/hooks/useReveal";
 import styles from "./ProductShowcase.module.css";
 
 /**
  * Product line teaser — 5 tiles (Gold, Silver, Platinum, Palladium,
- * Coins). Each uses the hand-crafted SVG mockup as its art and links
- * to the filtered /products/{filter} page.
+ * Coins). Display-only — tiles are intentionally NOT clickable.
+ * There's no public /products/* catalogue page any more; the
+ * homepage showcase is the whole product surface.
  */
 
 /* Copy is spec-free: purity, weight and Good-Delivery claims removed
@@ -17,11 +16,11 @@ import styles from "./ProductShowcase.module.css";
    Platinum + Palladium remain on stock SVG mockups until Marmara
    supplies real product shots. */
 const LINES = [
-  { key: "gold",      label: "Gold Bullion",   detail: "Cast + minted bars, tola biscuits, sovereign coins.", art: "/products/marmara-gold-1kg.webp",    to: "/products/gold",      accent: "#c6a15b", photo: true  },
-  { key: "silver",    label: "Silver Bullion", detail: "Cast + minted bars, sovereign coins.",                 art: "/products/marmara-silver-1kg.webp",  to: "/products/silver",    accent: "#a8b0bb", photo: true  },
-  { key: "platinum",  label: "Platinum",       detail: "Investment-grade cast bars (Swiss refined).",          art: "/products/marmara-platinum.webp",    to: "/products/platinum",  accent: "#8a99b0", photo: true  },
-  { key: "palladium", label: "Palladium",      detail: "Investment-grade cast bars (Swiss refined).",          art: "/products/marmara-palladium.webp",   to: "/products/palladium", accent: "#7fa898", photo: true  },
-  { key: "coins",     label: "Bullion Coins",  detail: "Sovereign coins in gold and silver.",                  art: "/products/marmara-silver-1oz.webp",  to: "/products/coins",     accent: "#c6a15b", photo: true  },
+  { key: "gold",      label: "Gold Bullion",   detail: "Cast + minted bars, tola biscuits, sovereign coins.", art: "/products/marmara-gold-1kg.webp",      accent: "#c6a15b", photo: true  },
+  { key: "silver",    label: "Silver Bullion", detail: "Cast + minted bars, sovereign coins.",                 art: "/products/marmara-silver-1kg.webp",    accent: "#a8b0bb", photo: true  },
+  { key: "platinum",  label: "Platinum",       detail: "Investment-grade cast bars (Swiss refined).",          art: "/products/marmara-platinum.webp",  accent: "#8a99b0", photo: true  },
+  { key: "palladium", label: "Palladium",      detail: "Investment-grade cast bars (Swiss refined).",          art: "/products/marmara-palladium.webp", accent: "#7fa898", photo: true  },
+  { key: "coins",     label: "Bullion Coins",  detail: "Sovereign coins in gold and silver.",                  art: "/products/marmara-silver-1oz.webp",     accent: "#c6a15b", photo: true  },
 ];
 
 export function ProductShowcase() {
@@ -45,9 +44,8 @@ export function ProductShowcase() {
 
         <div ref={gridRef} className={`${styles.grid} reveal`}>
           {LINES.map((l) => (
-            <Link
+            <div
               key={l.key}
-              to={l.to}
               className={styles.card}
               style={{ ["--accent" as string]: l.accent }}
             >
@@ -57,9 +55,8 @@ export function ProductShowcase() {
               <div className={styles.body}>
                 <h3 className={styles.title}>{l.label}</h3>
                 <p className={styles.detail}>{l.detail}</p>
-                <span className={styles.cta}>Explore <IconArrowRight /></span>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

@@ -20,7 +20,6 @@ import "./styles/global.css";
  */
 const ServicePage   = lazy(() => import("./pages/ServicePage/ServicePage").then(m => ({ default: m.ServicePage })));
 const PolicyPage    = lazy(() => import("./pages/PolicyPage/PolicyPage").then(m => ({ default: m.PolicyPage })));
-const ProductsPage  = lazy(() => import("./pages/ProductsPage/ProductsPage").then(m => ({ default: m.ProductsPage })));
 const CorporatePage = lazy(() => import("./pages/CorporatePage/CorporatePage").then(m => ({ default: m.CorporatePage })));
 const NewsPage      = lazy(() => import("./pages/NewsPage/NewsPage").then(m => ({ default: m.NewsPage })));
 
@@ -53,9 +52,6 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/" element={<App />} />
 
             <Route path="/services/:slug" element={<ServicePage />} />
-
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/products/:filter" element={<ProductsPage />} />
 
             <Route path="/policies/:code" element={<PolicyPage />} />
 
