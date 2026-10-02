@@ -1,39 +1,31 @@
 import styles from "./HeroScene.module.css";
 
 /**
- * Hero visual — the client-supplied Fine Silver 1 oz coin
- * photograph presented AS SHOT: original studio backdrop
- * preserved, framed in a soft-edged product card so it reads
- * as a museum display piece rather than a poorly cut-out sticker.
+ * Hero visual — the client's Fine Silver 1 oz coin photograph,
+ * cleanly background-removed with a neural matting model (rembg
+ * isnet-general-use), rendered directly against the navy hero
+ * with a soft gold glow behind it and a gentle levitation loop.
  *
- * Two earlier attempts (full 3-D flip + background-stripped
- * transparent WebP) both introduced artifacts around the coin's
- * plastic capsule edge — the capsule reflects light in ways that
- * defeat threshold-based alpha compositing. The right answer for
- * a product photograph like this one is: don't fight the source,
- * frame it.
- *
- * The card floats gently up-and-down (7 s), constellation dots
- * twinkle behind. No fake price bubbles, no LIVE badge.
+ * Previous attempts stumbled on the plastic capsule the coin
+ * sits inside — threshold-based alpha removal couldn't tell
+ * reflections from backdrop, leaving jagged artefacts. The
+ * neural pass preserves the capsule rim and the subtle shadow
+ * under the coin while cleanly killing the studio white.
  */
 export function HeroScene() {
   return (
     <div className={styles.wrap} aria-hidden>
-      {/* Constellation backdrop */}
       <ConstellationBackdrop />
-
-      {/* Product card — the coin photograph in an ivory frame */}
-      <div className={styles.card}>
-        <img
-          src="/products/marmara-silver-1oz.jpg"
-          alt=""
-          width="1000"
-          height="1000"
-          decoding="async"
-          fetchPriority="high"
-          className={styles.cardImg}
-        />
-      </div>
+      <div className={styles.coinGlow} />
+      <img
+        src="/products/marmara-silver-1oz.webp"
+        alt=""
+        width="913"
+        height="897"
+        decoding="async"
+        fetchPriority="high"
+        className={styles.coin}
+      />
     </div>
   );
 }
