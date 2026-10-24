@@ -21,7 +21,7 @@ apt install -y nodejs
 mkdir -p /opt/marmara-gold
 cd /opt/marmara-gold
 git clone https://github.com/itsalemam-sudo/Marmara-Gold-.git .
-git checkout claude/new-session-srajt4
+git checkout main
 npm ci
 npm run build
 
