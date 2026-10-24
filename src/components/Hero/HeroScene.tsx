@@ -20,8 +20,8 @@ export function HeroScene() {
       <img
         src="/products/marmara-silver-1oz.webp"
         alt=""
-        width="813"
-        height="797"
+        width="629"
+        height="657"
         decoding="async"
         fetchPriority="high"
         className={styles.coin}
