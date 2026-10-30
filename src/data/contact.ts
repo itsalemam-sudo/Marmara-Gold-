@@ -40,5 +40,5 @@ export const hq = {
     "The Gold Center Building — Shop No. G071 & G072, Deira, Dubai, UAE",
   hours: "Sun–Thu · 09:00–18:00 GST",
   website: "www.marmaragold.ae",
-  general: "webmaster@marmaragold.ae",
+  general: "info@marmaragold.ae",
 };

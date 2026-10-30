@@ -166,12 +166,13 @@ export function InquiryForm() {
       </header>
 
       <div className={styles.row}>
-        <Field label="I am a…" error={errors.clientType} full>
+        <Field label="I am a…" error={errors.clientType} required full>
           <select
             className={styles.select}
             value={f.clientType}
             onChange={(e) => setF({ ...f, clientType: e.target.value })}
             required
+            aria-required="true"
           >
             <option value="">— Select client type —</option>
             {CLIENT_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
@@ -180,51 +181,61 @@ export function InquiryForm() {
       </div>
 
       <div className={styles.row}>
-        <Field label="First name" error={errors.firstName}>
+        <Field label="First name" error={errors.firstName} required>
           <input
             className={styles.input}
             value={f.firstName}
             onChange={(e) => setF({ ...f, firstName: e.target.value })}
             autoComplete="given-name"
+            required
+            aria-required="true"
           />
         </Field>
-        <Field label="Last name" error={errors.lastName}>
+        <Field label="Last name" error={errors.lastName} required>
           <input
             className={styles.input}
             value={f.lastName}
             onChange={(e) => setF({ ...f, lastName: e.target.value })}
             autoComplete="family-name"
+            required
+            aria-required="true"
           />
         </Field>
       </div>
 
       <div className={styles.row}>
-        <Field label="Company" error={errors.company}>
+        <Field label="Company" error={errors.company} required>
           <input
             className={styles.input}
             value={f.company}
             onChange={(e) => setF({ ...f, company: e.target.value })}
             autoComplete="organization"
+            required
+            aria-required="true"
           />
         </Field>
-        <Field label="Country" error={errors.country}>
+        <Field label="Country" error={errors.country} required>
           <input
             className={styles.input}
             value={f.country}
             onChange={(e) => setF({ ...f, country: e.target.value })}
             autoComplete="country-name"
+            required
+            aria-required="true"
           />
         </Field>
       </div>
 
       <div className={styles.row}>
-        <Field label="Business email" error={errors.email}>
+        <Field label="Business email" error={errors.email} required>
           <input
             type="email"
             className={styles.input}
             value={f.email}
             onChange={(e) => setF({ ...f, email: e.target.value })}
             autoComplete="email"
+            required
+            aria-required="true"
           />
         </Field>
         <Field label="Phone">
@@ -313,11 +324,23 @@ export function InquiryForm() {
 /* --- helpers --- */
 
 function Field({
-  label, children, error, full,
-}: { label: string; children: React.ReactNode; error?: string; full?: boolean }) {
+  label, children, error, full, required,
+}: {
+  label: string;
+  children: React.ReactNode;
+  error?: string;
+  full?: boolean;
+  /** Shows a visible asterisk after the label; marker only — the form's
+   *  own validator remains the source of truth for which fields are
+   *  mandatory. */
+  required?: boolean;
+}) {
   return (
     <label className={`${styles.field} ${full ? styles.full : ""}`}>
-      <span className={styles.fieldLabel}>{label}</span>
+      <span className={styles.fieldLabel}>
+        {label}
+        {required && <span aria-hidden="true" style={{ color: "var(--gold)", marginLeft: 4 }}>*</span>}
+      </span>
       {children}
       {error && <span className={styles.err}>{error}</span>}
     </label>

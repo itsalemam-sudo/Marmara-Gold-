@@ -53,7 +53,7 @@ export const segments: Segment[] = [
   {
     key: "jewelry",
     label: "Jewellery",
-    segment: "Jewelry manufacturers & retailers",
+    segment: "Jewellery manufacturers & retailers",
     intro:
       "Sourcing, custom minting and buyback programs for the jewellery value chain.",
     solutions: [

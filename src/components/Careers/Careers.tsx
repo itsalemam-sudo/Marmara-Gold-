@@ -14,11 +14,15 @@ export function Careers() {
           <div ref={leftRef} className="reveal">
             <span className="eyebrow">{careers.eyebrow}</span>
             <h2 className={styles.headline}>{careers.headline}</h2>
-            <div className={styles.roles}>
-              {careers.roles.map((r) => (
-                <a key={r} href="#contact" className={styles.role}>{r}</a>
-              ))}
-            </div>
+            {/* Role chips hidden until actual vacancies exist. Replace with
+                real postings (title/location/apply link) when supplied. */}
+            {false && (
+              <div className={styles.roles}>
+                {careers.roles.map((r) => (
+                  <span key={r} className={styles.role}>{r}</span>
+                ))}
+              </div>
+            )}
           </div>
 
           <div ref={rightRef} className={`${styles.body} reveal`}>
@@ -35,8 +39,17 @@ export function Careers() {
               value, and innovation across the gold, silver, platinum, and
               palladium markets.
             </p>
-            <a href="#contact" className="btn btn--gold" style={{ marginTop: 14 }}>
-              View open roles <IconArrowRight />
+            {/* The old "View open roles" CTA pointed at #contact which did
+                nothing from this page. Until an ATS link or a dedicated
+                careers mailbox is confirmed by the owner, route interested
+                applicants to the general enquiry mailbox with a career
+                subject so HR can triage. */}
+            <a
+              href="mailto:info@marmaragold.ae?subject=Career%20enquiry"
+              className="btn btn--gold"
+              style={{ marginTop: 14 }}
+            >
+              Send us your CV <IconArrowRight />
             </a>
           </div>
         </div>

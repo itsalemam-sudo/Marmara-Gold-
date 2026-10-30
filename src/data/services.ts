@@ -45,7 +45,7 @@ export const services: ServiceCard[] = [
     icon: "flame",
     title: "Refining",
     lede:
-      "Precious-metal refining to certified refining partners — 999.9 gold, 999 silver, 999.5 PGMs.",
+      "Precious-metal refining through certified refinery partners — 999.9 gold, 999 silver, 999.5 PGMs.",
     bullets: [
       "999.9 gold and 999 silver output",
       "certified refinery partners",

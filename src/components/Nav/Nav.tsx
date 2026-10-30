@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { nav, type NavLink } from "@/data/nav";
-import { IconMenu, IconClose, IconFlagGB, IconFlagTR } from "@/components/icons/Icons";
+import { IconMenu, IconClose, IconFlagGB } from "@/components/icons/Icons";
 import { useLockScroll } from "@/hooks/useLockScroll";
 import styles from "./Nav.module.css";
 
@@ -38,31 +38,22 @@ function BrandMark() {
 }
 
 /**
- * Language selector — TR / EN flags exactly like Nadir Metal. The
- * button toggles document.documentElement.lang and persists the
- * choice in localStorage; wire to full i18n once TR strings ship.
+ * Language selector — currently English only.
+ *
+ * The TR flag previously toggled document.documentElement.lang but the
+ * content did not actually translate (no i18n framework was wired in),
+ * which the website review flagged. The TR button is suppressed until
+ * full Turkish copy and a working i18n layer are shipped. The EN flag
+ * is retained so the "Language" control still has a visible state.
  */
 function LangSelector() {
-  const set = (l: "en" | "tr") => {
-    document.documentElement.lang = l;
-    try { localStorage.setItem("mg:lang", l); } catch { /* ignore */ }
-  };
   return (
     <div className={styles.lang} role="group" aria-label="Language">
       <button
         type="button"
         className={styles.flagBtn}
-        aria-label="Türkçe"
-        onClick={() => set("tr")}
-      >
-        <IconFlagTR />
-      </button>
-      <button
-        type="button"
-        className={styles.flagBtn}
         aria-current="true"
         aria-label="English"
-        onClick={() => set("en")}
       >
         <IconFlagGB />
       </button>

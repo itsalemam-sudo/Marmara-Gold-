@@ -155,7 +155,7 @@
 
 .lead {
   font-size: clamp(16px, 1.6vw, 18px);
-  color: #c3cddd;
+  color: var(--slate-dark, #3a4660);
   max-width: 640px;
   margin-bottom: 38px;
   line-height: 1.7;

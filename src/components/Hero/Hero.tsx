@@ -118,10 +118,10 @@ export function Hero() {
               counterparties around the world.
             </p>
             <div className={styles.actions}>
-              <a href="#contact" className="btn btn--gold">
+              <a href="/#contact" className="btn btn--gold">
                 Contact our team <IconArrowRight />
               </a>
-              <a href="#about" className="btn btn--ghost-light">
+              <a href="/#about" className="btn btn--ghost-dark">
                 Explore our business <IconArrowRight />
               </a>
             </div>

@@ -1,12 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { nav } from "@/data/nav";
-import {
-  IconLinkedIn,
-  IconX,
-  IconYouTube,
-  IconArrowRight,
-} from "@/components/icons/Icons";
+import { IconArrowRight } from "@/components/icons/Icons";
 import styles from "./Footer.module.css";
 
 /**
@@ -184,28 +179,16 @@ export function Footer() {
               © 2026 Marmara Precious Metals Group. All rights reserved.
             </p>
             <ul className={styles.legalLinks}>
-              <li><Link to="/policies/mgt-pol-com-06">Compliance</Link></li>
-              <li><Link to="/policies/mgt-pol-com-01">Privacy</Link></li>
-              <li><Link to="/policies/mgt-pol-com-03">Terms of Use</Link></li>
-              <li><Link to="/policies">Compliance Library</Link></li>
+              {/* Compliance Library → the on-page section listing all 21 policies.
+                  Privacy → the actual Data Privacy & Record Keeping Policy (COM-015).
+                  Terms of Use is withheld until a reviewed Terms document exists —
+                  linking the previous slug (COM-03) returned the homepage. */}
+              <li><Link to="/#compliance">Compliance Library</Link></li>
+              <li><Link to="/policies/mgt-pol-com-015">Privacy</Link></li>
             </ul>
-            <ul className={styles.social} aria-label="Social media">
-              <li>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <IconLinkedIn />
-                </a>
-              </li>
-              <li>
-                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
-                  <IconX />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                  <IconYouTube />
-                </a>
-              </li>
-            </ul>
+            {/* Social-media icons are hidden until approved Marmara profile
+                URLs are supplied. Previous links routed to platform
+                homepages, flagged in the website review. */}
           </div>
         </div>
       </div>

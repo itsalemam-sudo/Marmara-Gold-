@@ -101,10 +101,10 @@ export function About() {
             <p>{about.close.body}</p>
           </div>
           <div className={styles.closerActions}>
-            <a href="#contact" className="btn btn--gold">
+            <a href="/#contact" className="btn btn--gold">
               {about.close.cta} <IconArrowRight />
             </a>
-            <a href="#products" className="btn btn--secondary">
+            <a href="/#products" className="btn btn--secondary">
               Browse products
             </a>
           </div>

@@ -41,25 +41,34 @@ export const nav: NavLink[] = [
   {
     label: "Services",
     href: "/services/refining",
+    // Labels below match the destination page titles exactly. The previous
+    // labels ("Compliance & Responsible Sourcing" → Laboratory page, "Market
+    // Solutions" → Small Bar page, "Physical Settlement & Logistics" →
+    // Storage page) were flagged in the website review for misdirecting
+    // users. Rename a service PAGE if you want its label back; do not
+    // reintroduce a label that doesn't describe the destination.
     children: [
-      { label: "Precious Metals Trading",     href: "/services/trading",              desc: "Gold, silver, platinum, palladium." },
-      { label: "Refining & Production",       href: "/services/refining",             desc: "Refining partnerships and Marmara-branded bars." },
-      { label: "Physical Settlement & Logistics", href: "/services/storage-vaulting", desc: "Cross-border settlement, vaulting, secure logistics." },
-      { label: "Compliance & Responsible Sourcing", href: "/services/laboratory-analysis", desc: "AML/CFT, KYC, responsible-sourcing framework." },
-      { label: "Market Solutions",            href: "/services/small-bar-production", desc: "Competitive pricing and tailored solutions." },
+      { label: "Precious Metals Trading",   href: "/services/trading",              desc: "Gold, silver, platinum, palladium." },
+      { label: "Refining & Production",     href: "/services/refining",             desc: "Refining partnerships and Marmara-branded bars." },
+      { label: "Storage & Vaulting",        href: "/services/storage-vaulting",     desc: "Cross-border settlement, vaulting, secure logistics." },
+      { label: "Laboratory & Analysis",     href: "/services/laboratory-analysis",  desc: "XRF, fire-assay and ICP-MS testing." },
+      { label: "Small Bar Production",      href: "/services/small-bar-production", desc: "Marmara-branded minted bars from 1 g to 100 g." },
     ],
   },
 
   {
     label: "Compliance",
-    href: "/policies/mgt-pol-com-01",
+    // Opens the on-page Policies section that lists every policy as a
+    // filterable grid — the actual "library". Each policy card below
+    // deep-links to the modal view for that specific document.
+    href: "/#compliance",
     children: [
-      { label: "Compliance Library",         href: "/policies/mgt-pol-com-01", desc: "The full policy set." },
-      { label: "Responsible Sourcing",       href: "/policies/mgt-pol-com-05" },
-      { label: "Anti-Bribery & Corruption",  href: "/policies/mgt-pol-com-04" },
-      { label: "Human Rights",               href: "/policies/mgt-pol-com-02" },
+      { label: "Compliance Library",           href: "/#compliance",                   desc: "The full policy set." },
+      { label: "Responsible Sourcing",         href: "/policies/mgt-pol-com-05" },
+      { label: "Anti-Bribery & Corruption",    href: "/policies/mgt-pol-com-04" },
+      { label: "Human Rights",                 href: "/policies/mgt-pol-com-02" },
       { label: "AML/CFT Regulatory Framework", href: "/policies/mgt-pol-com-07" },
-      { label: "Data Privacy",               href: "/policies/mgt-pol-com-015" },
+      { label: "Data Privacy",                 href: "/policies/mgt-pol-com-015" },
     ],
   },
 

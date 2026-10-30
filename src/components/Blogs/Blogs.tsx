@@ -18,7 +18,7 @@ function buildBody(post: BlogPost): string[] {
   const paragraphs = [
     post.excerpt,
     `Marmara's ${post.category.toLowerCase()} team continues to see steady institutional flow into the ${post.tags[0]} desk. Premiums remain firm across regional formats and settlement windows have compressed as vaulting partners scale capacity in ${post.tags[1]}.`,
-    `From an execution standpoint, real-time pricing against LBMA and LPPM benchmarks has been critical this cycle. Counterparties are asking for tighter spreads on structured programs — particularly kilo and tola formats — and we are meeting that with a widened refinery network.`,
+    `From an execution standpoint, real-time pricing against LBMA and LPPM benchmarks has been critical this cycle. Counterparties are asking for tighter spreads on structured programmes — particularly kilo and tola formats — and we are meeting that with a widened refinery network.`,
     `Compliance is the other constant. AML/CFT screening remains embedded at every stage of onboarding, and our chain-of-custody reporting has been extended so vaulting partners and auditors can reconcile positions in near real-time.`,
     `We expect the ${post.tags[2]} theme to remain relevant over the next two quarters. Clients seeking coverage on ${post.tags[0]} — whether physical or via settlement rails — should reach out to the Marmara desk to align on limits, custody and delivery terms.`,
   ];

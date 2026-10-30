@@ -14,7 +14,7 @@ export const capabilities: Capability[] = [
   },
   {
     title: "Bullion coins & certified collectibles",
-    detail: "Sovereign issues — Britannia, Maple Leaf, Philharmonic and regional programs.",
+    detail: "Sovereign issues — Britannia, Maple Leaf, Philharmonic and regional programmes.",
   },
   {
     title: "Semi-refined materials & doré gold",
