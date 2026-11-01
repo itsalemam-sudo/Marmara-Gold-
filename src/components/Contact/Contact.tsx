@@ -43,7 +43,7 @@ export function Contact() {
             <h3 className={styles.hqTitle}>Headquarters</h3>
 
             <div className={styles.hqBlock}>
-              <span className={styles.hqLabel}>Address</span>
+              <span className={styles.hqLabel}>Main office</span>
               <span className={styles.hqValue}>{hq.address}</span>
             </div>
             <div className={styles.hqBlock}>
@@ -51,16 +51,42 @@ export function Contact() {
               <span className={styles.hqValue}>{hq.branch}</span>
             </div>
             <div className={styles.hqBlock}>
-              <span className={styles.hqLabel}>Hours</span>
+              <span className={styles.hqLabel}>Office hours</span>
               <span className={styles.hqValue}>{hq.hours}</span>
             </div>
             <div className={styles.hqBlock}>
-              <span className={styles.hqLabel}>General</span>
+              <span className={styles.hqLabel}>Trading desk</span>
+              <span className={styles.hqValue}>22 hours a day, 5 days a week</span>
+            </div>
+            <div className={styles.hqBlock}>
+              <span className={styles.hqLabel}>Telephone</span>
+              <span className={styles.hqValue}>
+                <a href={hq.phoneHref}>{hq.phone}</a>
+              </span>
+            </div>
+            <div className={styles.hqBlock}>
+              <span className={styles.hqLabel}>WhatsApp</span>
+              <span className={styles.hqValue}>
+                <a href={hq.whatsappHref} target="_blank" rel="noopener noreferrer">
+                  {hq.phone}
+                </a>
+              </span>
+            </div>
+            <div className={styles.hqBlock}>
+              <span className={styles.hqLabel}>General enquiries</span>
               <span className={styles.hqValue}>
                 <a href={`mailto:${hq.general}`}>{hq.general}</a>
-                <br />
-                {hq.website}
               </span>
+            </div>
+            <div className={styles.hqBlock}>
+              <span className={styles.hqLabel}>Careers</span>
+              <span className={styles.hqValue}>
+                <a href={`mailto:${hq.careers}`}>{hq.careers}</a>
+              </span>
+            </div>
+            <div className={styles.hqBlock}>
+              <span className={styles.hqLabel}>Website</span>
+              <span className={styles.hqValue}>{hq.website}</span>
             </div>
 
             {/* Trading platform + iOS blocks are gated on real URLs

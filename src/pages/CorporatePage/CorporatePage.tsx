@@ -4,7 +4,6 @@ import { Nav } from "@/components/Nav/Nav";
 import { TopBar } from "@/components/TopBar/TopBar";
 import { Footer } from "@/components/Footer/Footer";
 import { About } from "@/components/About/About";
-import { Leadership } from "@/components/Leadership/Leadership";
 import { GlobalReach } from "@/components/GlobalReach/GlobalReach";
 import { Careers } from "@/components/Careers/Careers";
 import { Stats } from "@/components/Stats/Stats";
@@ -37,7 +36,7 @@ const SECTIONS: Record<string, CorporateSection> = {
     crumbLabel: "About Marmara",
     title: "Marmara Precious Metals Group",
     lede:
-      "An integrated precious-metals house operating out of Dubai — trading, refining partnerships, vaulting and settlement across gold, silver, platinum and palladium. Legal entity: Marmara Gold Trading LLC (DMCC-licensed DPMS).",
+      "An integrated precious-metals house operating out of Dubai — trading, refining partnerships, custody and settlement across gold, silver, platinum and palladium. Operating entity: Marmara Gold Trading LLC, licensed by the Dubai Department of Economy and Tourism (DET).",
     primaryCta: { label: "Contact the desk", href: "/#contact" },
     render: () => (
       <>
@@ -46,21 +45,17 @@ const SECTIONS: Record<string, CorporateSection> = {
       </>
     ),
   },
-  leadership: {
-    section: "Leadership",
-    crumbLabel: "Leadership",
-    title: "The Marmara leadership desk",
-    lede:
-      "Senior officers accountable for the desk — every mandate, every trade, every audit. Named coverage from the point of onboarding through settlement and reconciliation.",
-    primaryCta: { label: "Contact leadership", href: "/#contact" },
-    render: () => <Leadership />,
-  },
+  /* Leadership route intentionally omitted. The owner has instructed us to
+     hide the leadership section (no placeholder bios / invented photos)
+     until approved names, titles and biographies are supplied. The nav
+     entry is removed in src/data/nav.ts; direct navigation to
+     /corporate/leadership falls through to the 404 branch of this page. */
   offices: {
     section: "Global Offices",
     crumbLabel: "Global Offices",
-    title: "Marmara desks & vault locations",
+    title: "Marmara offices",
     lede:
-      "Head office in Dubai's Deira Gold Souk district, with partner desks and vaulting in London, Zürich and Singapore. Coverage in every LBMA / LPPM session window.",
+      "Dubai head office, with Marmara offices in Saudi Arabia, Türkiye, Hong Kong and Singapore. Custody and logistics are arranged through specialist providers in Dubai, London, Zürich, Hong Kong and Thailand.",
     primaryCta: { label: "Contact the desk", href: "/#contact" },
     render: () => <GlobalReach />,
   },

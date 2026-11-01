@@ -21,12 +21,10 @@ type Cert = {
 };
 
 const certs: Cert[] = [
-  { code: "RJC",  full: "RJC — Code of Practices (CoC & CoP)" },
-  { code: "DGCX", full: "Dubai Gold & Commodities Exchange" },
-  { code: "DBRG", full: "Dubai Bullion & Refinery Group" },
-  { code: "DJG",  full: "Dubai Jewellery Group" },
-  { code: "ISO",  full: "ISO 14001:2015 — Environmental Management" },
-  { code: "ISO",  full: "ISO 9001:2015 — Quality Management" },
+  { code: "RJC",  full: "RJC — Code of Practices (CoP) & Chain of Custody (CoC)" },
+  { code: "DGCX", full: "Dubai Gold & Commodities Exchange — member" },
+  { code: "ISO",  full: "ISO 9001 — Quality Management" },
+  { code: "ISO",  full: "ISO 14001 — Environmental Management" },
 ];
 
 /** One marquee cell — circular seal + long-form name to its right. */

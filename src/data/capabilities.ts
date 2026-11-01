@@ -9,27 +9,27 @@ export type Capability = {
  */
 export const capabilities: Capability[] = [
   {
-    title: "LBMA and non-LBMA gold bars",
-    detail: "Kilo bars, 100 g, tola bars and large-format cast bars, direct from accredited refiners.",
+    title: "Marmara-branded gold bars",
+    detail: "Kilo bars, 100 g, tola bars and large-format cast bars from certified refinery partners.",
   },
   {
-    title: "Bullion coins & certified collectibles",
-    detail: "Sovereign issues — Britannia, Maple Leaf, Philharmonic and regional programmes.",
+    title: "Bullion coins",
+    detail: "1 oz investment-grade bullion coins in gold and silver.",
   },
   {
-    title: "Semi-refined materials & doré gold",
-    detail: "Upstream flow from mine to refinery for institutional and industrial buyers.",
+    title: "Semi-refined materials & doré",
+    detail: "Upstream flow from source to refinery for professional and industrial buyers.",
   },
   {
     title: "Recycled & scrap precious metals",
-    detail: "Closed-loop recovery and refining aligned to responsible-sourcing standards.",
+    detail: "Jewellery scrap, dross, sweepings and filings — recovered under responsible-sourcing standards.",
   },
 ];
 
 export const marginBanner = {
-  eyebrow: "Margin trading",
-  headline: "Institutional-grade liquidity, executed against live LBMA and LPPM benchmarks.",
+  eyebrow: "Trading",
+  headline: "Institutional spot trading across gold, silver, platinum and palladium.",
   detail:
-    "Access leveraged positions with secure margin accounts, structured purchase plans for hedging and budgeting, and dedicated account management for seamless execution and reporting.",
-  cta: { label: "Open an Account", href: "#contact" },
+    "Settlement in USD, AED, EUR, GBP, SAR and HKD. Settlement timelines are agreed with the client according to the transaction type. Trading desk coverage 22 hours a day, five days a week.",
+  cta: { label: "Open an Account", href: "/#contact" },
 };

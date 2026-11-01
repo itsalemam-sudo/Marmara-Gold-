@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { nav } from "@/data/nav";
-import { IconArrowRight } from "@/components/icons/Icons";
+import { hq } from "@/data/contact";
+import { IconLinkedIn, IconArrowRight } from "@/components/icons/Icons";
 import styles from "./Footer.module.css";
 
 /**
@@ -107,21 +108,23 @@ export function Footer() {
                 solutions across key markets.
               </p>
               <ul className={styles.contactList}>
-                {/* Address / telephone are placeholders until the client
-                    confirms the group HQ record — do NOT publish
-                    speculative addresses; keep the labels but blank
-                    the values, or supply the confirmed strings. */}
                 <li>
                   <span className={styles.contactLabel}>Address</span>
-                  <span>Al Khor Street, The Gold Center Building, Deira, Dubai, UAE</span>
+                  <span>{hq.address}</span>
+                </li>
+                <li>
+                  <span className={styles.contactLabel}>Telephone</span>
+                  <a href={hq.phoneHref}>{hq.phone}</a>
+                </li>
+                <li>
+                  <span className={styles.contactLabel}>WhatsApp</span>
+                  <a href={hq.whatsappHref} target="_blank" rel="noopener noreferrer">
+                    {hq.phone}
+                  </a>
                 </li>
                 <li>
                   <span className={styles.contactLabel}>Email</span>
-                  <a href="mailto:info@marmaragold.ae">info@marmaragold.ae</a>
-                </li>
-                <li>
-                  <span className={styles.contactLabel}>Web</span>
-                  <a href="https://www.marmaragold.ae">www.marmaragold.ae</a>
+                  <a href={`mailto:${hq.general}`}>{hq.general}</a>
                 </li>
               </ul>
             </div>
@@ -179,16 +182,21 @@ export function Footer() {
               © 2026 Marmara Precious Metals Group. All rights reserved.
             </p>
             <ul className={styles.legalLinks}>
-              {/* Compliance Library → the on-page section listing all 21 policies.
-                  Privacy → the actual Data Privacy & Record Keeping Policy (COM-015).
-                  Terms of Use is withheld until a reviewed Terms document exists —
-                  linking the previous slug (COM-03) returned the homepage. */}
               <li><Link to="/#compliance">Compliance Library</Link></li>
               <li><Link to="/policies/mgt-pol-com-015">Privacy</Link></li>
             </ul>
-            {/* Social-media icons are hidden until approved Marmara profile
-                URLs are supplied. Previous links routed to platform
-                homepages, flagged in the website review. */}
+            <ul className={styles.social} aria-label="Social media">
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/marmara-gold-trading-llc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Marmara Gold Trading LLC on LinkedIn"
+                >
+                  <IconLinkedIn />
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

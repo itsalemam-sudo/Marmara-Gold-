@@ -53,16 +53,15 @@ export const services: ServiceCard[] = [
     ],
     cta: { label: "Read more", href: "#services-grid" },
     hero:
-      "Marmara routes client material to LBMA and LPPM Good-Delivery accredited refineries for conversion into investment-grade bullion — 999.9 fine gold, 999 fine silver, and 999.5 fine platinum-group metals. Full chain-of-custody documentation from receipt through pour to certified output, with turnaround measured in days rather than weeks.",
+      "Marmara routes client material to certified refinery partners for conversion into investment-grade bullion — 999.9 fine gold, 999 fine silver, and 999.5 fine platinum-group metals. Full chain-of-custody documentation from receipt through pour to certified output, with turnaround within 48 hours.",
     sections: [
       {
         heading: "Capabilities",
         bullets: [
           "Gold: 999.9 fine cast and minted bars, grains, coin blanks.",
-          "Silver: 999 fine cast bars (1 kg, 5 kg, 15 kg / 500 oz Good Delivery).",
-          "Platinum & Palladium: 999.5 fine cast, certified refining partners.",
-          "Rhodium: sponge and salt on request.",
-          "Turnaround: 3–7 days depending on lot size and metal type.",
+          "Silver: 999 fine cast bars (1 kg, 5 kg, 15 kg).",
+          "Platinum & Palladium: 999.5 fine cast, through certified refinery partners.",
+          "Turnaround: within 48 hours.",
         ],
       },
       {
@@ -70,19 +69,19 @@ export const services: ServiceCard[] = [
         bullets: [
           "Receiving weight witnessed and dual-signed on intake.",
           "XRF pre-check for indicative fineness on arrival.",
-          "Certified fire assay (cupellation) for gold, gravimetric for silver.",
+          "Fire assay (cupellation) for gold; gravimetric for silver.",
           "Certificate of Analysis (COA) issued with every lot.",
-          "Client elects to settle in refined metal or cash at LBMA fix.",
+          "Client elects to settle in refined metal or cash at an agreed fix.",
         ],
       },
       {
         heading: "Environmental & Ethical Standards",
         body:
-          "Our partner refineries operate under responsible-gold guidance, RJC Chain of Custody certification, and ISO 14001 environmental management. All processes are audited annually; no cyanide-based recovery is used on artisanal material.",
+          "Marmara aligns with the RJC Code of Practices and holds ISO 14001 (Marmara Gold Trading LLC). Partner refineries operate under responsible-gold guidance; no cyanide-based recovery is used on artisanal material.",
       },
     ],
-    standards: ["certified refining", "certified refining partners", "responsible-gold guidance", "RJC Chain of Custody", "ISO 14001"],
-    metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
+    standards: ["RJC Code of Practices", "RJC Chain of Custody", "ISO 14001"],
+    metals: ["Gold", "Silver", "Platinum", "Palladium"],
   },
 
   /* ---------------------------------------------------------------- */
@@ -93,15 +92,15 @@ export const services: ServiceCard[] = [
     icon: "recycle",
     title: "Recycling & Recovery",
     lede:
-      "Recovery of gold, silver and PGMs from jewellery scrap, industrial dross, sweepings and electronic waste.",
+      "Recovery of gold and silver from jewellery scrap, dross, sweepings and filings.",
     bullets: [
       "Jewellery scrap 18K–24K",
       "Dross, sweepings, filings",
-      "Electronic scrap and catalyst material",
+      "RJC Chain of Custody chain",
     ],
     cta: { label: "Read more", href: "#services-grid" },
     hero:
-      "A regulated route to convert bench sweepings, doré, jewellery scrap, plated stock and electronic scrap into settled refined metal — assayed transparently, priced against live LBMA / LPPM benchmarks, and documented for RJC and OECD Due Diligence Guidance compliance.",
+      "A regulated route to convert jewellery scrap, dross, sweepings and refinery grain into settled refined metal — assayed transparently and documented in line with the RJC Chain of Custody. Electronic-waste and industrial-catalyst recycling are under study and not currently offered.",
     sections: [
       {
         heading: "What we recover",
@@ -109,27 +108,30 @@ export const services: ServiceCard[] = [
           "Jewellery scrap — 18K to 24K, karat separation on-site.",
           "Refinery grain, sponge, filings and sweepings.",
           "Industrial dross from casting and rolling floors.",
-          "Electronic scrap — PCBs, connectors, plated components.",
-          "Spent catalyst (PGM) material from industrial processes.",
         ],
       },
       {
         heading: "Process",
         bullets: [
-          "01 · Intake — sealed receipt with dual-signature at counter, camera-recorded.",
-          "02 · Sampling & Assay — representative sample, XRF then fire assay for final number.",
-          "03 · Price — locked at your election against live LBMA fix or spot benchmark.",
-          "04 · Settle — AED / USD / EUR wire on assay confirmation, typically T+0 to T+1.",
+          "01 · Intake — sealed receipt with dual-signature at counter.",
+          "02 · Sampling & Assay — representative sample, XRF then fire assay for the final number.",
+          "03 · Price — locked at the client's election against an agreed benchmark.",
+          "04 · Settle — settlement in an approved currency (USD, AED, EUR, GBP, SAR, HKD); timeline agreed per transaction.",
         ],
       },
       {
         heading: "Due diligence",
         body:
-          "OECD Due Diligence Guidance is applied to every seller onboarding. High-risk material triggers enhanced due diligence, chain-of-custody verification and, where required, refusal of business. All flows are logged for RJC audit.",
+          "OECD Due Diligence Guidance is applied to every seller onboarding. High-risk material triggers enhanced due diligence, chain-of-custody verification and, where required, refusal of business.",
+      },
+      {
+        heading: "Not currently offered",
+        body:
+          "Electronic-waste recycling, industrial-catalyst recycling and rhodium refining are under study and are not currently part of the available service.",
       },
     ],
-    standards: ["OECD DDG Aligned", "RJC Chain of Custody", "LBMA Responsible Sourcing", "AML/CFT Compliant"],
-    metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
+    standards: ["OECD DDG Aligned", "RJC Chain of Custody", "AML/CFT Aligned"],
+    metals: ["Gold", "Silver"],
   },
 
   /* ---------------------------------------------------------------- */
@@ -148,7 +150,7 @@ export const services: ServiceCard[] = [
     ],
     cta: { label: "Read more", href: "#services-grid" },
     hero:
-      "Marmara-branded minted bars for retail counterparties, private banks and gifting programmes. Every bar carries the Marmara M monogram, is sealed in a tamper-evident assay card with a matching numbered certificate, and is backed by the same LBMA-refiner chain of custody as our institutional lines.",
+      "Marmara-branded minted bars for retail counterparties, private banks and gifting programmes. Every bar carries the Marmara M monogram, a serial number matching the certificate, security packaging and a QR verification code.",
     sections: [
       {
         heading: "Formats",
@@ -162,10 +164,9 @@ export const services: ServiceCard[] = [
       {
         heading: "Security features",
         bullets: [
-          "Sealed tamper-evident PVC assay card with visible break-strip.",
-          "Serial number laser-etched on the bar and printed on the card.",
-          "QR code on card links to the online provenance registry.",
-          "Certificate signed by the assay office of the source refinery.",
+          "Serial number laser-etched on the bar, matching the certificate.",
+          "Tamper-evident security packaging.",
+          "QR verification code on the card.",
         ],
       },
       {
@@ -174,7 +175,7 @@ export const services: ServiceCard[] = [
           "Small bars are supplied under wholesale terms to KYC-verified counterparties — private banks, licensed retail dealers, jewellery groups and gifting programmes. Direct retail sales run through partners in the Deira Gold Souk.",
       },
     ],
-    standards: ["LBMA Refiner Chain of Custody", "RJC Code of Practices", "DMCC Licensed"],
+    standards: ["RJC Code of Practices", "RJC Chain of Custody"],
     metals: ["Gold", "Silver"],
   },
 
@@ -186,46 +187,42 @@ export const services: ServiceCard[] = [
     icon: "chart",
     title: "Trading",
     lede:
-      "Institutional spot and forward trading in gold, silver, platinum, palladium and rhodium ",
+      "Institutional spot trading in gold, silver, platinum and palladium.",
     bullets: [
-      "Live LBMA / LPPM streaming quotes",
-      "Spot, forward and swap markets",
-      "iOS + web platform + REST/WS API",
+      "Spot in Au, Ag, Pt, Pd",
+      "Unallocated metal accounts",
+      "Desktop, mobile and API connectivity",
     ],
     cta: { label: "Contact desk", href: "/#contact" },
     hero:
-      " is Marmara's institutional trading platform — real-time streaming quotes on gold, silver, platinum, palladium and rhodium against live LBMA and LPPM benchmarks, position keeping, pre-trade risk limits, and a REST + WebSocket API for treasury and OMS integration. ",
+      "Marmara Trader is Marmara's institutional trading platform — covering gold, silver, platinum and palladium, with position keeping, pre-trade risk controls and API connectivity for treasury and OMS integration. Available on desktop and mobile.",
     sections: [
       {
         heading: "Markets covered",
         bullets: [
-          "Spot in Au, Ag, Pt, Pd, Rh vs USD / EUR / AED.",
-          "Forwards up to 12 months on Au and Ag.",
-          "Loco Dubai / London / Zürich physical delivery.",
-          "Unallocated pool metal for treasury balance sheets.",
+          "Spot in gold, silver, platinum and palladium.",
+          "Unallocated metal accounts for treasury balance sheets.",
+          "Settlement currencies: USD, AED, EUR, GBP, SAR, HKD.",
+          "Settlement timelines are agreed with the client according to the transaction type.",
         ],
       },
       {
-        heading: "Platform capabilities",
+        heading: "Platform",
         bullets: [
-          "Streaming L1 quotes with 5 ms tick resolution.",
+          "Desktop and mobile access.",
+          "API connectivity for treasury and OMS integration.",
           "RFQ ticket for large lots above the block threshold.",
-          "Pre-trade risk limits — notional, VaR, drawdown, per-metal exposure.",
-          "Post-trade blotter with T+0 settlement instructions.",
+          "Pre-trade risk controls and per-metal exposure limits.",
         ],
       },
       {
-        heading: "Integration",
-        bullets: [
-          "REST API for quote pull, order entry, and reporting export.",
-          "WebSocket channels for streaming quotes and order-status updates.",
-          "FIX 4.4 gateway available on request for OMS bridge.",
-          "SSO via SAML 2.0 for enterprise treasury desks.",
-        ],
+        heading: "Coverage",
+        body:
+          "The trading desk is reachable 22 hours a day, five days a week. Rhodium trading and 12-month forwards are not currently offered.",
       },
     ],
-    standards: ["ISO 27001", "AML/CFT Compliant"],
-    metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
+    standards: ["AML/CFT Aligned"],
+    metals: ["Gold", "Silver", "Platinum", "Palladium"],
   },
 
   /* ---------------------------------------------------------------- */
@@ -236,7 +233,7 @@ export const services: ServiceCard[] = [
     icon: "beaker",
     title: "Laboratory & Analysis",
     lede:
-      "Independent XRF, fire-assay and ICP-MS testing for precious-metal purity and impurity content.",
+      "XRF, fire-assay and ICP-MS testing for precious-metal purity.",
     bullets: [
       "XRF for rapid indicative assay",
       "Fire assay for definitive Au / Ag",
@@ -244,35 +241,31 @@ export const services: ServiceCard[] = [
     ],
     cta: { label: "Read more", href: "#services-grid" },
     hero:
-      "The Marmara laboratory issues independent Certificates of Analysis for gold, silver and PGM lots — XRF for rapid indicative testing on arrival, fire assay (cupellation) for definitive gold and silver settlement, and ICP-MS for trace impurities and PGM speciation.",
+      "Precious-metal testing is available through Marmara's own laboratory and external specialist laboratories. Methods include XRF for rapid indicative screening, Fire Assay (cupellation) for definitive gold and silver and ICP-MS for trace-element analysis — the exact routing (in-house vs. external) is agreed per lot.",
     sections: [
       {
         heading: "Methods",
         bullets: [
-          "XRF (energy-dispersive) — 30-second surface assay for karat.",
-          "Fire assay (cupellation) — definitive gold to 0.01 % precision.",
-          "Gravimetric assay — silver via chloride precipitation.",
-          "ICP-MS — trace impurities down to 1 ppm; PGM speciation.",
-          "Density hydrostatic testing for bar authenticity.",
+          "XRF (energy-dispersive) — rapid indicative assay.",
+          "Fire assay (cupellation) — definitive gold and silver.",
+          "ICP-MS — trace-element analysis.",
         ],
       },
       {
         heading: "Deliverables",
         bullets: [
-          "Certificate of Analysis (COA) signed by the head assayer.",
+          "Certificate of Analysis (COA) issued with every lot.",
           "Photographic evidence of sampling and hallmark.",
-          "Retention samples held for 12 months post-settlement.",
-          "Digital COA export in signed PDF and JSON.",
         ],
       },
       {
-        heading: "Turnaround",
+        heading: "Where tests run",
         body:
-          "XRF results within the same day. Fire assay: 24–48 hours from sampling. ICP-MS: 48–72 hours. Rush service available for time-critical settlements with prior arrangement.",
+          "Marmara performs selected methods in-house and routes the remainder to external specialist laboratories under written agreement. Specific capability per method is confirmed on engagement.",
       },
     ],
-    standards: ["ISO/IEC 17025 (target)", "LBMA Referee Method Aligned", "RJC Chain of Custody"],
-    metals: ["Gold", "Silver", "Platinum", "Palladium", "Rhodium"],
+    standards: ["RJC Chain of Custody"],
+    metals: ["Gold", "Silver", "Platinum", "Palladium"],
   },
 
   /* ---------------------------------------------------------------- */
@@ -283,45 +276,48 @@ export const services: ServiceCard[] = [
     icon: "vault",
     title: "Storage & Vaulting",
     lede:
-      "Insured allocated and segregated vault storage across Dubai, London, Zürich and Singapore.",
+      "Custody of physical bullion arranged through specialist providers across Dubai, London, Zürich, Hong Kong and Thailand.",
     bullets: [
       "Allocated & segregated options",
-      "All-risks insurance from Lloyd's underwriters",
-      "24/7 audit-ready reporting portal",
+      "Arranged through specialist providers",
+      "Client-portal reporting",
     ],
     cta: { label: "Read more", href: "#services-grid" },
     hero:
-      "Institutional-grade custody of physical bullion in Class III / IV vaults across Dubai (DMCC), London, Zürich and Singapore — every position allocated by bar and serial, insured all-risks, and reconciled daily with an audit-ready client portal.",
+      "Custody of physical bullion is arranged through specialist custody and logistics providers — including Brink's, Loomis, Transguard and Ferrari Group — in Dubai, London, Zürich, Hong Kong and Thailand. Positions are allocated by bar and serial and reconciled with a client-portal.",
     sections: [
       {
         heading: "Storage options",
         bullets: [
-          "Allocated — specific bars by serial, held in client's name, no fungibility.",
+          "Allocated — specific bars by serial, held in the client's name.",
           "Segregated — separate physical compartment inside the same vault.",
-          "Pool-account — same-metal, same-fineness, certified refining partners.",
-          "Transit storage — short-hold during logistics, still insured.",
+          "Transit custody — short-hold during logistics movements.",
         ],
       },
       {
-        heading: "Vault locations",
+        heading: "Service locations",
         bullets: [
-          "Dubai — DMCC Vault, Almas Tower area.",
-          "London — LBMA-certified vault, direct clear to LBMA loco.",
-          "Zürich — Class IV bonded warehouse, Swiss FINMA regulated.",
-          "Singapore — SBMA-linked Freeport vault.",
+          "Dubai",
+          "London",
+          "Zürich",
+          "Hong Kong",
+          "Thailand",
         ],
       },
       {
-        heading: "Reporting & Audit",
+        heading: "Specialist providers",
+        body:
+          "Custody and logistics are services arranged through specialist providers — Brink's, Loomis, Transguard and Ferrari Group — not Marmara-owned vaults. Specific provider assignments per location are confirmed on engagement.",
+      },
+      {
+        heading: "Reporting",
         bullets: [
-          "Client portal with 24/7 balance and movement history.",
-          "Bar-list PDF issued monthly with photographs and serial numbers.",
-          "Twice-yearly independent audit by a Big-Four firm.",
-          "Insurance certificate reissued on request; underwriter is a Lloyd's syndicate.",
+          "Client portal with balance and movement history.",
+          "Bar-list issued periodically with serial numbers.",
         ],
       },
     ],
-    standards: ["LBMA Vault", "LPPM Vault", "ISO 27001 Reporting", "Lloyd's All-Risks Insurance"],
+    standards: ["RJC Chain of Custody"],
     metals: ["Gold", "Silver", "Platinum", "Palladium"],
   },
 ];

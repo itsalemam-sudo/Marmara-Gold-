@@ -13,7 +13,7 @@ function buildFullRead(segment: Segment, solution: Solution): string[] {
   return [
     solution.detail,
     `Within Marmara's ${segment.segment.toLowerCase()} coverage, this line runs off our Dubai desk with dedicated coverage in the region's time zone. Onboarding is KYC-first, with clear AML/CFT screening before any RFQ is priced.`,
-    `Execution is against live LBMA and LPPM benchmarks. We book against a single institutional counterparty relationship — no marketplace intermediaries — and settlement rails support AED, USD and EUR with same-day and T+1 options depending on the metal and delivery route.`,
+    `We book against a single institutional counterparty relationship — no marketplace intermediaries — and settlement rails support USD, AED, EUR, GBP, SAR and HKD. Settlement timelines are agreed with the client according to the transaction type.`,
     `Reporting is built for treasuries and auditors: every position reconciled daily, chain-of-custody documented for stored inventory, and price/volume audit trails held for the retention windows required by UAE regulation and international standards (RJC Chain of Custody, OECD Due Diligence Guidance).`,
     `Ready to scope this for your desk? The Marmara coverage team will walk you through limits, custody and delivery terms and prepare a bespoke term sheet.`,
   ];

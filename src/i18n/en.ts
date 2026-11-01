@@ -37,7 +37,7 @@ export const en = {
       after:    "trading",
     },
     lead:
-      "At Marmara Precious Metals Group, we deliver integrated solutions across the precious metals value chain — from physical trading and refining partnerships to vaulting and settlement. Specializing in gold, silver, platinum, and palladium, we serve institutional clients in over 60 markets. Our commitment is built on transparency, compliance, and real-time execution you can trust.",
+      "At Marmara Precious Metals Group, we deliver integrated solutions across the precious metals value chain — from physical trading and refining partnerships to custody and settlement. Specialising in gold, silver, platinum and palladium, we serve clients across 35 markets. Our commitment is built on transparency, compliance and reliable execution you can trust.",
     ctas: {
       contact:      "Contact us",
       capabilities: "Our capabilities",
@@ -47,21 +47,20 @@ export const en = {
     note: "Institutional & professional clients only",
   },
   stats: {
-    title: "Marmara Gold at a glance",
-    items: [
-      { value: "300+", label: "OTC products" },
-      { value: "$4T",  label: "Volume traded" },
-      { value: "180+", label: "Countries" },
-      { value: "40+",  label: "Derivatives exchanges" },
-      { value: "180+", label: "FX markets" },
-    ],
+    // Legacy preset — the Stats band is intentionally not rendered on the
+    // live site (see src/data/stats.ts, which is the real source and is
+    // deliberately empty). These labels remain here only as a translation
+    // scaffold for a future opt-in; they must not be re-wired without the
+    // owner's confirmation of each value.
+    title: "Marmara Precious Metals Group at a glance",
+    items: [],
   },
   about: {
     eyebrow:    "About Marmara",
     heading:    "Dubai's gateway to the global bullion market",
     who: [
-      "Marmara Precious Metals Group is a Dubai-based precious metals trading company, specializing in the sourcing, refining, and distribution of physical gold and bullion products. Strategically located in the UAE, we serve as a trusted partner to jewelers, refineries, financial institutions and high-net-worth clients across Asia, the Middle East, and Europe.",
-      "With a strong reputation for integrity, reliability and compliance, we bridge international markets through seamless bullion trade, settlement, and logistics support.",
+      "Marmara Precious Metals Group — operating through Marmara Gold Trading LLC (licensed by the Dubai Department of Economy and Tourism) — is a Dubai-based precious metals house specialising in the sourcing, refining partnerships, custody and distribution of physical gold, silver, platinum and palladium. Strategically located in the UAE, we serve as a trusted partner to jewellery manufacturers, refineries, financial institutions and professional counterparties across Asia, the Middle East and Europe. Serving clients across 35 markets.",
+      "With a strong reputation for integrity, reliability and compliance, we bridge international markets through seamless bullion trade, settlement and logistics support.",
     ],
     mission: {
       label: "Our mission",
@@ -73,7 +72,7 @@ export const en = {
     },
     whatWeDoTitle: "What we do",
     whatWeDo: [
-      { t: "Physical gold trading (wholesale)", d: "LBMA-standard kilo bars and investment-grade bullion." },
+      { t: "Physical gold trading (wholesale)", d: "Marmara-branded kilo bars and investment-grade bullion." },
       { t: "Refining partnerships",             d: "Custom kilo bars under the Marmara brand through certified refiners." },
       { t: "Import / export logistics",         d: "Cross-border shipments, customs clearance and Dubai Trade portal filings, end-to-end." },
       { t: "Client onboarding & KYC",           d: "Rigorous AML/CFT compliance aligned with UAE and international regulation." },
@@ -81,16 +80,17 @@ export const en = {
     ],
     networkTitle: "Our network",
     network: [
-      { t: "UAE — Dubai HQ",       d: "Main trading and logistics hub." },
-      { t: "India desk",           d: "Dedicated services for Indian wholesalers and jewellery manufacturers." },
-      { t: "Türkiye & Hong Kong",  d: "Strategic sourcing relationships and trade-flow expansion." },
+      { t: "UAE — Dubai HQ",   d: "Main trading, settlement and logistics hub." },
+      { t: "Saudi Arabia",     d: "Gulf coverage for wholesale precious-metal counterparties." },
+      { t: "Türkiye",          d: "Sourcing relationships and trade-flow access across the Turkish market." },
+      { t: "Hong Kong",        d: "Asia-Pacific coverage and institutional distribution." },
+      { t: "Singapore",        d: "Regional settlement and client coverage." },
     ],
-    ticksTitle: "Why choose Marmara Gold",
+    ticksTitle: "Why choose Marmara",
     ticks: [
-      "DGD-affiliated refinery partner",
       "Full compliance with UAE Ministry of Economy",
-      "Multilingual team — English, Arabic, Hindi, Turkish",
-      "Fast settlement and same-day delivery options",
+      "Multilingual team — English, Arabic, Turkish",
+      "UAE delivery within 48 hours",
       "Custom kilo-bar stamping for clients",
       "Trusted by major regional bullion buyers",
     ],

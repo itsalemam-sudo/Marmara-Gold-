@@ -30,11 +30,13 @@ export const nav: NavLink[] = [
   {
     label: "Corporate",
     href: "/corporate/about",
+    // Leadership intentionally omitted — owner has instructed us to hide
+    // the leadership section (no placeholder bios / invented photographs).
+    // Restore once approved names, titles and biographies are supplied.
     children: [
-      { label: "About Marmara",  href: "/corporate/about",      desc: "Who we are and how we work." },
-      { label: "Leadership",     href: "/corporate/leadership", desc: "Senior team steering the desk." },
-      { label: "Global Presence", href: "/corporate/offices",   desc: "Dubai HQ and international footprint." },
-      { label: "Careers",        href: "/corporate/careers",    desc: "Join a compliance-first bullion group." },
+      { label: "About Marmara",   href: "/corporate/about",    desc: "Who we are and how we work." },
+      { label: "Global Presence", href: "/corporate/offices",  desc: "Dubai HQ and international offices." },
+      { label: "Careers",         href: "/corporate/careers",  desc: "General CV submissions." },
     ],
   },
 

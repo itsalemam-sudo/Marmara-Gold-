@@ -85,10 +85,10 @@ export function Products() {
             </h2>
           </div>
           <p>
-            Twelve of Marmara's core physical bullion products across gold,
-            silver, platinum and palladium — cast bars, minted bars, tola bars
-            and sovereign coins. Every line is KYC-only: request a quote and a
-            named desk will price against live LBMA/LPPM benchmarks.
+            Marmara's core physical bullion products across gold, silver,
+            platinum and palladium — cast bars, minted bars, tola bars and
+            bullion coins. Every line is KYC-only: request a quote and a
+            named desk will respond within one business day.
           </p>
         </header>
 
@@ -125,11 +125,14 @@ export function Products() {
                   <span className={styles.specV}>{p.weight}</span>
                   <span className={styles.specK}>Purity</span>
                   <span className={styles.specV}>{p.purity}</span>
-                  <span className={styles.specK}>Refiner</span>
+                  <span className={styles.specK}>Brand</span>
                   <span className={styles.specV}>{p.refiner}</span>
                 </div>
               </div>
               <div className={styles.foot}>
+                {/* Premium strings are hidden until the owner supplies the
+                    official pricing schedule (31 Oct 2026). The <span> is
+                    retained so the layout keeps its two-column foot. */}
                 <span className={styles.premium}>{p.premium}</span>
                 <button
                   type="button"
@@ -145,7 +148,7 @@ export function Products() {
         </div>
 
         <p className={styles.disclaimer}>
-          KYC-verified onboarding required · Prices quoted against live LBMA / LPPM
+          KYC-verified onboarding required · Pricing issued per RFQ after onboarding
         </p>
       </div>
     </section>

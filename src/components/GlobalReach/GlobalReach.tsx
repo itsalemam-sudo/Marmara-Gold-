@@ -15,12 +15,16 @@ import styles from "./GlobalReach.module.css";
 
 const chips = ["Gold · Au", "Silver · Ag", "Platinum · Pt", "Palladium · Pd"];
 
-/** Confirmed offices / desks — do not add speculative locations. */
+/** Confirmed offices (owner-approved 31 Oct 2026). Do not add
+ *  speculative locations; custody-only presences (vault partners in
+ *  London, Zürich, Thailand) belong on the Storage & Vaulting page,
+ *  not as Marmara offices. */
 const offices: { city: string; role: string }[] = [
-  { city: "Dubai",     role: "Group Headquarters" },
-  { city: "Hong Kong", role: "APAC Desk" },
-  { city: "Türkiye",   role: "Regional Presence" },
-  { city: "Singapore", role: "APAC Expansion" },
+  { city: "Dubai",        role: "Group Headquarters" },
+  { city: "Saudi Arabia", role: "Gulf Coverage" },
+  { city: "Türkiye",      role: "Regional Presence" },
+  { city: "Hong Kong",    role: "APAC Desk" },
+  { city: "Singapore",    role: "APAC Coverage" },
 ];
 
 export function GlobalReach() {

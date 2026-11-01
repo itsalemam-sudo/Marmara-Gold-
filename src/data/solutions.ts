@@ -29,22 +29,22 @@ export const segments: Segment[] = [
       {
         title: "Physical bullion trading",
         detail:
-          "Trade LBMA and non-LBMA bars with confidence. Direct access to high-purity gold, silver, platinum and palladium products with transparent pricing, real-time quotes and secured trade execution.",
+          "Direct access to high-purity gold, silver, platinum and palladium with transparent pricing and secured trade execution.",
       },
       {
         title: "Kilo & tola bar supply",
         detail:
-          "Certified kilo bars, 100 g and tola (11.66 g) bars from trusted refineries. Branding and serial customisation on request. Delivery across the UAE and key global trade hubs.",
+          "Marmara-branded kilo bars, 100 g and tola (11.66 g) bars through certified refinery partners. Serial customisation on request. UAE delivery within 48 hours.",
       },
       {
-        title: "Real-time pricing access",
+        title: "Pricing access",
         detail:
-          "Proprietary pricing platform with up-to-the-second live quotes for spot and wholesale bullion. Monitor trends, place trades instantly and manage risk in dynamic markets.",
+          "Marmara Trader (desktop + mobile + API) for professional counterparties. Pricing is quoted per RFQ after KYC-verified onboarding.",
       },
       {
         title: "Settlement & delivery options",
         detail:
-          "Flexible settlement terms in AED, USD or EUR. Secure logistics to vaults, offices or free-zone warehouses.",
+          "Settlement in USD, AED, EUR, GBP, SAR or HKD; settlement timelines are agreed with the client according to the transaction type. UAE delivery within 48 hours; international logistics arranged through specialist providers.",
       },
     ],
   },
@@ -60,7 +60,7 @@ export const segments: Segment[] = [
       {
         title: "Custom bar minting (100 g · tola · kilo)",
         detail:
-          "Create your own branded bars in 100 g, tola (11.66 g) or kilo formats. LBMA-style minting or local artisanal finishes, embossed logos, serial numbering and blister packaging options.",
+          "Create your own branded bars in 100 g, tola (11.66 g) or kilo formats. Custom minting with embossed logos, serial numbering and security packaging options.",
       },
       {
         title: "Gold & silver sourcing",
@@ -91,12 +91,12 @@ export const segments: Segment[] = [
       {
         title: "Doré sourcing & settlement",
         detail:
-          "Reliable supply of gold and silver doré for refining. Transparent settlement terms, international logistics support and quick turnaround based on LBMA-standard assays.",
+          "Reliable supply of gold and silver doré for refining. Transparent settlement terms, international logistics support and quick turnaround with standard assays.",
       },
       {
         title: "Strategic offtake agreements",
         detail:
-          "Long-term offtake contracts for refined bars with guaranteed minimum volume commitments. LBMA-compliant and regional bar specifications tailored to production capacity.",
+          "Long-term offtake contracts for refined bars with agreed minimum volume commitments and regional bar specifications tailored to production capacity.",
       },
       {
         title: "Assay & certification",
@@ -156,9 +156,9 @@ export const segments: Segment[] = [
           "Direct access to investment-grade gold and silver bars with competitive pricing. Bullion sourced from globally recognised refiners across a wide range of sizes.",
       },
       {
-        title: "Vault storage (Dubai · Istanbul · Zurich · Hong Kong)",
+        title: "Vault storage (Dubai · London · Zürich · Hong Kong · Thailand)",
         detail:
-          "Secure, insured storage through trusted vaulting partners in key financial hubs — global access and peace of mind for precious-metal holdings.",
+          "Secure storage arranged through specialist custody providers (Brink's, Loomis, Transguard, Ferrari Group) in key financial hubs — global access for precious-metal holdings.",
       },
       {
         title: "Certified kilo bars with serial numbers",
@@ -182,9 +182,9 @@ export const segments: Segment[] = [
       "Liquidity, hedging and AML-compliant execution for treasuries and prop desks.",
     solutions: [
       {
-        title: "Liquidity & hedging solutions",
+        title: "Liquidity solutions",
         detail:
-          "Customised liquidity access and hedging strategies for banks and financial institutions — spot, forward and option contracts tailored to balance-sheet risk and market positioning.",
+          "Customised liquidity access for banks and financial institutions — spot execution and unallocated metal accounts tailored to balance-sheet needs. Forwards and options are not currently offered.",
       },
       {
         title: "Clearing & settlement",
@@ -282,7 +282,7 @@ export const segments: Segment[] = [
       {
         title: "Vault-to-vault transfer solutions",
         detail:
-          "Seamless intra- and inter-jurisdictional vault transfers between global storage hubs (Dubai, Zurich, Istanbul and more) for institutional and HNWI clients.",
+          "Intra- and inter-jurisdictional vault transfers through specialist custody providers across Dubai, London, Zürich, Hong Kong and Thailand.",
       },
       {
         title: "Chain of custody integration",

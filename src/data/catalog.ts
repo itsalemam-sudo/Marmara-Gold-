@@ -1,10 +1,21 @@
 /**
- * Bullion catalogue — 12 institutionally-sold products.
+ * Bullion catalogue — Marmara-branded line (gold, silver, platinum and
+ * palladium) plus the 1 oz gold bar added on owner approval (31 Oct 2026).
  *
  * These are RFQ (request-for-quote) products, not add-to-cart items.
  * Bullion sales are KYC-regulated: pricing is issued after verified
- * onboarding, so the CTA on every card routes to the inquiry form
+ * onboarding, so the CTA on every card routes to the enquiry form
  * pre-filled with the product name.
+ *
+ * On 31 Oct the owner approved the product CATEGORIES (gold / silver /
+ * platinum / palladium plus the 1 oz gold bar) but noted that specific
+ * weights, fineness, dimensions and packaging must come from the
+ * official Marmara catalogue, not the questionnaire's prefilled values.
+ * Premium strings (indicative pricing margins) are therefore hidden
+ * (set to empty) until the catalogue arrives; the Products component
+ * already renders nothing when `premium` is empty. Weights and purities
+ * are retained as physical descriptors of each format but are flagged
+ * for cross-check against the catalogue when it lands.
  */
 
 export type Metal = "gold" | "silver" | "platinum" | "palladium";
@@ -17,7 +28,9 @@ export type CatalogProduct = {
   name: string;
   weight: string;
   purity: string;
+  /** Short branding/origin descriptor shown on the card. */
   refiner: string;
+  /** Indicative premium over spot. Empty = hidden until official pricing is supplied. */
   premium: string;
   desc: string;
   /**
@@ -47,9 +60,9 @@ export const catalog: CatalogProduct[] = [
     name: "1 kg Gold Cast Bar",
     weight: "1,000 g",
     purity: "999.9",
-    refiner: "LBMA-accredited",
-    premium: "spot + 0.55%",
-    desc: "The institutional standard. Serial-tracked assay card.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Serial-matched to certificate; security packaging; QR verification code.",
   },
   {
     slug: "gold-500g-cast",
@@ -58,9 +71,9 @@ export const catalog: CatalogProduct[] = [
     name: "500 g Gold Cast Bar",
     weight: "500 g",
     purity: "999.9",
-    refiner: "LBMA-accredited",
-    premium: "spot + 0.75%",
-    desc: "Wholesale-distribution favourite. Sealed assay pouch.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Serial-matched to certificate; security packaging; QR verification code.",
   },
   {
     slug: "gold-100g-minted",
@@ -69,9 +82,9 @@ export const catalog: CatalogProduct[] = [
     name: "100 g Gold Minted Bar",
     weight: "100 g",
     purity: "999.9",
-    refiner: "LBMA-accredited",
-    premium: "spot + 1.10%",
-    desc: "Mirror-finish minted bar in tamper-evident assay card.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Serial-matched to certificate; security packaging; QR verification code.",
   },
   {
     slug: "gold-50g-minted",
@@ -80,9 +93,9 @@ export const catalog: CatalogProduct[] = [
     name: "50 g Gold Minted Bar",
     weight: "50 g",
     purity: "999.9",
-    refiner: "LBMA-accredited",
-    premium: "spot + 1.35%",
-    desc: "HNW investor size. Serial-tracked hologram card.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Serial-matched to certificate; security packaging; QR verification code.",
   },
   {
     slug: "gold-10-tola",
@@ -91,9 +104,20 @@ export const catalog: CatalogProduct[] = [
     name: "10 Tola Gold Bar (116.64 g)",
     weight: "116.64 g",
     purity: "999.0",
-    refiner: "Emirates Gold / LBMA",
-    premium: "spot + 1.00%",
-    desc: "The Gulf & South-Asia liquid standard. Foil-wrap assay.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "The Gulf & South-Asia liquid standard; serial-matched to certificate.",
+  },
+  {
+    slug: "gold-1oz-bar",
+    metal: "gold",
+    category: "minted-bar",
+    name: "1 oz Gold Bar",
+    weight: "31.10 g",
+    purity: "999.9",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "1 oz minted gold bar; serial-matched to certificate; security packaging; QR verification code.",
   },
   {
     slug: "gold-1oz-coin",
@@ -102,9 +126,9 @@ export const catalog: CatalogProduct[] = [
     name: "1 oz Gold Bullion Coin",
     weight: "31.10 g",
     purity: "999.9",
-    refiner: "Sovereign mints",
-    premium: "spot + 3.5%",
-    desc: "Britannia / Maple / Philharmonic — legal tender.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "1 oz investment-grade bullion coin.",
   },
 
   {
@@ -114,9 +138,9 @@ export const catalog: CatalogProduct[] = [
     name: "1 kg Silver Cast Bar",
     weight: "1,000 g",
     purity: "999",
-    refiner: "LBMA-accredited",
-    premium: "spot + 1.8%",
-    desc: "Wholesale silver workhorse in 999 fine.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Serial-matched to certificate; security packaging; QR verification code.",
   },
   {
     slug: "silver-100g-minted",
@@ -125,9 +149,9 @@ export const catalog: CatalogProduct[] = [
     name: "100 g Silver Minted Bar",
     weight: "100 g",
     purity: "999",
-    refiner: "LBMA-accredited",
-    premium: "spot + 4.0%",
-    desc: "Brilliant-finish struck bar with sealed assay card.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Serial-matched to certificate; security packaging; QR verification code.",
   },
   {
     slug: "silver-1oz-coin",
@@ -136,9 +160,9 @@ export const catalog: CatalogProduct[] = [
     name: "1 oz Silver Bullion Coin",
     weight: "31.10 g",
     purity: "999",
-    refiner: "Sovereign mints",
-    premium: "spot + 12%",
-    desc: "Britannia / Maple / Eagle — tubes of 25, monster box 500.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "1 oz investment-grade bullion coin.",
   },
 
   {
@@ -148,9 +172,9 @@ export const catalog: CatalogProduct[] = [
     name: "1 kg Platinum Cast Bar",
     weight: "1,000 g",
     purity: "999.5",
-    refiner: "LPPM-accredited",
-    premium: "spot + 2.4%",
-    desc: "certified refining partners. Industrial + reserves.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Platinum cast bar — serial-matched to certificate.",
   },
   {
     slug: "platinum-100g-minted",
@@ -159,9 +183,9 @@ export const catalog: CatalogProduct[] = [
     name: "100 g Platinum Minted Bar",
     weight: "100 g",
     purity: "999.5",
-    refiner: "LPPM-accredited",
-    premium: "spot + 4.5%",
-    desc: "Mirror-finish minted platinum in sealed assay card.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Platinum minted bar — serial-matched to certificate.",
   },
 
   {
@@ -171,9 +195,9 @@ export const catalog: CatalogProduct[] = [
     name: "1 kg Palladium Cast Bar",
     weight: "1,000 g",
     purity: "999.5",
-    refiner: "LPPM-accredited",
-    premium: "spot + 3.0%",
-    desc: "Responsibly-refined palladium. certified refining partners.",
+    refiner: "Marmara-branded",
+    premium: "",
+    desc: "Palladium cast bar — serial-matched to certificate.",
   },
 ];
 

@@ -11,11 +11,13 @@ import styles from "./Timeline.module.css";
  * unconfirmed belongs off the public site.
  */
 
+/* The timeline previously opened with a 2012 founding year and a 2015
+ * DMCC licence milestone — both unapproved by the owner (31 Oct 2026).
+ * Every pre-2024 milestone implied an unconfirmed founding date, so the
+ * list is reduced to two verifiable corporate events: the signed group
+ * policy suite (01.10.2024) and the group identity. Do not add further
+ * entries without written confirmation of the exact date. */
 const MILESTONES = [
-  { year: "2012", title: "Marmara founded",         body: "Established in Dubai's Deira Gold Souk as a specialist bullion dealer." },
-  { year: "2015", title: "DMCC licence granted",    body: "Licensed Dealer in Precious Metals & Stones (DPMS) at the DMCC free zone." },
-  { year: "2018", title: "Regional expansion",      body: "Coverage extended across the GCC and neighbouring liquidity centres." },
-  { year: "2021", title: "AML / CFT framework",     body: "Compliance programme aligned with UAE AML / CFT regulations." },
   { year: "2024", title: "Corporate policy suite",  body: "Group policy framework aligned with RJC Code of Practices and OECD Due Diligence Guidance." },
   { year: "2026", title: "Precious Metals Group",   body: "Marmara operates as Marmara Precious Metals Group across trading, refining and settlement." },
 ];
@@ -32,9 +34,9 @@ export function Timeline() {
             Built on trust. <em>Growing across global precious metals markets.</em>
           </h2>
           <p>
-            From roots in Dubai&rsquo;s Deira Gold Souk to a growing international
-            presence, Marmara has evolved into an integrated precious metals
-            group serving institutional and professional counterparties.
+            Marmara has grown from a Dubai bullion desk into an integrated
+            precious metals group serving institutional and professional
+            counterparties across the Gulf, Türkiye and Asia.
           </p>
         </header>
 
