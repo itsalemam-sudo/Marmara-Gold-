@@ -130,10 +130,10 @@ export function Products() {
                 </div>
               </div>
               <div className={styles.foot}>
-                {/* Premium strings are hidden until the owner supplies the
-                    official pricing schedule (31 Oct 2026). The <span> is
-                    retained so the layout keeps its two-column foot. */}
-                <span className={styles.premium}>{p.premium}</span>
+                {/* Owner instruction 01 Nov 2026: do not publish prices or
+                    indicative premiums. Every card shows "Request a quote"
+                    in place of a premium value. */}
+                <span className={styles.premium}>Request a quote</span>
                 <button
                   type="button"
                   className={styles.rfq}

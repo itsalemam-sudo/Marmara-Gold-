@@ -13,10 +13,10 @@
  * pick them up automatically.
  */
 export const links = {
-  /** Marmara Trader — set when the production URL is signed off. */
-  tradingPlatform: "",
-  /** iOS app store link — set when the App Store listing is live. */
-  iosApp:          "",
-  /** Android — set when they publish. */
+  /** Marmara Trader — desktop/web access, owner-supplied 01 Nov 2026. */
+  tradingPlatform: "https://marmara.ntptrader.com/",
+  /** iOS app store link — owner-supplied 01 Nov 2026. */
+  iosApp:          "https://apps.apple.com/ae/app/marmara-trader/id6502641675",
+  /** Android — awaiting owner-supplied Play Store URL. */
   androidApp:      "",
 } as const;

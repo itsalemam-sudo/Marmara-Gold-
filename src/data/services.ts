@@ -209,11 +209,17 @@ export const services: ServiceCard[] = [
       {
         heading: "Platform",
         bullets: [
-          "Desktop and mobile access.",
+          "Desktop and web access at marmara.ntptrader.com.",
+          "Marmara Trader for iPhone — available on the App Store.",
           "API connectivity for treasury and OMS integration.",
           "RFQ ticket for large lots above the block threshold.",
           "Pre-trade risk controls and per-metal exposure limits.",
         ],
+      },
+      {
+        heading: "API access",
+        body:
+          "API documentation is provided after account opening and assessment of the client's integration requirements.",
       },
       {
         heading: "Coverage",
